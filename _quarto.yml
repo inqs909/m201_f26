@@ -1,0 +1,38 @@
+project:
+  type: website
+  output-dir: docs
+  render: 
+    - "*.qmd"
+    - "!files/"
+  resources:
+    - "files"
+    - "assets"
+
+execute:
+  freeze: auto
+
+
+website:
+  repo-url: https://github.com/inqs909/m201_f26
+  title: "MATH 201"
+  site-url: www.inqs.info/m201_f26
+  favicon: "img/logo.png"
+  navbar:
+    logo: "img/logo.png"
+    logo-alt: "Class Logo for Math 201"
+    right:
+      - text: "Lectures"
+        href: lectures.qmd
+        aria-label: "Leads to Lecture Slides"
+      - text: "R Code Reference"
+        href: rcode.qmd
+        aria-label: "Leads to R Code Reference Pages"
+
+format:
+  html:
+    theme: 
+      light: theme.scss
+    toc: true
+
+
+
