@@ -40,7 +40,7 @@ editor: source
 
 ## Slides
 
-[www.inqs.info/m2012_f25/c/1a](https://www.inqs.info/m201_s26/lectures/1a)
+[m201.inqs.info/lectures/1a](https://www.inqs.info/m201_s26/lectures/1a)
 
 
 # Introductions
@@ -122,7 +122,7 @@ For every 1 unit of class you take, you are expected to spend ~3 hours outside o
 
 ## Syllabus
 
-[www.inqs.info/m201_s26/syllabus](https://www.inqs.info/m201_s26/syllabus.html)
+[www.inqs.info/m201_f26/syllabus](https://www.inqs.info/m201_f26/syllabus.html)
 
 ## R Programming
 
@@ -225,7 +225,7 @@ Additionally, all these individuals are not receiving any royalties for the work
 The use of generative AI raises concerns of what data is being harvested from us, possibly without informed consent. 
 
 ::: fragment
-When you used any large language models, you do not know what information is being harvested from you.
+When you use any large language models, you do not know what information is being harvested from you.
 :::
 
 ::: fragment

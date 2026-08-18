@@ -2,7 +2,7 @@
 title: "Extra Credit 2"
 description: Instructions for extra credit two.
 navbar: false
-date: 01-03-2026
+date: 08-24-2026
 editor: source
 format:
   html: 
@@ -29,8 +29,9 @@ After reading one book below, create a video essay that summarizes the book, pro
 
 -   Use of visual aids
 
--   Narrated by your own voice
+-   Must show your screen and embed yourself presenting in the video.
+    - Recommend using OBS Studio for screen capturing and video of yourself.
 
--   **Due 5/17/2025**
+-   **Due 12/5/2026**
 
 **Worth 2 final grade percentage points.**

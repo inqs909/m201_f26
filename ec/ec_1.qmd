@@ -2,7 +2,7 @@
 title: "Extra Credit 1"
 description: Instructions for extra credit one.
 navbar: false
-date: 01-02-2026
+date: 08-24-2026
 editor: source
 format:
   html: 
@@ -11,7 +11,7 @@ format:
 ---
 
 
-**Due 2/15/2025**
+**Due 9/13/2026**
 
 **Worth 1 final grade percentage points.**
 
