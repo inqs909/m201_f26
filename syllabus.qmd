@@ -66,10 +66,10 @@ Install [Google Chrome](https://www.google.com/chrome/) or any other chromium-ba
 
 | Category             | Percentage |
 |:---------------------|:-----------|
-| Discussion Posts     | 15%        |
+| Discussion Posts     | 10%        |
 | Classwork            | 15%        |
 | Video Assignments    | 20%        | 
-| Notebook Assignments | 20%        |
+| Notebook Assignments | 25%        |
 | Exam 1               | 10%        |
 | Exam 2               | 10%        |
 | Exam 3               | 10%        |
@@ -97,7 +97,7 @@ Students are expected to check the course Canvas page 3-4 times a week to view a
 
 #### Discussion Posts
 
-Discussion posts are designed to continue the conversation based on the video assignments. Absolutely no late posts will be accepted. Discussion posts will be due every Monday at 11:59 PM.
+Discussion posts are designed to continue the conversation based on the video assignments. No late posts will be accepted. Discussion posts will be due every Monday at 11:59 PM.
 
 #### Classwork Assignments
 
@@ -111,7 +111,7 @@ Videos are used to teach statistical concepts related to the course. Students ar
 
 #### Notebook Assignments
 
-Notebook assignments are designed to expand your statistical knowledge. These will be completed in Google Colab which can be accessed from Canvas. There is one notebook assignments every week that you can be completed during class time. Notebook assignments will be due on Sunday at 11:59 PM every week. The 3 lowest notebook assignments will be dropped.
+Notebook assignments are designed to expand your statistical knowledge. These will be completed in Google Colab which can be accessed from Canvas. There is one notebook assignments every week that you can be completed during class time. Notebook assignments will be due on Friday at 11:59 PM every week. No late notebook assignments will be accepted. The 3 lowest notebook assignments will be dropped.
 
 
 #### Exams
