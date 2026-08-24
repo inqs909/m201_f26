@@ -3,7 +3,7 @@ title: "Lectures"
 editor: source
 listing:
   contents: lectures
-  sort: false
+  sort: "order asc"
   fields: [title]
 ---
 
