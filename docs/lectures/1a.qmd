@@ -288,13 +288,13 @@ And, we need to demand companies to create and implement AI in an ethical manner
 
 ## Intro Form
 
-[Form](https://docs.google.com/forms/d/e/1FAIpQLSdCOoa1nw4mrFA9svC12LNDSh618MEijHFE8Rcop2Nb0BJgAQ/viewform?usp=publish-editor)
+[Form](https://docs.google.com/forms/d/e/1FAIpQLSfs5xXSRWMpVE2PzNiX14DLdNAAVMA9X-z-QiQQIWorgptSBg/viewform?usp=dialog)
 
 ![](img/qr-code.jpg){fig-align="center"}
 
 ## First Survey
 
-[Survey](https://docs.google.com/forms/d/e/1FAIpQLScYV9qxgaxv53MmQtxUtL26os_L7LsLaCgQKx8zyQ4vA13TaA/viewform?usp=publish-editor)
+[Survey](https://docs.google.com/forms/d/e/1FAIpQLSdMJ64HPv5mnLZX1IJe-PIMsOoqJx7MzCmxGI1EcGL_TfRBjw/viewform?usp=dialog)
 
 ![](img/qr-code-1.jpg){fig-align="center"}
 
