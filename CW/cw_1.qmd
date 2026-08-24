@@ -1,0 +1,111 @@
+---
+title: "Classwork 1"
+subtitle: "Reverse Engineering a Data-Generating Process"
+editor: source
+navbar: false
+format:
+  html: 
+    code-fold: true
+    html-math-method: katex
+    toc: false
+---
+
+
+## Learning Objectives
+
+By the end of this activity, students will be able to:
+
+- Distinguish between a population process and an observed dataset.
+- Identify deterministic (explained) and random (unexplained) components of a data-generating process.
+- Explain how sampling, measurement error, and missing data can affect results.
+- Identify potential confounding variables.
+- Connect a data-generating process to an appropriate study design.
+
+## Scenario
+
+A researcher collects the following information from 200 college students:
+
+- Hours studied during the week before an exam
+- Hours of sleep the night before the exam
+- Whether the student attended a review session
+- Previous mathematics GPA
+- Exam score
+
+The resulting dataset shows that students who studied more hours generally earned higher exam scores.
+
+## Part A: Build the Data-Generating Process
+
+Create a diagram showing how the observed data might have been generated. Your diagram must include:
+
+- Student background characteristics
+- Study behavior
+- Sleep
+- Exam performance
+- Measurement or reporting error
+
+You may use the following diagram as a starting point. Add, remove, or rearrange connections when appropriate.
+
+```{mermaid}
+flowchart TD
+    A["Student background"] --> B["Study hours"]
+    A --> D["Exam score"]
+    B --> D
+    E["Sleep"] --> D
+    D --> F["Recorded dataset"]
+    G["Measurement error"] --> F
+```
+
+**Alternative text:** Student background may influence study hours, review-session attendance, and exam scores. Study hours, review-session attendance, and sleep may also influence exam scores. Measurement error and missing data affect the final recorded dataset.
+
+### Questions
+
+1. Which variables occur before the students begin studying for the exam?
+2. Which arrows represent possible causal relationships?
+3. What additional variables might influence both study hours and exam scores?
+4. How does the real-world process differ from the final recorded dataset?
+
+## Part B: Identify Sources of Variation
+
+For each source from **Part A**, decide whether it is primarily **systematic** (explained), **random** (unexplained), or could be **both**. Briefly explain how it might affect the observed relationship between study hours and exam scores.
+
+## Part C: Evaluate a Causal Claim
+
+Consider the following claim:
+
+> Increasing a student's study time will cause the student's exam score to increase.
+
+Discuss the claim with your group and answer the following questions:
+
+1. Does the observed association establish that studying more causes higher exam scores? Explain.
+2. Which variables could confound the relationship between study hours and exam scores?
+3. Could reverse causation be present? For example, could a student's expected exam performance influence how long the student studies?
+4. How might inaccurate reports of study hours affect the observed association?
+5. How could the study be redesigned to provide stronger evidence about causation?
+
+## Part D: Modify the Process
+
+Choose **one** of the following changes to the study:
+
+1. Students are randomly assigned to a study-support program.
+2. Study hours are recorded using tracking software instead of self-reports.
+3. Only students with complete data are included in the analysis.
+4. The sample includes students from only one mathematics course.
+
+For your selected change, explain its effect on each consideration below.
+
+| Consideration | Effect of the proposed change |
+|---|---|
+| Bias |  |
+| Variability |  |
+| Causal interpretation |  |
+| Generalizability |  |
+
+Then revise your data-generating-process diagram to show the change.
+
+## Closing Reflection
+
+In two or three sentences, explain the difference between:
+
+1. The real-world process that produces student outcomes, and
+2. The process that produces the dataset researchers eventually analyze.
+

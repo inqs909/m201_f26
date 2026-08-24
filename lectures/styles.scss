@@ -7,11 +7,12 @@
 // colors
 $body-bg: #FFFFFF !default;
 $body-color: #222 !default;
-$link-color: #0d5151ff !default;
+$link-color: #800000 !default;
 $selection-bg: $link-color !default;
 $selection-color: #fff !default;
 $input-panel-bg: rgba(233, 236, 239, 0.2) !default;
-$presentation-heading-color: #0d5151ff !default;
+$presentation-heading-color: #CA0123 !default;
+
 $code-block-bg: rgba(254, 254, 254, 0.52)  !default;
 
 // headings
@@ -52,13 +53,13 @@ h2 {
 
 .columns h3 {
   font-size: 0.95em;
-  color: #043838ff;
+  color: #B22222;
 }
 
 
 
 .reveal .slides section .subtitle {
-  color: #0d5151ff;
+  color: #B22222;
   font-size: 1.5em;
   font-style: italic;
   text-transform: uppercase;
@@ -80,7 +81,7 @@ h2 {
 }
 
 .agenda-active {
-  color: #043838ff;
+  color: #960018;
   font-size: 1.5em;
   margin-top: -0.5em;
   margin-bottom: -0.5em;

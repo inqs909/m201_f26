@@ -28,6 +28,7 @@ filters:
   - reveal-auto-agenda
 
 editor: source
+order: 2
 ---
 
 ```{r}
@@ -37,7 +38,7 @@ library(tidyverse)
 library(rcistats)
 library(broom)
 library(patchwork)
-library(BrailleR)
+#library(BrailleR)
 theme_set(theme_bw() + 
             theme(
               axis.text.x = element_text(size = 24),

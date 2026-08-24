@@ -35,6 +35,7 @@ filters:
   - reveal-auto-agenda
 
 editor: source
+order: 1
 ---
 
 

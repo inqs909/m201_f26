@@ -30,6 +30,7 @@ filters:
   - timer
 
 editor: source
+order: 15
 ---
 
 # Statistics

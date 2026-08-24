@@ -31,6 +31,7 @@ filters:
   - reveal-auto-agenda
 
 editor: source
+order: 7
 ---
 
 ## R Packages
