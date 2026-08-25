@@ -123,7 +123,7 @@ Learning R is difficult, but it is the best teacher to teach you how to overcome
 
 ::: columns
 ::: {.column width="50%"}
-![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/GeorgeEPBox.jpg/400px-GeorgeEPBox.jpg){fig-alt="An image of George Box" fig-align="center" width="333"}
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/GeorgeEPBox.jpg/960px-GeorgeEPBox.jpg?utm_source=en.wikipedia.org&utm_campaign=index&utm_content=thumbnail){fig-alt="An image of George Box" fig-align="center" width="333"}
 :::
 
 ::: {.column width="50%"}
