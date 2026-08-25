@@ -73,7 +73,6 @@ order: 1
 
 -   Fun Fact
 
--   Career Goal
 :::
 
 # Embedded Peer Educator
