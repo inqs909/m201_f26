@@ -3430,13 +3430,6 @@
     "text": "EPE - Jasmine Torres\n\nThis is my 7th year at CSUCI\nTriple major in Math (triple emphasis pure, applied, and statistics), Computer Science, and Physics.\nMinoring in philosophy and cybersecurity."
   },
   {
-    "objectID": "lectures/1a.html#assignments",
-    "href": "lectures/1a.html#assignments",
-    "title": "Math 201",
-    "section": "Assignments",
-    "text": "Assignments\n\n\n\nLearner Info Survey\nUsing the Study Cycle Efficiently\n\n\n\nBloom’s Taxonomy\nThe Feynman Technique"
-  },
-  {
     "objectID": "lectures/1a.html#class-setup-1",
     "href": "lectures/1a.html#class-setup-1",
     "title": "Math 201",
@@ -3479,11 +3472,39 @@
     "text": "What is the difference between math and stats?"
   },
   {
+    "objectID": "lectures/1a.html#statistics-mantra",
+    "href": "lectures/1a.html#statistics-mantra",
+    "title": "Math 201",
+    "section": "Statistics Mantra",
+    "text": "Statistics Mantra\n\n\n\n\n\n\n\n\nAll models are wrong,\nsome are useful!"
+  },
+  {
+    "objectID": "lectures/1a.html#extra-credit-1",
+    "href": "lectures/1a.html#extra-credit-1",
+    "title": "Math 201",
+    "section": "Extra Credit 1",
+    "text": "Extra Credit 1"
+  },
+  {
+    "objectID": "lectures/1a.html#extra-credit-2",
+    "href": "lectures/1a.html#extra-credit-2",
+    "title": "Math 201",
+    "section": "Extra Credit 2",
+    "text": "Extra Credit 2"
+  },
+  {
+    "objectID": "lectures/1a.html#extra-credit-3",
+    "href": "lectures/1a.html#extra-credit-3",
+    "title": "Math 201",
+    "section": "Extra Credit 3",
+    "text": "Extra Credit 3"
+  },
+  {
     "objectID": "lectures/1a.html#use-of-generative-ai-1",
     "href": "lectures/1a.html#use-of-generative-ai-1",
     "title": "Math 201",
     "section": "Use of Generative AI",
-    "text": "Use of Generative AI\nThe use of generative artificial intelligence (AI) to complete any part or all of an assignment/exam is strictly prohibited in this class. This includes, but not limited to, ChatGPT, Claude, Meta AI, and Google Gemini.\n\nYou may use AI to enhance you understanding of the material.\n\n\nYou may not upload any course material to any AI platforms such as ChatGPT, Claude, Meta AI, and Google Gemini. Exceptions are allowed for DASS-approved services."
+    "text": "Use of Generative AI\nThe use of generative artificial intelligence (AI) to complete any part or all of an assignment/exam is strictly prohibited in this class. This includes, but not limited to, ChatGPT, Claude, Meta AI, and Google Gemini.\n\nYou may use AI to enhance you understanding of the material.\n\n\nYou may not submit any assignments created by generative AI.\nYou may not upload any course material to any AI platforms such as ChatGPT, Claude, Meta AI, and Google Gemini. Exceptions are allowed for DASS-approved services."
   },
   {
     "objectID": "lectures/1a.html#use-of-ai",
@@ -3507,36 +3528,50 @@
     "text": "Trusting AI\nWhen using AI, you must acknowledge its limitations:\n\nResponses provided may be incorrect\nResponses may not be fair\nCompanies may manipulate responses and/or terms of service for their benefit\nCompanies may not have your best interst in mind\n\n\nYou should always proceed with caution utilizing these tools!"
   },
   {
-    "objectID": "lectures/1a.html#stolen-work",
-    "href": "lectures/1a.html#stolen-work",
-    "title": "Math 201",
-    "section": "Stolen Work",
-    "text": "Stolen Work\n\nAdditionally, all these individuals are not receiving any royalties for the work to be used in creating generative AI models.\n\n\nInside Higher Ed and The New Yorker highlight individual’s concern of their work being used to train AI models."
-  },
-  {
-    "objectID": "lectures/1a.html#privacy-concerns",
-    "href": "lectures/1a.html#privacy-concerns",
-    "title": "Math 201",
-    "section": "Privacy Concerns",
-    "text": "Privacy Concerns\nThe use of generative AI raises concerns of what data is being harvested from us, possibly without informed consent.\n\nWhen you use any large language models, you do not know what information is being harvested from you.\n\n\nDo you want to upload your thoughts and ideas to a company that can monetize, and possibly exploit.\n\n\nDoes your Professors consent with you uploading their assignments to large language models?\n\n\nStanford provided a report highlighting the risks of our personal data use in large language models."
-  },
-  {
-    "objectID": "lectures/1a.html#environmental-impact",
-    "href": "lectures/1a.html#environmental-impact",
-    "title": "Math 201",
-    "section": "Environmental Impact",
-    "text": "Environmental Impact\nIn order to run these large language models, companies need to use a large amounts of energy. This is because large servers are needed to both train and execute a model.\n\nThe LA Times reports the potential impact that running AI models in California.\n\n\nAdditionally, Time reports that a ChatGPT query uses ten times more energy than a Google search query, and global AI demands can consume of 1 trillion gallons of water by 2027.\n\n\nThere are also environmental justice questions about where these data centers are constructed."
-  },
-  {
-    "objectID": "lectures/1a.html#worker-exploitation",
-    "href": "lectures/1a.html#worker-exploitation",
-    "title": "Math 201",
-    "section": "Worker Exploitation",
-    "text": "Worker Exploitation\nThe Washington Post and Time (Article 1 and Article 2) reported that AI companies utilize “digital sweatshops” to classify data points for model training.\n\nThere is a human cost from the Global South, both financially and mentally, to develop the AI models for users in the United States and Europe.\n\n\nWe must be conscious consumers and demand more from these companies to provide safe working conditions and livable wages."
-  },
-  {
     "objectID": "lectures/1a.html#is-using-ai-bad",
     "href": "lectures/1a.html#is-using-ai-bad",
+    "title": "Math 201",
+    "section": "Is Using AI Bad?",
+    "text": "Is Using AI Bad?\n\nYes/No/I don’t know"
+  },
+  {
+    "objectID": "lectures/1a.html#privacy-concerns-links",
+    "href": "lectures/1a.html#privacy-concerns-links",
+    "title": "Math 201",
+    "section": "Privacy Concerns Links",
+    "text": "Privacy Concerns Links\n\nOpenAI Says It’s Scanning Users’ ChatGPT Conversations and Reporting Content to the Police\nPrivacy in an AI Era: How Do We Protect Our Personal Information?"
+  },
+  {
+    "objectID": "lectures/1a.html#labor-violations-links",
+    "href": "lectures/1a.html#labor-violations-links",
+    "title": "Math 201",
+    "section": "Labor Violations Links",
+    "text": "Labor Violations Links\n\nThe Emotional Labor Behind AI Intimacy\nHow thousands of ‘overworked, underpaid’ humans train Google’s AI to seem smart\nHumans in the loop - India\nHumans in the loop - Kenya"
+  },
+  {
+    "objectID": "lectures/1a.html#affecting-communities-links",
+    "href": "lectures/1a.html#affecting-communities-links",
+    "title": "Math 201",
+    "section": "Affecting Communities Links",
+    "text": "Affecting Communities Links\n\nAI surveillance and data colonialism shape African conflicts\nAfrican workers are taking on Meta and the world should pay attention\n‘It’s destroyed me completely’: Kenyan moderators decry toll of training of AI models\nThe AI Industry Is Traumatizing Desperate Contractors in the Developing World for Pennies\nChatGPT advises women to ask for lower salaries, study finds\nThe Impact of the Use of AI on People with Disabilities"
+  },
+  {
+    "objectID": "lectures/1a.html#ideas-and-learning-links",
+    "href": "lectures/1a.html#ideas-and-learning-links",
+    "title": "Math 201",
+    "section": "Ideas and Learning Links",
+    "text": "Ideas and Learning Links\n\nStudent’s Right to Refuse AI\nAI is homogenizing your thoughts\nThe Incuriosity Engine\nNew Junior Developers Can’t Actually Code"
+  },
+  {
+    "objectID": "lectures/1a.html#environmental-costs",
+    "href": "lectures/1a.html#environmental-costs",
+    "title": "Math 201",
+    "section": "Environmental Costs",
+    "text": "Environmental Costs\n\n‘I can’t drink the water’ - life next to a US data centre"
+  },
+  {
+    "objectID": "lectures/1a.html#is-using-ai-bad-1",
+    "href": "lectures/1a.html#is-using-ai-bad-1",
     "title": "Math 201",
     "section": "Is Using AI Bad?",
     "text": "Is Using AI Bad?\n\nYes/No/IDK\n\n\nBut, we need to acknowledge the consequences of using AI!\n\n\nAnd, we need to demand companies to create and implement AI in an ethical manner!"
@@ -3554,27 +3589,6 @@
     "title": "Math 201",
     "section": "First Survey",
     "text": "First Survey\nSurvey"
-  },
-  {
-    "objectID": "lectures/1a.html#extra-credit-1",
-    "href": "lectures/1a.html#extra-credit-1",
-    "title": "Math 201",
-    "section": "Extra Credit 1",
-    "text": "Extra Credit 1"
-  },
-  {
-    "objectID": "lectures/1a.html#extra-credit-2",
-    "href": "lectures/1a.html#extra-credit-2",
-    "title": "Math 201",
-    "section": "Extra Credit 2",
-    "text": "Extra Credit 2"
-  },
-  {
-    "objectID": "lectures/1a.html#extra-credit-3",
-    "href": "lectures/1a.html#extra-credit-3",
-    "title": "Math 201",
-    "section": "Extra Credit 3",
-    "text": "Extra Credit 3"
   },
   {
     "objectID": "lectures/2a.html#fill-out-your-interests",
