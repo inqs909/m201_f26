@@ -2643,21 +2643,14 @@
     "href": "CW/cw_1.html",
     "title": "Classwork 1",
     "section": "",
-    "text": "By the end of this activity, students will be able to:\n\nDistinguish between a population process and an observed dataset.\nIdentify deterministic (explained) and random (unexplained) components of a data-generating process.\nExplain how sampling, measurement error, and missing data can affect results.\nIdentify potential confounding variables.\nConnect a data-generating process to an appropriate study design."
-  },
-  {
-    "objectID": "CW/cw_1.html#learning-objectives",
-    "href": "CW/cw_1.html#learning-objectives",
-    "title": "Classwork 1",
-    "section": "",
-    "text": "By the end of this activity, students will be able to:\n\nDistinguish between a population process and an observed dataset.\nIdentify deterministic (explained) and random (unexplained) components of a data-generating process.\nExplain how sampling, measurement error, and missing data can affect results.\nIdentify potential confounding variables.\nConnect a data-generating process to an appropriate study design."
+    "text": "A researcher collects the following information from 200 college students:\n\nHours studied during the week before an exam\nHours of sleep the night before the exam\nWhether the student attended a review session\nPrevious mathematics GPA\nExam score\n\nThe resulting dataset shows that students who studied more hours generally earned higher exam scores."
   },
   {
     "objectID": "CW/cw_1.html#scenario",
     "href": "CW/cw_1.html#scenario",
     "title": "Classwork 1",
-    "section": "Scenario",
-    "text": "Scenario\nA researcher collects the following information from 200 college students:\n\nHours studied during the week before an exam\nHours of sleep the night before the exam\nWhether the student attended a review session\nPrevious mathematics GPA\nExam score\n\nThe resulting dataset shows that students who studied more hours generally earned higher exam scores."
+    "section": "",
+    "text": "A researcher collects the following information from 200 college students:\n\nHours studied during the week before an exam\nHours of sleep the night before the exam\nWhether the student attended a review session\nPrevious mathematics GPA\nExam score\n\nThe resulting dataset shows that students who studied more hours generally earned higher exam scores."
   },
   {
     "objectID": "CW/cw_1.html#part-a-build-the-data-generating-process",

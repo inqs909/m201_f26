@@ -11,16 +11,6 @@ format:
 ---
 
 
-## Learning Objectives
-
-By the end of this activity, students will be able to:
-
-- Distinguish between a population process and an observed dataset.
-- Identify deterministic (explained) and random (unexplained) components of a data-generating process.
-- Explain how sampling, measurement error, and missing data can affect results.
-- Identify potential confounding variables.
-- Connect a data-generating process to an appropriate study design.
-
 ## Scenario
 
 A researcher collects the following information from 200 college students:
