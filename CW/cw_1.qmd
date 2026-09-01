@@ -25,13 +25,13 @@ The resulting dataset shows that students who studied more hours generally earne
 
 ## Part A: Build the Data-Generating Process
 
-Create a diagram showing how the observed data might have been generated. Your diagram must include:
+Create a diagram showing how the observed data might have been generated. Include other characteristics that may affect exam scores. Your diagram must include:
 
 - Student background characteristics
 - Study behavior
 - Sleep
 - Exam performance
-- Measurement or reporting error
+- Random error
 
 You may use the following diagram as a starting point. Add, remove, or rearrange connections when appropriate.
 
@@ -40,19 +40,14 @@ flowchart TD
     A["Student background"] --> B["Study hours"]
     A --> D["Exam score"]
     B --> D
-    E["Sleep"] --> D
-    D --> F["Recorded dataset"]
-    G["Measurement error"] --> F
+    G["Random error"] --> D
 ```
-
-**Alternative text:** Student background may influence study hours, review-session attendance, and exam scores. Study hours, review-session attendance, and sleep may also influence exam scores. Measurement error and missing data affect the final recorded dataset.
 
 ### Questions
 
 1. Which variables occur before the students begin studying for the exam?
-2. Which arrows represent possible causal relationships?
-3. What additional variables might influence both study hours and exam scores?
-4. How does the real-world process differ from the final recorded dataset?
+2. What additional variables might influence both study hours and exam scores?
+3. How does the real-world process differ from the final recorded dataset?
 
 ## Part B: Identify Sources of Variation
 
