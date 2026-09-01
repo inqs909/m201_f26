@@ -94,3 +94,8 @@ In two or three sentences, explain the difference between:
 1. The real-world process that produces student outcomes, and
 2. The process that produces the dataset researchers eventually analyze.
 
+
+## Submission
+
+Upload a PDF of your scanned work.
+
