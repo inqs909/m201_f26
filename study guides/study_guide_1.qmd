@@ -1,0 +1,322 @@
+---
+title: "Exam 1 Study Guide"
+subtitle: "Study Design, Data-Generating Processes, and Descriptive Statistics"
+author: "Math 201"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    smooth-scroll: true
+    embed-resources: true
+    theme: cosmo
+date: last-modified
+---
+
+```{r}
+#| label: setup
+#| include: false
+
+library(MASS)
+library(tidyverse)
+library(rcistats)
+```
+
+Use this study guide as a highlight of main topics to study for the exam. However, you will be required to no more details than provided here. The questions are examples, and the exam may contain other types of questions not listed in the guide. The exam will cover topics from Week 2, 3, 4: Data and the Data generating process, categorical data, and numerical data. 
+
+# Foundations of Data
+
+## Observations, Variables, and Values
+
+An **observation**, also called an **experimental unit**, is the individual object, person, animal, event, or other unit about which information is collected. In a rectangular data table, one row commonly represents one observation.
+
+A **variable** is an attribute measured on every observation. In a data table, one column commonly represents one variable.
+
+A **value** is the recorded result for one variable on one observation. It may be a number or a category.
+
+For example, in a data set about penguins:
+
+```{r}
+DT::datatable(penguins)
+```
+
+- one penguin is an observation;
+- body mass and species are variables; and
+- 4,200 grams and Gentoo are possible values.
+
+## Measurements and Variable Types
+
+**Measurement** is the process of representing an attribute of an observational unit with a number or category.
+
+| Variable type | Meaning | Examples | Useful summaries |
+|---|---|---|---|
+| Quantitative | Records a numerical amount for which arithmetic is meaningful | height, temperature, body mass | mean, median, quartiles, standard deviation |
+| Categorical | Places an observation into a group or label | species, city, disease status | frequency, proportion, mode |
+
+Numbers are not automatically quantitative. A numerical label, such as a student identification number or a code for eye color, is categorical because its arithmetic has no meaningful interpretation.
+
+## Example Question
+
+1. The `bacteria` dataset looks at whether bacteria is present in children in a randomized control trial.
+
+```{r}
+glimpse(bacteria)
+```
+
+  1. What is the experimental unit?
+  2. How many experimental units are in the data set?
+  3. Which variables are categorical?
+  3. Which variables are numerical?
+
+2. Define **Measurements**?
+
+
+# Research Questions and Study Design
+
+## Research Questions
+
+A **research question** asks about a phenomenon and guides the collection and analysis of data. A good research question helps determine:
+
+- the population of interest;
+- the observational or experimental unit;
+- the variables that must be measured;
+- how units will be selected or assigned; and
+- which comparisons or summaries will answer the question.
+
+## Study Design
+
+A **study design** is the complete procedure used to answer a research question. It explains how observations are selected, how measurements are made, and how the resulting data will be analyzed. A strong design reduces avoidable bias and makes the conclusions match the evidence.
+
+
+## Population, Sample, and Parameter
+
+A **population** is the complete group about which a researcher wants to learn. A **sample** is the subset of that population that is actually observed. A **parameter** is a numerical characteristic of the population, while a **statistic** is a numerical summary calculated from the sample.
+
+## Representative Samples
+
+A **representative sample** resembles the population in the characteristics relevant to the research question. Representativeness depends primarily on the method used to select observations, not merely on having a large sample.
+
+## Random Sampling
+
+In a **simple random sample**, each eligible unit has an equal chance of selection and every sample of the specified size has an equal chance of being selected. Random sampling helps avoid systematically favoring particular kinds of units and supports generalizing from the sample to the population from which it was selected.
+
+
+## Independent Sampling
+
+Observations are **independent** when information about one observation does not determine or strongly influence another observation. In a sampling context, the selection of one unit should not improperly determine the selection of another.
+
+## Sampling Variation
+
+**Sampling variation** is the natural difference among statistics calculated from different random samples of the same population. It is expected and arises from chance.
+
+## Example Questions
+
+1. How do we creae a **repsresentative sample**?
+2. What is a **statistic**?
+
+# The Data-Generating Process
+
+## Core Idea
+
+A **data-generating process (DGP)** is the mechanism through which observations and their values arise. It includes the population, the possible outcomes, their probabilities, and the sources of systematic and random variation.
+
+For a coin toss, the possible outcomes are heads and tails, and the mechanism assigns a probability to each. For body temperature, the process is more complicated: typical biological temperature, differences among people, environmental conditions, time of measurement, and measurement error can all influence the recorded value.
+
+## From Population to Sample—and Back
+
+The DGP produces observations, and sampling reveals only a limited portion of that process. Therefore:
+
+- the population and its DGP help explain why a particular sample may look as it does; and
+- the sample provides evidence that can be used to learn about the unknown DGP.
+
+A sample distribution will usually resemble the population distribution when sampling is appropriate and the sample is sufficiently informative (large), but it will not match perfectly because of sampling variation.
+
+## Explained and Unexplained Variation
+
+A statistical model conceptually divides an observed value into two parts:
+
+1. an **explained part**, representing the expected or systematic component; and
+2. an **unexplained part**, representing random variation not captured by the explained component.
+
+The unexplained part may reflect measurement error, biological differences, environmental conditions, omitted variables, or other chance influences. “Unexplained” does not mean “unimportant” or “mistaken”; it means the model has not accounted for that portion of the variation.
+
+
+## Example Questions
+
+1. For a fair six-sided die, identify the possible outcomes and the probability assigned to each outcome. 
+2. A researcher measures the body temperatures of 100 adults. Identify three possible sources of variation in the recorded temperatures.
+3. You toss a coin 10,000 times with head appearing 7539 times and the remaining are tails. Describe the data generating process for this coin.
+
+
+# Categorical Data
+
+## Frequency and Proportion
+
+A **frequency** is the number of observations in a category. A **proportion**, or relative frequency, is the category frequency divided by the total number of relevant observations.
+
+## One-Way Tables
+
+A one-way frequency table summarizes one categorical variable. It answers questions such as:
+
+- Which category is most common?
+- Which category is least common?
+- What fraction or percentage of observations belongs to each category?
+
+The frequencies must sum to the sample size, and the proportions must sum to 1, apart from rounding.
+
+## Cross-Tabulations
+
+A **cross-tabulation**, or two-way contingency table, displays the combinations of categories from two categorical variables. Each cell contains the number or proportion of observations with a particular pair of category values.
+
+Different proportions answer different questions:
+
+| Proportion | Denominator | Question answered |
+|---|---|---|
+| Table proportion | All observations in the table | What proportion of the entire sample is in this cell? |
+| Row proportion | Total for that row | Within this row category, how are observations distributed across columns? |
+| Column proportion | Total for that column | Within this column category, how are observations distributed across rows? |
+
+### Choosing the Correct Proportion
+
+The words **among**, **within**, or **given** identify the group to be conditioned on. 
+
+## Categorical Graphs
+
+### Bar Plots
+
+A bar plot displays category frequencies or proportions. Bar height represents the amount in each category. Bars are separated because the categories are distinct rather than points on a continuous scale.
+
+A stacked bar plot can display two categorical variables at once. Count-based stacked bars show group size as well as composition; proportion-based stacked bars make group compositions easier to compare when group sizes differ.
+
+### Pie Charts
+
+A pie chart displays categories as portions of a whole. It can work for a small number of distinct categories, but comparisons between similar-sized slices can be difficult. A bar plot is often easier to read because people compare lengths more accurately than angles or areas.
+
+
+## Example Questions
+
+1. Using the output below, describe the distribution:
+
+```{r}
+cat_stats(bacteria$ap)
+ggplot(bacteria, aes(ap)) +
+  geom_bar()
+```
+
+2. Using the table below, answer the following questions:
+
+```{r}
+cat_stats(bacteria$ap, bacteria$hilo)
+```
+
+  1. What proportion of data that is "hi" and "a"?
+  2. Given that a patient is "hi", what proportion of data is "p"?
+  3. Given that a patient is "p", what proportion of the data is "lo"?
+  4. How many patients are "a"?
+
+3. Define Proportions? 
+
+# Numerical Data
+
+## Describing a Distribution
+
+A numerical distribution should be described using:
+
+- **shape**: symmetric, right-skewed, left-skewed, unimodal, or multimodal;
+- **center**: a typical or central value;
+- **spread**: the amount of variability; and
+- **unusual features**: gaps, clusters, or potential outliers.
+
+
+## Measures of Center
+
+The **mean** is the arithmetic average. It uses every value and acts as a balance point. Because every value contributes to it, extreme observations can pull the mean toward the long tail of a distribution.
+
+The **median**, also called the second quartile, is the middle value after the observations are ordered. About half of the observations are at or below it and about half are at or above it. The median is resistant to extreme observations.
+
+## Measures of Position and Spread
+
+The **minimum** and **maximum** are the smallest and largest observed values.
+
+The **first quartile (Q1)** is the value at or below which approximately 25% of observations fall. The **second quartile (Q2)** is the median. The **third quartile (Q3)** is the value at or below which approximately 75% of observations fall.
+
+The **range** is the maximum minus the minimum. It uses only the two most extreme observations and is therefore highly sensitive to outliers.
+
+The **interquartile range (IQR)** is Q3 minus Q1. It describes the width of the middle 50% of the data and is resistant to extreme observations.
+
+The **variance** measures average squared distance from the mean, with a sample adjustment. Squaring prevents positive and negative deviations from canceling, but the resulting squared units make direct interpretation difficult.
+
+The **standard deviation** is the square root of the variance. It measures a typical distance from the mean and uses the original units of the variable. Like the mean, it is sensitive to extreme values.
+
+## Outliers
+
+An **outlier** is an observation unusually far from the rest of the distribution. An outlier may be a data-entry error, a measurement problem, or a legitimate rare observation. It should be investigated rather than automatically removed.
+
+Outliers can strongly affect the mean, standard deviation, range, and appearance of a graph. The median and IQR are more resistant.
+
+## Skewness and the Mean–Median Relationship
+
+- In a roughly symmetric unimodal distribution, the mean and median are often close.
+- In a right-skewed distribution, the long right tail tends to pull the mean above the median.
+- In a left-skewed distribution, the long left tail tends to pull the mean below the median.
+
+
+## Numerical Graphs
+
+## Histograms
+
+A histogram groups numerical values into intervals called bins. It reveals shape, center, spread, clusters, gaps, and possible outliers. Bars touch because adjacent bins represent neighboring intervals on a numerical scale. Changing the bins can change the visual impression, so the overall conclusion should not depend on one arbitrary bin choice.
+
+### Dot Plots
+
+A dot plot displays individual observations or stacks observations within small bins. It is especially helpful for small to moderate data sets because individual values and repeated values remain visible.
+
+### Density Plots
+
+A density plot is a smoothed representation of a numerical distribution. Higher parts of the curve indicate ranges where observations are more concentrated. The total area under the curve represents the whole distribution; the height at a single point is not a count or probability by itself.
+
+### Box Plots
+
+A box plot summarizes a distribution using the quartiles, median, spread, and potential outliers. The box spans Q1 to Q3, so its width represents the IQR. A line inside the box marks the median. Whiskers extend toward the more extreme non-outlying values, and points beyond them may be shown as potential outliers.
+
+Box plots are compact and useful for comparing groups, but they hide details such as multiple peaks and gaps.
+
+# Relationships Between Two Numerical Variables
+
+## Reading a Scatter Plot
+
+A scatter plot displays paired values for two quantitative variables measured on the same observations. Describe a relationship using:
+
+- **direction**: positive, negative, or neither;
+- **form**: linear, curved, clustered, or another pattern;
+- **strength**: how closely the points follow the form; and
+- **unusual features**: outliers, gaps, or separate groups.
+
+In a positive relationship, larger values of one variable tend to occur with larger values of the other. In a negative relationship, larger values of one tend to occur with smaller values of the other. A weak relationship has substantial scatter around the overall pattern.
+
+## Association Is Not Causation
+
+A scatter plot can reveal an association, but it cannot by itself show that changing one variable causes the other to change. A lurking variable may help explain the pattern, or the direction of influence may be unclear.
+
+Use cautious language such as **is associated with**, **tends to be higher**, or **shows a positive relationship** unless the study design supports a causal claim.
+
+## Questions
+
+1. Define a **mean**.
+2. Define an **Interquartile Range**.
+3. Define skeweness?
+4. Describe the distribution for this `week`:
+
+```{r}
+num_stats(bacteria$week)
+ggplot(bacteria, aes(week)) +
+  geom_density()
+```
+
+5. Describe the relationship between `eruptions` and `waiting`:
+
+```{r}
+ggplot(faithful, aes(waiting, eruptions)) +
+  geom_point()
+````
+
