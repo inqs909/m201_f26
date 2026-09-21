@@ -214,7 +214,7 @@
     "href": "study_guides/study_guide_1.html#questions",
     "title": "Exam 1 Study Guide",
     "section": "6.3 Questions",
-    "text": "6.3 Questions\n\nDefine a mean.\nDefine an Interquartile Range.\nDefine skeweness?\nDescribe the distribution for this week:\n\n\nnum_stats(bacteria$week)\n\n  min q25  mean median q75 max   sd    var iqr missing\n1   0   2 4.455      4   6  11 3.85 14.824   4       0\n\nggplot(bacteria, aes(week)) +\n  geom_density()\n\n\n\n\n\n\n\n\n\nDescribe the relationship between eruptions and waiting:\n\nggplot(faithful, aes(waiting, eruptions)) + geom_point() ````"
+    "text": "6.3 Questions\n\nDefine a mean.\nDefine an Interquartile Range.\nDefine skeweness?\nDescribe the distribution for this week:\n\n\nnum_stats(bacteria$week)\n\n  min q25  mean median q75 max   sd    var iqr missing\n1   0   2 4.455      4   6  11 3.85 14.824   4       0\n\nggplot(bacteria, aes(week)) +\n  geom_density()\n\n\n\n\n\n\n\n\n\nDescribe the relationship between eruptions and waiting:\n\n\nggplot(faithful, aes(waiting, eruptions)) +\n  geom_point()"
   },
   {
     "objectID": "rcode/logistic.html",
