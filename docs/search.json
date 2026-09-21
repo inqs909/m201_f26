@@ -1,217 +1,217 @@
 [
   {
-    "objectID": "study guides/study_guide_1.html",
-    "href": "study guides/study_guide_1.html",
+    "objectID": "study_guides/study_guide_1.html",
+    "href": "study_guides/study_guide_1.html",
     "title": "Exam 1 Study Guide",
     "section": "",
     "text": "Use this study guide as a highlight of main topics to study for the exam. However, you will be required to no more details than provided here. The questions are examples, and the exam may contain other types of questions not listed in the guide. The exam will cover topics from Week 2, 3, 4: Data and the Data generating process, categorical data, and numerical data."
   },
   {
-    "objectID": "study guides/study_guide_1.html#observations-variables-and-values",
-    "href": "study guides/study_guide_1.html#observations-variables-and-values",
+    "objectID": "study_guides/study_guide_1.html#observations-variables-and-values",
+    "href": "study_guides/study_guide_1.html#observations-variables-and-values",
     "title": "Exam 1 Study Guide",
     "section": "1.1 Observations, Variables, and Values",
     "text": "1.1 Observations, Variables, and Values\nAn observation, also called an experimental unit, is the individual object, person, animal, event, or other unit about which information is collected. In a rectangular data table, one row commonly represents one observation.\nA variable is an attribute measured on every observation. In a data table, one column commonly represents one variable.\nA value is the recorded result for one variable on one observation. It may be a number or a category.\nFor example, in a data set about penguins:\n\nDT::datatable(penguins)\n\n\n\n\n\n\none penguin is an observation;\nbody mass and species are variables; and\n4,200 grams and Gentoo are possible values."
   },
   {
-    "objectID": "study guides/study_guide_1.html#measurements-and-variable-types",
-    "href": "study guides/study_guide_1.html#measurements-and-variable-types",
+    "objectID": "study_guides/study_guide_1.html#measurements-and-variable-types",
+    "href": "study_guides/study_guide_1.html#measurements-and-variable-types",
     "title": "Exam 1 Study Guide",
     "section": "1.2 Measurements and Variable Types",
     "text": "1.2 Measurements and Variable Types\nMeasurement is the process of representing an attribute of an observational unit with a number or category.\n\n\n\n\n\n\n\n\n\nVariable type\nMeaning\nExamples\nUseful summaries\n\n\n\n\nQuantitative\nRecords a numerical amount for which arithmetic is meaningful\nheight, temperature, body mass\nmean, median, quartiles, standard deviation\n\n\nCategorical\nPlaces an observation into a group or label\nspecies, city, disease status\nfrequency, proportion, mode\n\n\n\nNumbers are not automatically quantitative. A numerical label, such as a student identification number or a code for eye color, is categorical because its arithmetic has no meaningful interpretation."
   },
   {
-    "objectID": "study guides/study_guide_1.html#example-question",
-    "href": "study guides/study_guide_1.html#example-question",
+    "objectID": "study_guides/study_guide_1.html#example-question",
+    "href": "study_guides/study_guide_1.html#example-question",
     "title": "Exam 1 Study Guide",
     "section": "1.3 Example Question",
     "text": "1.3 Example Question\n\nThe bacteria dataset looks at whether bacteria is present in children in a randomized control trial.\n\n\nglimpse(bacteria)\n\nRows: 220\nColumns: 6\n$ y    &lt;fct&gt; y, y, y, y, y, y, n, y, y, y, y, y, y, y, y, y, y, y, y, y, y, y,…\n$ ap   &lt;fct&gt; p, p, p, p, a, a, a, a, a, a, a, a, a, p, p, p, p, p, p, p, p, p,…\n$ hilo &lt;fct&gt; hi, hi, hi, hi, hi, hi, hi, hi, lo, lo, lo, lo, lo, lo, lo, lo, l…\n$ week &lt;int&gt; 0, 2, 4, 11, 0, 2, 6, 11, 0, 2, 4, 6, 11, 0, 2, 4, 6, 11, 0, 2, 4…\n$ ID   &lt;fct&gt; X01, X01, X01, X01, X02, X02, X02, X02, X03, X03, X03, X03, X03, …\n$ trt  &lt;fct&gt; placebo, placebo, placebo, placebo, drug+, drug+, drug+, drug+, d…\n\n\n\nWhat is the experimental unit?\nHow many experimental units are in the data set?\nWhich variables are categorical?\nWhich variables are numerical?\nDefine Measurements?"
   },
   {
-    "objectID": "study guides/study_guide_1.html#research-questions",
-    "href": "study guides/study_guide_1.html#research-questions",
+    "objectID": "study_guides/study_guide_1.html#research-questions",
+    "href": "study_guides/study_guide_1.html#research-questions",
     "title": "Exam 1 Study Guide",
     "section": "2.1 Research Questions",
     "text": "2.1 Research Questions\nA research question asks about a phenomenon and guides the collection and analysis of data. A good research question helps determine:\n\nthe population of interest;\nthe observational or experimental unit;\nthe variables that must be measured;\nhow units will be selected or assigned; and\nwhich comparisons or summaries will answer the question."
   },
   {
-    "objectID": "study guides/study_guide_1.html#study-design",
-    "href": "study guides/study_guide_1.html#study-design",
+    "objectID": "study_guides/study_guide_1.html#study-design",
+    "href": "study_guides/study_guide_1.html#study-design",
     "title": "Exam 1 Study Guide",
     "section": "2.2 Study Design",
     "text": "2.2 Study Design\nA study design is the complete procedure used to answer a research question. It explains how observations are selected, how measurements are made, and how the resulting data will be analyzed. A strong design reduces avoidable bias and makes the conclusions match the evidence."
   },
   {
-    "objectID": "study guides/study_guide_1.html#population-sample-and-parameter",
-    "href": "study guides/study_guide_1.html#population-sample-and-parameter",
+    "objectID": "study_guides/study_guide_1.html#population-sample-and-parameter",
+    "href": "study_guides/study_guide_1.html#population-sample-and-parameter",
     "title": "Exam 1 Study Guide",
     "section": "2.3 Population, Sample, and Parameter",
     "text": "2.3 Population, Sample, and Parameter\nA population is the complete group about which a researcher wants to learn. A sample is the subset of that population that is actually observed. A parameter is a numerical characteristic of the population, while a statistic is a numerical summary calculated from the sample."
   },
   {
-    "objectID": "study guides/study_guide_1.html#representative-samples",
-    "href": "study guides/study_guide_1.html#representative-samples",
+    "objectID": "study_guides/study_guide_1.html#representative-samples",
+    "href": "study_guides/study_guide_1.html#representative-samples",
     "title": "Exam 1 Study Guide",
     "section": "2.4 Representative Samples",
     "text": "2.4 Representative Samples\nA representative sample resembles the population in the characteristics relevant to the research question. Representativeness depends primarily on the method used to select observations, not merely on having a large sample."
   },
   {
-    "objectID": "study guides/study_guide_1.html#random-sampling",
-    "href": "study guides/study_guide_1.html#random-sampling",
+    "objectID": "study_guides/study_guide_1.html#random-sampling",
+    "href": "study_guides/study_guide_1.html#random-sampling",
     "title": "Exam 1 Study Guide",
     "section": "2.5 Random Sampling",
     "text": "2.5 Random Sampling\nIn a simple random sample, each eligible unit has an equal chance of selection and every sample of the specified size has an equal chance of being selected. Random sampling helps avoid systematically favoring particular kinds of units and supports generalizing from the sample to the population from which it was selected."
   },
   {
-    "objectID": "study guides/study_guide_1.html#independent-sampling",
-    "href": "study guides/study_guide_1.html#independent-sampling",
+    "objectID": "study_guides/study_guide_1.html#independent-sampling",
+    "href": "study_guides/study_guide_1.html#independent-sampling",
     "title": "Exam 1 Study Guide",
     "section": "2.6 Independent Sampling",
     "text": "2.6 Independent Sampling\nObservations are independent when information about one observation does not determine or strongly influence another observation. In a sampling context, the selection of one unit should not improperly determine the selection of another."
   },
   {
-    "objectID": "study guides/study_guide_1.html#sampling-variation",
-    "href": "study guides/study_guide_1.html#sampling-variation",
+    "objectID": "study_guides/study_guide_1.html#sampling-variation",
+    "href": "study_guides/study_guide_1.html#sampling-variation",
     "title": "Exam 1 Study Guide",
     "section": "2.7 Sampling Variation",
     "text": "2.7 Sampling Variation\nSampling variation is the natural difference among statistics calculated from different random samples of the same population. It is expected and arises from chance."
   },
   {
-    "objectID": "study guides/study_guide_1.html#example-questions",
-    "href": "study guides/study_guide_1.html#example-questions",
+    "objectID": "study_guides/study_guide_1.html#example-questions",
+    "href": "study_guides/study_guide_1.html#example-questions",
     "title": "Exam 1 Study Guide",
     "section": "2.8 Example Questions",
     "text": "2.8 Example Questions\n\nHow do we creae a repsresentative sample?\nWhat is a statistic?"
   },
   {
-    "objectID": "study guides/study_guide_1.html#core-idea",
-    "href": "study guides/study_guide_1.html#core-idea",
+    "objectID": "study_guides/study_guide_1.html#core-idea",
+    "href": "study_guides/study_guide_1.html#core-idea",
     "title": "Exam 1 Study Guide",
     "section": "3.1 Core Idea",
     "text": "3.1 Core Idea\nA data-generating process (DGP) is the mechanism through which observations and their values arise. It includes the population, the possible outcomes, their probabilities, and the sources of systematic and random variation.\nFor a coin toss, the possible outcomes are heads and tails, and the mechanism assigns a probability to each. For body temperature, the process is more complicated: typical biological temperature, differences among people, environmental conditions, time of measurement, and measurement error can all influence the recorded value."
   },
   {
-    "objectID": "study guides/study_guide_1.html#from-population-to-sampleand-back",
-    "href": "study guides/study_guide_1.html#from-population-to-sampleand-back",
+    "objectID": "study_guides/study_guide_1.html#from-population-to-sampleand-back",
+    "href": "study_guides/study_guide_1.html#from-population-to-sampleand-back",
     "title": "Exam 1 Study Guide",
     "section": "3.2 From Population to Sample—and Back",
     "text": "3.2 From Population to Sample—and Back\nThe DGP produces observations, and sampling reveals only a limited portion of that process. Therefore:\n\nthe population and its DGP help explain why a particular sample may look as it does; and\nthe sample provides evidence that can be used to learn about the unknown DGP.\n\nA sample distribution will usually resemble the population distribution when sampling is appropriate and the sample is sufficiently informative (large), but it will not match perfectly because of sampling variation."
   },
   {
-    "objectID": "study guides/study_guide_1.html#explained-and-unexplained-variation",
-    "href": "study guides/study_guide_1.html#explained-and-unexplained-variation",
+    "objectID": "study_guides/study_guide_1.html#explained-and-unexplained-variation",
+    "href": "study_guides/study_guide_1.html#explained-and-unexplained-variation",
     "title": "Exam 1 Study Guide",
     "section": "3.3 Explained and Unexplained Variation",
     "text": "3.3 Explained and Unexplained Variation\nA statistical model conceptually divides an observed value into two parts:\n\nan explained part, representing the expected or systematic component; and\nan unexplained part, representing random variation not captured by the explained component.\n\nThe unexplained part may reflect measurement error, biological differences, environmental conditions, omitted variables, or other chance influences. “Unexplained” does not mean “unimportant” or “mistaken”; it means the model has not accounted for that portion of the variation."
   },
   {
-    "objectID": "study guides/study_guide_1.html#example-questions-1",
-    "href": "study guides/study_guide_1.html#example-questions-1",
+    "objectID": "study_guides/study_guide_1.html#example-questions-1",
+    "href": "study_guides/study_guide_1.html#example-questions-1",
     "title": "Exam 1 Study Guide",
     "section": "3.4 Example Questions",
     "text": "3.4 Example Questions\n\nFor a fair six-sided die, identify the possible outcomes and the probability assigned to each outcome.\nA researcher measures the body temperatures of 100 adults. Identify three possible sources of variation in the recorded temperatures.\nYou toss a coin 10,000 times with head appearing 7539 times and the remaining are tails. Describe the data generating process for this coin."
   },
   {
-    "objectID": "study guides/study_guide_1.html#frequency-and-proportion",
-    "href": "study guides/study_guide_1.html#frequency-and-proportion",
+    "objectID": "study_guides/study_guide_1.html#frequency-and-proportion",
+    "href": "study_guides/study_guide_1.html#frequency-and-proportion",
     "title": "Exam 1 Study Guide",
     "section": "4.1 Frequency and Proportion",
     "text": "4.1 Frequency and Proportion\nA frequency is the number of observations in a category. A proportion, or relative frequency, is the category frequency divided by the total number of relevant observations."
   },
   {
-    "objectID": "study guides/study_guide_1.html#one-way-tables",
-    "href": "study guides/study_guide_1.html#one-way-tables",
+    "objectID": "study_guides/study_guide_1.html#one-way-tables",
+    "href": "study_guides/study_guide_1.html#one-way-tables",
     "title": "Exam 1 Study Guide",
     "section": "4.2 One-Way Tables",
     "text": "4.2 One-Way Tables\nA one-way frequency table summarizes one categorical variable. It answers questions such as:\n\nWhich category is most common?\nWhich category is least common?\nWhat fraction or percentage of observations belongs to each category?\n\nThe frequencies must sum to the sample size, and the proportions must sum to 1, apart from rounding."
   },
   {
-    "objectID": "study guides/study_guide_1.html#cross-tabulations",
-    "href": "study guides/study_guide_1.html#cross-tabulations",
+    "objectID": "study_guides/study_guide_1.html#cross-tabulations",
+    "href": "study_guides/study_guide_1.html#cross-tabulations",
     "title": "Exam 1 Study Guide",
     "section": "4.3 Cross-Tabulations",
     "text": "4.3 Cross-Tabulations\nA cross-tabulation, or two-way contingency table, displays the combinations of categories from two categorical variables. Each cell contains the number or proportion of observations with a particular pair of category values.\nDifferent proportions answer different questions:\n\n\n\n\n\n\n\n\nProportion\nDenominator\nQuestion answered\n\n\n\n\nTable proportion\nAll observations in the table\nWhat proportion of the entire sample is in this cell?\n\n\nRow proportion\nTotal for that row\nWithin this row category, how are observations distributed across columns?\n\n\nColumn proportion\nTotal for that column\nWithin this column category, how are observations distributed across rows?\n\n\n\n\n4.3.1 Choosing the Correct Proportion\nThe words among, within, or given identify the group to be conditioned on."
   },
   {
-    "objectID": "study guides/study_guide_1.html#categorical-graphs",
-    "href": "study guides/study_guide_1.html#categorical-graphs",
+    "objectID": "study_guides/study_guide_1.html#categorical-graphs",
+    "href": "study_guides/study_guide_1.html#categorical-graphs",
     "title": "Exam 1 Study Guide",
     "section": "4.4 Categorical Graphs",
     "text": "4.4 Categorical Graphs\n\n4.4.1 Bar Plots\nA bar plot displays category frequencies or proportions. Bar height represents the amount in each category. Bars are separated because the categories are distinct rather than points on a continuous scale.\nA stacked bar plot can display two categorical variables at once. Count-based stacked bars show group size as well as composition; proportion-based stacked bars make group compositions easier to compare when group sizes differ.\n\n\n4.4.2 Pie Charts\nA pie chart displays categories as portions of a whole. It can work for a small number of distinct categories, but comparisons between similar-sized slices can be difficult. A bar plot is often easier to read because people compare lengths more accurately than angles or areas."
   },
   {
-    "objectID": "study guides/study_guide_1.html#example-questions-2",
-    "href": "study guides/study_guide_1.html#example-questions-2",
+    "objectID": "study_guides/study_guide_1.html#example-questions-2",
+    "href": "study_guides/study_guide_1.html#example-questions-2",
     "title": "Exam 1 Study Guide",
     "section": "4.5 Example Questions",
     "text": "4.5 Example Questions\n\nUsing the output below, describe the distribution:\n\n\ncat_stats(bacteria$ap)\n\nContinguency Table \n \n    n   prop\na 124 0.5636\np  96 0.4364\n\nNumber of Missing: 0\nProportion of Missing: 0\nRow Variable: bacteria$ap\n\nggplot(bacteria, aes(ap)) +\n  geom_bar()\n\n\n\n\n\n\n\n\n\nUsing the table below, answer the following questions:\n\n\ncat_stats(bacteria$ap, bacteria$hilo)\n\nContinguency Table \n \nColumn Variable: bacteria$hilo\nRow Variable: bacteria$ap\n\n\n$frequency\n   \n    hi lo\n  a 62 62\n  p 60 36\n\n$table_prop\n   \n        hi     lo\n  a 0.2818 0.2818\n  p 0.2727 0.1636\n\n$row_prop\n   \n       hi    lo\n  a 0.500 0.500\n  p 0.625 0.375\n\n$col_prop\n   \n        hi     lo\n  a 0.5082 0.6327\n  p 0.4918 0.3673\n\n\n\nWhat proportion of data that is “hi” and “a”?\nGiven that a patient is “hi”, what proportion of data is “p”?\nGiven that a patient is “p”, what proportion of the data is “lo”?\nHow many patients are “a”?\nDefine Proportions?"
   },
   {
-    "objectID": "study guides/study_guide_1.html#describing-a-distribution",
-    "href": "study guides/study_guide_1.html#describing-a-distribution",
+    "objectID": "study_guides/study_guide_1.html#describing-a-distribution",
+    "href": "study_guides/study_guide_1.html#describing-a-distribution",
     "title": "Exam 1 Study Guide",
     "section": "5.1 Describing a Distribution",
     "text": "5.1 Describing a Distribution\nA numerical distribution should be described using:\n\nshape: symmetric, right-skewed, left-skewed, unimodal, or multimodal;\ncenter: a typical or central value;\nspread: the amount of variability; and\nunusual features: gaps, clusters, or potential outliers."
   },
   {
-    "objectID": "study guides/study_guide_1.html#measures-of-center",
-    "href": "study guides/study_guide_1.html#measures-of-center",
+    "objectID": "study_guides/study_guide_1.html#measures-of-center",
+    "href": "study_guides/study_guide_1.html#measures-of-center",
     "title": "Exam 1 Study Guide",
     "section": "5.2 Measures of Center",
     "text": "5.2 Measures of Center\nThe mean is the arithmetic average. It uses every value and acts as a balance point. Because every value contributes to it, extreme observations can pull the mean toward the long tail of a distribution.\nThe median, also called the second quartile, is the middle value after the observations are ordered. About half of the observations are at or below it and about half are at or above it. The median is resistant to extreme observations."
   },
   {
-    "objectID": "study guides/study_guide_1.html#measures-of-position-and-spread",
-    "href": "study guides/study_guide_1.html#measures-of-position-and-spread",
+    "objectID": "study_guides/study_guide_1.html#measures-of-position-and-spread",
+    "href": "study_guides/study_guide_1.html#measures-of-position-and-spread",
     "title": "Exam 1 Study Guide",
     "section": "5.3 Measures of Position and Spread",
     "text": "5.3 Measures of Position and Spread\nThe minimum and maximum are the smallest and largest observed values.\nThe first quartile (Q1) is the value at or below which approximately 25% of observations fall. The second quartile (Q2) is the median. The third quartile (Q3) is the value at or below which approximately 75% of observations fall.\nThe range is the maximum minus the minimum. It uses only the two most extreme observations and is therefore highly sensitive to outliers.\nThe interquartile range (IQR) is Q3 minus Q1. It describes the width of the middle 50% of the data and is resistant to extreme observations.\nThe variance measures average squared distance from the mean, with a sample adjustment. Squaring prevents positive and negative deviations from canceling, but the resulting squared units make direct interpretation difficult.\nThe standard deviation is the square root of the variance. It measures a typical distance from the mean and uses the original units of the variable. Like the mean, it is sensitive to extreme values."
   },
   {
-    "objectID": "study guides/study_guide_1.html#outliers",
-    "href": "study guides/study_guide_1.html#outliers",
+    "objectID": "study_guides/study_guide_1.html#outliers",
+    "href": "study_guides/study_guide_1.html#outliers",
     "title": "Exam 1 Study Guide",
     "section": "5.4 Outliers",
     "text": "5.4 Outliers\nAn outlier is an observation unusually far from the rest of the distribution. An outlier may be a data-entry error, a measurement problem, or a legitimate rare observation. It should be investigated rather than automatically removed.\nOutliers can strongly affect the mean, standard deviation, range, and appearance of a graph. The median and IQR are more resistant."
   },
   {
-    "objectID": "study guides/study_guide_1.html#skewness-and-the-meanmedian-relationship",
-    "href": "study guides/study_guide_1.html#skewness-and-the-meanmedian-relationship",
+    "objectID": "study_guides/study_guide_1.html#skewness-and-the-meanmedian-relationship",
+    "href": "study_guides/study_guide_1.html#skewness-and-the-meanmedian-relationship",
     "title": "Exam 1 Study Guide",
     "section": "5.5 Skewness and the Mean–Median Relationship",
     "text": "5.5 Skewness and the Mean–Median Relationship\n\nIn a roughly symmetric unimodal distribution, the mean and median are often close.\nIn a right-skewed distribution, the long right tail tends to pull the mean above the median.\nIn a left-skewed distribution, the long left tail tends to pull the mean below the median."
   },
   {
-    "objectID": "study guides/study_guide_1.html#numerical-graphs",
-    "href": "study guides/study_guide_1.html#numerical-graphs",
+    "objectID": "study_guides/study_guide_1.html#numerical-graphs",
+    "href": "study_guides/study_guide_1.html#numerical-graphs",
     "title": "Exam 1 Study Guide",
     "section": "5.6 Numerical Graphs",
     "text": "5.6 Numerical Graphs"
   },
   {
-    "objectID": "study guides/study_guide_1.html#histograms",
-    "href": "study guides/study_guide_1.html#histograms",
+    "objectID": "study_guides/study_guide_1.html#histograms",
+    "href": "study_guides/study_guide_1.html#histograms",
     "title": "Exam 1 Study Guide",
     "section": "5.7 Histograms",
     "text": "5.7 Histograms\nA histogram groups numerical values into intervals called bins. It reveals shape, center, spread, clusters, gaps, and possible outliers. Bars touch because adjacent bins represent neighboring intervals on a numerical scale. Changing the bins can change the visual impression, so the overall conclusion should not depend on one arbitrary bin choice.\n\n5.7.1 Dot Plots\nA dot plot displays individual observations or stacks observations within small bins. It is especially helpful for small to moderate data sets because individual values and repeated values remain visible.\n\n\n5.7.2 Density Plots\nA density plot is a smoothed representation of a numerical distribution. Higher parts of the curve indicate ranges where observations are more concentrated. The total area under the curve represents the whole distribution; the height at a single point is not a count or probability by itself.\n\n\n5.7.3 Box Plots\nA box plot summarizes a distribution using the quartiles, median, spread, and potential outliers. The box spans Q1 to Q3, so its width represents the IQR. A line inside the box marks the median. Whiskers extend toward the more extreme non-outlying values, and points beyond them may be shown as potential outliers.\nBox plots are compact and useful for comparing groups, but they hide details such as multiple peaks and gaps."
   },
   {
-    "objectID": "study guides/study_guide_1.html#reading-a-scatter-plot",
-    "href": "study guides/study_guide_1.html#reading-a-scatter-plot",
+    "objectID": "study_guides/study_guide_1.html#reading-a-scatter-plot",
+    "href": "study_guides/study_guide_1.html#reading-a-scatter-plot",
     "title": "Exam 1 Study Guide",
     "section": "6.1 Reading a Scatter Plot",
     "text": "6.1 Reading a Scatter Plot\nA scatter plot displays paired values for two quantitative variables measured on the same observations. Describe a relationship using:\n\ndirection: positive, negative, or neither;\nform: linear, curved, clustered, or another pattern;\nstrength: how closely the points follow the form; and\nunusual features: outliers, gaps, or separate groups.\n\nIn a positive relationship, larger values of one variable tend to occur with larger values of the other. In a negative relationship, larger values of one tend to occur with smaller values of the other. A weak relationship has substantial scatter around the overall pattern."
   },
   {
-    "objectID": "study guides/study_guide_1.html#association-is-not-causation",
-    "href": "study guides/study_guide_1.html#association-is-not-causation",
+    "objectID": "study_guides/study_guide_1.html#association-is-not-causation",
+    "href": "study_guides/study_guide_1.html#association-is-not-causation",
     "title": "Exam 1 Study Guide",
     "section": "6.2 Association Is Not Causation",
     "text": "6.2 Association Is Not Causation\nA scatter plot can reveal an association, but it cannot by itself show that changing one variable causes the other to change. A lurking variable may help explain the pattern, or the direction of influence may be unclear.\nUse cautious language such as is associated with, tends to be higher, or shows a positive relationship unless the study design supports a causal claim."
   },
   {
-    "objectID": "study guides/study_guide_1.html#questions",
-    "href": "study guides/study_guide_1.html#questions",
+    "objectID": "study_guides/study_guide_1.html#questions",
+    "href": "study_guides/study_guide_1.html#questions",
     "title": "Exam 1 Study Guide",
     "section": "6.3 Questions",
     "text": "6.3 Questions\n\nDefine a mean.\nDefine an Interquartile Range.\nDefine skeweness?\nDescribe the distribution for this week:\n\n\nnum_stats(bacteria$week)\n\n  min q25  mean median q75 max   sd    var iqr missing\n1   0   2 4.455      4   6  11 3.85 14.824   4       0\n\nggplot(bacteria, aes(week)) +\n  geom_density()\n\n\n\n\n\n\n\n\n\nDescribe the relationship between eruptions and waiting:\n\nggplot(faithful, aes(waiting, eruptions)) + geom_point() ````"
