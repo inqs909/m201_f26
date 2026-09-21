@@ -318,5 +318,5 @@ ggplot(bacteria, aes(week)) +
 ```{r}
 ggplot(faithful, aes(waiting, eruptions)) +
   geom_point()
-````
+```
 
