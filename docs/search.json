@@ -18,7 +18,7 @@
     "href": "study_guides/study_guide_1.html#measurements-and-variable-types",
     "title": "Exam 1 Study Guide",
     "section": "1.2 Measurements and Variable Types",
-    "text": "1.2 Measurements and Variable Types\nMeasurement is the process of representing an attribute of an observational unit with a number or category.\n\n\n\n\n\n\n\n\n\nVariable type\nMeaning\nExamples\nUseful summaries\n\n\n\n\nQuantitative\nRecords a numerical amount for which arithmetic is meaningful\nheight, temperature, body mass\nmean, median, quartiles, standard deviation\n\n\nCategorical\nPlaces an observation into a group or label\nspecies, city, disease status\nfrequency, proportion, mode\n\n\n\nNumbers are not automatically quantitative. A numerical label, such as a student identification number or a code for eye color, is categorical because its arithmetic has no meaningful interpretation."
+    "text": "1.2 Measurements and Variable Types\nMeasurement is the process of representing an attribute of an observational unit with a number or category.\n\n\n\n\n\n\n\n\n\nVariable type\nMeaning\nExamples\nUseful summaries\n\n\n\n\nQuantitative\nRecords a numerical amount for which arithmetic is meaningful\nheight, temperature, body mass\nmean, median, quartiles, standard deviation\n\n\nCategorical\nPlaces an observation into a group or label\nspecies, city, disease status\nfrequency, proportion\n\n\n\nNumbers are not automatically quantitative. A numerical label, such as a student identification number or a code for eye color, is categorical because its arithmetic has no meaningful interpretation."
   },
   {
     "objectID": "study_guides/study_guide_1.html#example-question",
@@ -3654,6 +3654,20 @@
     "text": "R Programming\nThis utilized the R programming to conduct data analysis.\nR is a powerful tool that allows you to program complex tasks.\nLearning R is difficult, but it is the best teacher to teach you how to overcome challenges. Don’t give up when it gets hard and seek out help when needed."
   },
   {
+    "objectID": "lectures/1a.html#if-you-are-sick",
+    "href": "lectures/1a.html#if-you-are-sick",
+    "title": "Math 201",
+    "section": "If You Are Sick",
+    "text": "If You Are Sick\nPlease do not show up to class. Stay home and get better. Deadlines can be moved. Getting the instructor sick or your classmates is harder to be managed."
+  },
+  {
+    "objectID": "lectures/1a.html#when-you-are-out",
+    "href": "lectures/1a.html#when-you-are-out",
+    "title": "Math 201",
+    "section": "When You Are Out",
+    "text": "When You Are Out\nIf you have an emergency, please email the professor. I may or may not respond. All assignments can be done online, as long as you complete the assignment on time, your absence will be excused."
+  },
+  {
     "objectID": "lectures/1a.html#when-do-you-use-statistics",
     "href": "lectures/1a.html#when-do-you-use-statistics",
     "title": "Math 201",
@@ -4001,7 +4015,7 @@
     "href": "lectures/4.html#types-of-random-variables",
     "title": "Distribution Functions",
     "section": "Types of Random Variables",
-    "text": "Types of Random Variables\n\nDiscrete Random VariableContinuous Random Variable\n\n\nA discrete random variable can only take on a finite number of values or a countably infinite number of values. The values are often integers. Examples:\n\nThe number of heads in three coin flips (0, 1, 2, or 3).\nThe number of defective light bulbs in a box of 100.\nThe number of customers entering a store in an hour.\n\n\n\nA continuous random variable can take on any value within a given range. Examples:\n\nThe height of a person.\nThe temperature of a room.\nThe time it takes to complete a task."
+    "text": "Types of Random Variables\n\nDiscrete Random Variable DistributionContinuous Random Variable\n\n\nA discrete random variable can only take on a finite number of values or a countably infinite number of values. The values are often integers. Examples:\n\nThe number of heads in three coin flips (0, 1, 2, or 3).\nThe number of defective light bulbs in a box of 100.\nThe number of customers entering a store in an hour.\n\n\n\nA continuous random variable can take on any value within a given range. Examples:\n\nThe height of a person.\nThe temperature of a room.\nThe time it takes to complete a task."
   },
   {
     "objectID": "lectures/4.html#distribution-functions-1",

@@ -330,7 +330,7 @@ A **random variable** is a variable whose value is a numerical outcome of a rand
 
 ::: panel-tabset
 
-### Discrete Random Variable 
+### Discrete Random Variable Distribution
 
 A discrete random variable can only take on a finite number of values or a countably infinite number of values. The values are often integers. Examples:
 

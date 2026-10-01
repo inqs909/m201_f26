@@ -51,7 +51,7 @@ DT::datatable(penguins)
 | Variable type | Meaning | Examples | Useful summaries |
 |---|---|---|---|
 | Quantitative | Records a numerical amount for which arithmetic is meaningful | height, temperature, body mass | mean, median, quartiles, standard deviation |
-| Categorical | Places an observation into a group or label | species, city, disease status | frequency, proportion, mode |
+| Categorical | Places an observation into a group or label | species, city, disease status | frequency, proportion |
 
 Numbers are not automatically quantitative. A numerical label, such as a student identification number or a code for eye color, is categorical because its arithmetic has no meaningful interpretation.
 
