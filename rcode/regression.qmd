@@ -473,7 +473,8 @@ ar2(m)
 ## Simple Model
 
 ```r
-lm(Y ~ 1, data = DATA)
+m1 <- lm(Y ~ 1, data = DATA)
+m1
 ```
 
 -   **`DATA`** → your data frame (e.g., `penguins`)
@@ -483,18 +484,19 @@ lm(Y ~ 1, data = DATA)
 ## Simple linear regression
 
 ```r
-lm(Y ~ X, data = DATA)
+m2 <- lm(Y ~ X, data = DATA)
+m2
 ```
 
 -   **`DATA`** → your data frame (e.g., `penguins`)
 -   **`Y`** → the outcome variable (e.g., `body_mass`)
--   **`X`** → predictor variables (e.g `flipper_length_mm`)
+-   **`X`** → numerical predictor variables (e.g `flipper_length_mm`)
 
-
-## SLR: Categorical predictor
+## SLR: Group Model
 
 ```r
-lm(Y ~ X, data = DATA) 
+m3 <- lm(Y ~ X, data = DATA) 
+m3
 ```
 
 -   **`DATA`** → your data frame (e.g., `penguins`)
@@ -502,10 +504,11 @@ lm(Y ~ X, data = DATA)
 -   **`X`** → predictor variables (e.g `species`)
 
 
-## SLR: Categorical predictor (Create Factor)
+## SLR: Group Model (when it does not work)
 
 ```r
-lm(Y ~ factor(X), data = DATA)   # coerce X to factor
+m4 <- lm(Y ~ factor(X), data = DATA)   # coerce X to factor
+m4
 ```
 
 -   **`DATA`** → your data frame (e.g., `penguins`)
@@ -537,8 +540,8 @@ cor(DATA$Y, DATA$X, use = "complete.obs")
 ## $R^2$
 
 ``` r
-m <- lm(Y ~ X, data = DATA)
-r2(m)
+m5 <- lm(Y ~ X, data = DATA)
+r2(m5)
 ```
 
 -   **`DATA`** → your data frame (e.g., `penguins`)
@@ -549,7 +552,8 @@ r2(m)
 ## Multiple linear regression
 
 ``` r
-lm(Y ~ X1 + X2 + ... + Xp, data = DATA)
+m6 <- lm(Y ~ X1 + X2 + ... + Xp, data = DATA)
+m6
 ```
 
 -   **`DATA`** → your data frame (e.g., `penguins`)
@@ -561,8 +565,8 @@ lm(Y ~ X1 + X2 + ... + Xp, data = DATA)
 
 ``` r
 # Adjusted R^2
-m <- lm(Y ~ X1 + X2 + ... + Xp, data = DATA)
-ar2(m)
+m7 <- lm(Y ~ X1 + X2 + ... + Xp, data = DATA)
+ar2(m7)
 ```
 
 -   **`DATA`** → your data frame (e.g., `penguins`)
@@ -570,7 +574,7 @@ ar2(m)
 -   **`X1`, `X2`, ..., `Xp`** → predictor variables (e.g `flipper_len`, `species`)
 
 
-## Prediction: SLR
+## Prediction: SLR and Group Model
 
 ``` r
 m <- lm(Y ~ X, data = DATA)
@@ -587,14 +591,14 @@ predict(m, newdata = ndf)
 
 ``` r
 m <- lm(Y ~ X1 + X2 + ... + Xp, data = DATA)
-ndf <- data.frame(X1 = VAL1, X2 = VAL2, ..., Xp = VALp)
+ndf <- data.frame(X1 = VAL1, X2 = VAL2, ..., Xp = VALP)
 predict(m, newdata = ndf)
 ```
 
 -   **`DATA`** → your data frame (e.g., `penguins`)
 -   **`Y`** → the outcome variable (e.g., `body_mass`)
 -   **`X1`, `X2`, ..., `Xp`** → predictor variables (e.g `flipper_len`, `species`)
--   **`VAL1`, `VAL2`, ..., `VALp`** → predictor values (e.g `150`, `"Gentoo"`)
+-   **`VAL1`, `VAL2`, ..., `VALP`** → predictor values (e.g `150`, `"Gentoo"`)
 
 ## Scatter Plot
 

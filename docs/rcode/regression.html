@@ -226,14 +226,14 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#simple-model" id="toc-simple-model" class="nav-link" data-scroll-target="#simple-model"><span class="header-section-number">8.1</span> Simple Model</a></li>
   <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression"><span class="header-section-number">8.2</span> Simple linear regression</a></li>
-  <li><a href="#slr-categorical-predictor" id="toc-slr-categorical-predictor" class="nav-link" data-scroll-target="#slr-categorical-predictor"><span class="header-section-number">8.3</span> SLR: Categorical predictor</a></li>
-  <li><a href="#slr-categorical-predictor-create-factor" id="toc-slr-categorical-predictor-create-factor" class="nav-link" data-scroll-target="#slr-categorical-predictor-create-factor"><span class="header-section-number">8.4</span> SLR: Categorical predictor (Create Factor)</a></li>
+  <li><a href="#slr-group-model" id="toc-slr-group-model" class="nav-link" data-scroll-target="#slr-group-model"><span class="header-section-number">8.3</span> SLR: Group Model</a></li>
+  <li><a href="#slr-group-model-when-it-does-not-work" id="toc-slr-group-model-when-it-does-not-work" class="nav-link" data-scroll-target="#slr-group-model-when-it-does-not-work"><span class="header-section-number">8.4</span> SLR: Group Model (when it does not work)</a></li>
   <li><a href="#numerical-statistics-by-categories" id="toc-numerical-statistics-by-categories" class="nav-link" data-scroll-target="#numerical-statistics-by-categories"><span class="header-section-number">8.5</span> Numerical Statistics by Categories</a></li>
   <li><a href="#correlation" id="toc-correlation" class="nav-link" data-scroll-target="#correlation"><span class="header-section-number">8.6</span> Correlation</a></li>
   <li><a href="#r2" id="toc-r2" class="nav-link" data-scroll-target="#r2"><span class="header-section-number">8.7</span> <span class="math inline">\(R^2\)</span></a></li>
   <li><a href="#multiple-linear-regression" id="toc-multiple-linear-regression" class="nav-link" data-scroll-target="#multiple-linear-regression"><span class="header-section-number">8.8</span> Multiple linear regression</a></li>
   <li><a href="#adjusted-r2-1" id="toc-adjusted-r2-1" class="nav-link" data-scroll-target="#adjusted-r2-1"><span class="header-section-number">8.9</span> Adjusted <span class="math inline">\(R^2\)</span></a></li>
-  <li><a href="#prediction-slr" id="toc-prediction-slr" class="nav-link" data-scroll-target="#prediction-slr"><span class="header-section-number">8.10</span> Prediction: SLR</a></li>
+  <li><a href="#prediction-slr-and-group-model" id="toc-prediction-slr-and-group-model" class="nav-link" data-scroll-target="#prediction-slr-and-group-model"><span class="header-section-number">8.10</span> Prediction: SLR and Group Model</a></li>
   <li><a href="#prediction-mlr" id="toc-prediction-mlr" class="nav-link" data-scroll-target="#prediction-mlr"><span class="header-section-number">8.11</span> Prediction: MLR</a></li>
   <li><a href="#scatter-plot" id="toc-scatter-plot" class="nav-link" data-scroll-target="#scatter-plot"><span class="header-section-number">8.12</span> Scatter Plot</a></li>
   <li><a href="#scatter-plot-trend-line" id="toc-scatter-plot-trend-line" class="nav-link" data-scroll-target="#scatter-plot-trend-line"><span class="header-section-number">8.13</span> Scatter Plot + trend line</a></li>
@@ -732,7 +732,7 @@ The first level of the factor is used as the <strong>reference group</strong> (b
 #&gt; 
 #&gt; Coefficients:
 #&gt;    (Intercept)  mode_nameminor         valence          energy  
-#&gt;        0.53816         0.08386         0.17554        -0.05944</code></pre>
+#&gt;        0.22741         0.09658         0.33066        -0.11366</code></pre>
 </div>
 </div>
 <section id="adjusted-r2" class="level2" data-number="7.1">
@@ -743,7 +743,7 @@ R^2_{adj} = 1 - \Big(\frac{\text{Var(resid)}}{\text{Var}(Y)}\Big) \cdot \frac{n-
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(danceability <span class="sc">~</span> mode_name <span class="sc">+</span> valence <span class="sc">+</span> energy, <span class="at">data =</span> taylor_album_songs)</span>
 <span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ar2</span>(m)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>#&gt; [1] 0.09148268</code></pre>
+<pre><code>#&gt; [1] 0.05429238</code></pre>
 </div>
 </div>
 </section>
@@ -752,7 +752,8 @@ R^2_{adj} = 1 - \Big(\frac{\text{Var(resid)}}{\text{Var}(Y)}\Big) \cdot \frac{n-
 <h1 data-number="8"><span class="header-section-number">8</span> Appendix: quick templates (copy‑paste)</h1>
 <section id="simple-model" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="simple-model"><span class="header-section-number">8.1</span> Simple Model</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> DATA)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> DATA)</span>
+<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a>m1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong><code>DATA</code></strong> → your data frame (e.g., <code>penguins</code>)</li>
 <li><strong><code>Y</code></strong> → the outcome variable (e.g., <code>body_mass</code>)</li>
@@ -760,25 +761,28 @@ R^2_{adj} = 1 - \Big(\frac{\text{Var(resid)}}{\text{Var}(Y)}\Big) \cdot \frac{n-
 </section>
 <section id="simple-linear-regression" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="simple-linear-regression"><span class="header-section-number">8.2</span> Simple linear regression</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>m2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong><code>DATA</code></strong> → your data frame (e.g., <code>penguins</code>)</li>
 <li><strong><code>Y</code></strong> → the outcome variable (e.g., <code>body_mass</code>)</li>
-<li><strong><code>X</code></strong> → predictor variables (e.g <code>flipper_length_mm</code>)</li>
+<li><strong><code>X</code></strong> → numerical predictor variables (e.g <code>flipper_length_mm</code>)</li>
 </ul>
 </section>
-<section id="slr-categorical-predictor" class="level2" data-number="8.3">
-<h2 data-number="8.3" class="anchored" data-anchor-id="slr-categorical-predictor"><span class="header-section-number">8.3</span> SLR: Categorical predictor</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="slr-group-model" class="level2" data-number="8.3">
+<h2 data-number="8.3" class="anchored" data-anchor-id="slr-group-model"><span class="header-section-number">8.3</span> SLR: Group Model</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA) </span>
+<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>m3</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong><code>DATA</code></strong> → your data frame (e.g., <code>penguins</code>)</li>
 <li><strong><code>Y</code></strong> → the outcome variable (e.g., <code>body_mass</code>)</li>
 <li><strong><code>X</code></strong> → predictor variables (e.g <code>species</code>)</li>
 </ul>
 </section>
-<section id="slr-categorical-predictor-create-factor" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="slr-categorical-predictor-create-factor"><span class="header-section-number">8.4</span> SLR: Categorical predictor (Create Factor)</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> <span class="fu">factor</span>(X), <span class="at">data =</span> DATA)   <span class="co"># coerce X to factor</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="slr-group-model-when-it-does-not-work" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="slr-group-model-when-it-does-not-work"><span class="header-section-number">8.4</span> SLR: Group Model (when it does not work)</h2>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> <span class="fu">factor</span>(X), <span class="at">data =</span> DATA)   <span class="co"># coerce X to factor</span></span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>m4</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong><code>DATA</code></strong> → your data frame (e.g., <code>penguins</code>)</li>
 <li><strong><code>Y</code></strong> → the outcome variable (e.g., <code>body_mass</code>)</li>
@@ -805,8 +809,8 @@ R^2_{adj} = 1 - \Big(\frac{\text{Var(resid)}}{\text{Var}(Y)}\Big) \cdot \frac{n-
 </section>
 <section id="r2" class="level2" data-number="8.7">
 <h2 data-number="8.7" class="anchored" data-anchor-id="r2"><span class="header-section-number">8.7</span> <span class="math inline">\(R^2\)</span></h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(m)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(m5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong><code>DATA</code></strong> → your data frame (e.g., <code>penguins</code>)</li>
 <li><strong><code>Y</code></strong> → the outcome variable (e.g., <code>body_mass</code>)</li>
@@ -815,7 +819,8 @@ R^2_{adj} = 1 - \Big(\frac{\text{Var(resid)}}{\text{Var}(Y)}\Big) \cdot \frac{n-
 </section>
 <section id="multiple-linear-regression" class="level2" data-number="8.8">
 <h2 data-number="8.8" class="anchored" data-anchor-id="multiple-linear-regression"><span class="header-section-number">8.8</span> Multiple linear regression</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>m6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>m6</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong><code>DATA</code></strong> → your data frame (e.g., <code>penguins</code>)</li>
 <li><strong><code>Y</code></strong> → the outcome variable (e.g., <code>body_mass</code>)</li>
@@ -825,16 +830,16 @@ R^2_{adj} = 1 - \Big(\frac{\text{Var(resid)}}{\text{Var}(Y)}\Big) \cdot \frac{n-
 <section id="adjusted-r2-1" class="level2" data-number="8.9">
 <h2 data-number="8.9" class="anchored" data-anchor-id="adjusted-r2-1"><span class="header-section-number">8.9</span> Adjusted <span class="math inline">\(R^2\)</span></h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjusted R^2</span></span>
-<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
-<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ar2</span>(m)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a>m7 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
+<span id="cb51-3"><a href="#cb51-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ar2</span>(m7)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong><code>DATA</code></strong> → your data frame (e.g., <code>penguins</code>)</li>
 <li><strong><code>Y</code></strong> → the outcome variable (e.g., <code>body_mass</code>)</li>
 <li><strong><code>X1</code>, <code>X2</code>, …, <code>Xp</code></strong> → predictor variables (e.g <code>flipper_len</code>, <code>species</code>)</li>
 </ul>
 </section>
-<section id="prediction-slr" class="level2" data-number="8.10">
-<h2 data-number="8.10" class="anchored" data-anchor-id="prediction-slr"><span class="header-section-number">8.10</span> Prediction: SLR</h2>
+<section id="prediction-slr-and-group-model" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="prediction-slr-and-group-model"><span class="header-section-number">8.10</span> Prediction: SLR and Group Model</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
 <span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>ndf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">X =</span> VAL)</span>
 <span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(m, <span class="at">newdata =</span> ndf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -847,13 +852,13 @@ R^2_{adj} = 1 - \Big(\frac{\text{Var(resid)}}{\text{Var}(Y)}\Big) \cdot \frac{n-
 <section id="prediction-mlr" class="level2" data-number="8.11">
 <h2 data-number="8.11" class="anchored" data-anchor-id="prediction-mlr"><span class="header-section-number">8.11</span> Prediction: MLR</h2>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>ndf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">X1 =</span> VAL1, <span class="at">X2 =</span> VAL2, ..., <span class="at">Xp =</span> VALp)</span>
+<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>ndf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">X1 =</span> VAL1, <span class="at">X2 =</span> VAL2, ..., <span class="at">Xp =</span> VALP)</span>
 <span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(m, <span class="at">newdata =</span> ndf)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li><strong><code>DATA</code></strong> → your data frame (e.g., <code>penguins</code>)</li>
 <li><strong><code>Y</code></strong> → the outcome variable (e.g., <code>body_mass</code>)</li>
 <li><strong><code>X1</code>, <code>X2</code>, …, <code>Xp</code></strong> → predictor variables (e.g <code>flipper_len</code>, <code>species</code>)</li>
-<li><strong><code>VAL1</code>, <code>VAL2</code>, …, <code>VALp</code></strong> → predictor values (e.g <code>150</code>, <code>"Gentoo"</code>)</li>
+<li><strong><code>VAL1</code>, <code>VAL2</code>, …, <code>VALP</code></strong> → predictor values (e.g <code>150</code>, <code>"Gentoo"</code>)</li>
 </ul>
 </section>
 <section id="scatter-plot" class="level2" data-number="8.12">
@@ -1857,208 +1862,212 @@ R^2_{adj} = 1 - \Big(\frac{\text{Var(resid)}}{\text{Var}(Y)}\Big) \cdot \frac{n-
 <span id="cb61-513"><a href="#cb61-513" aria-hidden="true" tabindex="-1"></a><span class="fu">## Simple Model</span></span>
 <span id="cb61-514"><a href="#cb61-514" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb61-515"><a href="#cb61-515" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb61-516"><a href="#cb61-516" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> DATA)</span>
-<span id="cb61-517"><a href="#cb61-517" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-518"><a href="#cb61-518" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-519"><a href="#cb61-519" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb61-520"><a href="#cb61-520" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
-<span id="cb61-521"><a href="#cb61-521" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-516"><a href="#cb61-516" aria-hidden="true" tabindex="-1"></a>m1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> <span class="dv">1</span>, <span class="at">data =</span> DATA)</span>
+<span id="cb61-517"><a href="#cb61-517" aria-hidden="true" tabindex="-1"></a>m1</span>
+<span id="cb61-518"><a href="#cb61-518" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb61-519"><a href="#cb61-519" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-520"><a href="#cb61-520" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb61-521"><a href="#cb61-521" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
 <span id="cb61-522"><a href="#cb61-522" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-523"><a href="#cb61-523" aria-hidden="true" tabindex="-1"></a><span class="fu">## Simple linear regression</span></span>
-<span id="cb61-524"><a href="#cb61-524" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-525"><a href="#cb61-525" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb61-526"><a href="#cb61-526" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
-<span id="cb61-527"><a href="#cb61-527" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-528"><a href="#cb61-528" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-529"><a href="#cb61-529" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb61-530"><a href="#cb61-530" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
-<span id="cb61-531"><a href="#cb61-531" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_length_mm`</span>)</span>
-<span id="cb61-532"><a href="#cb61-532" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-533"><a href="#cb61-533" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-534"><a href="#cb61-534" aria-hidden="true" tabindex="-1"></a><span class="fu">## SLR: Categorical predictor</span></span>
-<span id="cb61-535"><a href="#cb61-535" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-536"><a href="#cb61-536" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb61-537"><a href="#cb61-537" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA) </span>
-<span id="cb61-538"><a href="#cb61-538" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-539"><a href="#cb61-539" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-540"><a href="#cb61-540" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb61-541"><a href="#cb61-541" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
-<span id="cb61-542"><a href="#cb61-542" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`species`</span>)</span>
-<span id="cb61-543"><a href="#cb61-543" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-544"><a href="#cb61-544" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-545"><a href="#cb61-545" aria-hidden="true" tabindex="-1"></a><span class="fu">## SLR: Categorical predictor (Create Factor)</span></span>
+<span id="cb61-523"><a href="#cb61-523" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-524"><a href="#cb61-524" aria-hidden="true" tabindex="-1"></a><span class="fu">## Simple linear regression</span></span>
+<span id="cb61-525"><a href="#cb61-525" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-526"><a href="#cb61-526" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb61-527"><a href="#cb61-527" aria-hidden="true" tabindex="-1"></a>m2 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
+<span id="cb61-528"><a href="#cb61-528" aria-hidden="true" tabindex="-1"></a>m2</span>
+<span id="cb61-529"><a href="#cb61-529" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb61-530"><a href="#cb61-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-531"><a href="#cb61-531" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb61-532"><a href="#cb61-532" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
+<span id="cb61-533"><a href="#cb61-533" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → numerical predictor variables (e.g <span class="in">`flipper_length_mm`</span>)</span>
+<span id="cb61-534"><a href="#cb61-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-535"><a href="#cb61-535" aria-hidden="true" tabindex="-1"></a><span class="fu">## SLR: Group Model</span></span>
+<span id="cb61-536"><a href="#cb61-536" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-537"><a href="#cb61-537" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb61-538"><a href="#cb61-538" aria-hidden="true" tabindex="-1"></a>m3 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA) </span>
+<span id="cb61-539"><a href="#cb61-539" aria-hidden="true" tabindex="-1"></a>m3</span>
+<span id="cb61-540"><a href="#cb61-540" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb61-541"><a href="#cb61-541" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-542"><a href="#cb61-542" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb61-543"><a href="#cb61-543" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
+<span id="cb61-544"><a href="#cb61-544" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`species`</span>)</span>
+<span id="cb61-545"><a href="#cb61-545" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb61-546"><a href="#cb61-546" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-547"><a href="#cb61-547" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb61-548"><a href="#cb61-548" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> <span class="fu">factor</span>(X), <span class="at">data =</span> DATA)   <span class="co"># coerce X to factor</span></span>
-<span id="cb61-549"><a href="#cb61-549" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-550"><a href="#cb61-550" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-551"><a href="#cb61-551" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb61-552"><a href="#cb61-552" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
-<span id="cb61-553"><a href="#cb61-553" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`species`</span>)</span>
-<span id="cb61-554"><a href="#cb61-554" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-555"><a href="#cb61-555" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-556"><a href="#cb61-556" aria-hidden="true" tabindex="-1"></a><span class="fu">## Numerical Statistics by Categories</span></span>
+<span id="cb61-547"><a href="#cb61-547" aria-hidden="true" tabindex="-1"></a><span class="fu">## SLR: Group Model (when it does not work)</span></span>
+<span id="cb61-548"><a href="#cb61-548" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-549"><a href="#cb61-549" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb61-550"><a href="#cb61-550" aria-hidden="true" tabindex="-1"></a>m4 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> <span class="fu">factor</span>(X), <span class="at">data =</span> DATA)   <span class="co"># coerce X to factor</span></span>
+<span id="cb61-551"><a href="#cb61-551" aria-hidden="true" tabindex="-1"></a>m4</span>
+<span id="cb61-552"><a href="#cb61-552" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb61-553"><a href="#cb61-553" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-554"><a href="#cb61-554" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb61-555"><a href="#cb61-555" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
+<span id="cb61-556"><a href="#cb61-556" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`species`</span>)</span>
 <span id="cb61-557"><a href="#cb61-557" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-558"><a href="#cb61-558" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb61-559"><a href="#cb61-559" aria-hidden="true" tabindex="-1"></a><span class="fu">num_by_cat_stats</span>(DATA, NUM, CAT)</span>
-<span id="cb61-560"><a href="#cb61-560" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-561"><a href="#cb61-561" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-562"><a href="#cb61-562" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`DATA`</span>: the data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb61-563"><a href="#cb61-563" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`NUM`</span>: the numerical variable you want to summarize (e.g., <span class="in">`body_mass`</span>)</span>
-<span id="cb61-564"><a href="#cb61-564" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`CAT`</span>: the categorical variable that defines groups (e.g., <span class="in">`species`</span>)</span>
-<span id="cb61-565"><a href="#cb61-565" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-566"><a href="#cb61-566" aria-hidden="true" tabindex="-1"></a><span class="fu">## Correlation</span></span>
-<span id="cb61-567"><a href="#cb61-567" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-568"><a href="#cb61-568" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb61-569"><a href="#cb61-569" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(DATA<span class="sc">$</span>Y, DATA<span class="sc">$</span>X, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
-<span id="cb61-570"><a href="#cb61-570" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-571"><a href="#cb61-571" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-572"><a href="#cb61-572" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb61-573"><a href="#cb61-573" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
-<span id="cb61-574"><a href="#cb61-574" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_len`</span>)</span>
-<span id="cb61-575"><a href="#cb61-575" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-576"><a href="#cb61-576" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-577"><a href="#cb61-577" aria-hidden="true" tabindex="-1"></a><span class="fu">## $R^2$</span></span>
+<span id="cb61-558"><a href="#cb61-558" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-559"><a href="#cb61-559" aria-hidden="true" tabindex="-1"></a><span class="fu">## Numerical Statistics by Categories</span></span>
+<span id="cb61-560"><a href="#cb61-560" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-561"><a href="#cb61-561" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb61-562"><a href="#cb61-562" aria-hidden="true" tabindex="-1"></a><span class="fu">num_by_cat_stats</span>(DATA, NUM, CAT)</span>
+<span id="cb61-563"><a href="#cb61-563" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb61-564"><a href="#cb61-564" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-565"><a href="#cb61-565" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`DATA`</span>: the data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb61-566"><a href="#cb61-566" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`NUM`</span>: the numerical variable you want to summarize (e.g., <span class="in">`body_mass`</span>)</span>
+<span id="cb61-567"><a href="#cb61-567" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`CAT`</span>: the categorical variable that defines groups (e.g., <span class="in">`species`</span>)</span>
+<span id="cb61-568"><a href="#cb61-568" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-569"><a href="#cb61-569" aria-hidden="true" tabindex="-1"></a><span class="fu">## Correlation</span></span>
+<span id="cb61-570"><a href="#cb61-570" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-571"><a href="#cb61-571" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb61-572"><a href="#cb61-572" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(DATA<span class="sc">$</span>Y, DATA<span class="sc">$</span>X, <span class="at">use =</span> <span class="st">"complete.obs"</span>)</span>
+<span id="cb61-573"><a href="#cb61-573" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb61-574"><a href="#cb61-574" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-575"><a href="#cb61-575" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb61-576"><a href="#cb61-576" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
+<span id="cb61-577"><a href="#cb61-577" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_len`</span>)</span>
 <span id="cb61-578"><a href="#cb61-578" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-579"><a href="#cb61-579" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb61-580"><a href="#cb61-580" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
-<span id="cb61-581"><a href="#cb61-581" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(m)</span>
-<span id="cb61-582"><a href="#cb61-582" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-583"><a href="#cb61-583" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-584"><a href="#cb61-584" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb61-585"><a href="#cb61-585" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
-<span id="cb61-586"><a href="#cb61-586" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_len`</span>)</span>
-<span id="cb61-587"><a href="#cb61-587" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-588"><a href="#cb61-588" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-589"><a href="#cb61-589" aria-hidden="true" tabindex="-1"></a><span class="fu">## Multiple linear regression</span></span>
+<span id="cb61-579"><a href="#cb61-579" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-580"><a href="#cb61-580" aria-hidden="true" tabindex="-1"></a><span class="fu">## $R^2$</span></span>
+<span id="cb61-581"><a href="#cb61-581" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-582"><a href="#cb61-582" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb61-583"><a href="#cb61-583" aria-hidden="true" tabindex="-1"></a>m5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
+<span id="cb61-584"><a href="#cb61-584" aria-hidden="true" tabindex="-1"></a><span class="fu">r2</span>(m5)</span>
+<span id="cb61-585"><a href="#cb61-585" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb61-586"><a href="#cb61-586" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-587"><a href="#cb61-587" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb61-588"><a href="#cb61-588" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
+<span id="cb61-589"><a href="#cb61-589" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_len`</span>)</span>
 <span id="cb61-590"><a href="#cb61-590" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-591"><a href="#cb61-591" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb61-592"><a href="#cb61-592" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
-<span id="cb61-593"><a href="#cb61-593" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-594"><a href="#cb61-594" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-595"><a href="#cb61-595" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb61-596"><a href="#cb61-596" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
-<span id="cb61-597"><a href="#cb61-597" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X1`, `X2`, ..., `Xp`** → predictor variables (e.g <span class="in">`flipper_len`</span>, <span class="in">`species`</span>)</span>
+<span id="cb61-591"><a href="#cb61-591" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-592"><a href="#cb61-592" aria-hidden="true" tabindex="-1"></a><span class="fu">## Multiple linear regression</span></span>
+<span id="cb61-593"><a href="#cb61-593" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-594"><a href="#cb61-594" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb61-595"><a href="#cb61-595" aria-hidden="true" tabindex="-1"></a>m6 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
+<span id="cb61-596"><a href="#cb61-596" aria-hidden="true" tabindex="-1"></a>m6</span>
+<span id="cb61-597"><a href="#cb61-597" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb61-598"><a href="#cb61-598" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-599"><a href="#cb61-599" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-600"><a href="#cb61-600" aria-hidden="true" tabindex="-1"></a><span class="fu">## Adjusted $R^2$</span></span>
-<span id="cb61-601"><a href="#cb61-601" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-602"><a href="#cb61-602" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb61-603"><a href="#cb61-603" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjusted R^2</span></span>
-<span id="cb61-604"><a href="#cb61-604" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
-<span id="cb61-605"><a href="#cb61-605" aria-hidden="true" tabindex="-1"></a><span class="fu">ar2</span>(m)</span>
-<span id="cb61-606"><a href="#cb61-606" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-607"><a href="#cb61-607" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-608"><a href="#cb61-608" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb61-609"><a href="#cb61-609" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
-<span id="cb61-610"><a href="#cb61-610" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X1`, `X2`, ..., `Xp`** → predictor variables (e.g <span class="in">`flipper_len`</span>, <span class="in">`species`</span>)</span>
+<span id="cb61-599"><a href="#cb61-599" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb61-600"><a href="#cb61-600" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
+<span id="cb61-601"><a href="#cb61-601" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X1`, `X2`, ..., `Xp`** → predictor variables (e.g <span class="in">`flipper_len`</span>, <span class="in">`species`</span>)</span>
+<span id="cb61-602"><a href="#cb61-602" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-603"><a href="#cb61-603" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-604"><a href="#cb61-604" aria-hidden="true" tabindex="-1"></a><span class="fu">## Adjusted $R^2$</span></span>
+<span id="cb61-605"><a href="#cb61-605" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-606"><a href="#cb61-606" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb61-607"><a href="#cb61-607" aria-hidden="true" tabindex="-1"></a><span class="co"># Adjusted R^2</span></span>
+<span id="cb61-608"><a href="#cb61-608" aria-hidden="true" tabindex="-1"></a>m7 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
+<span id="cb61-609"><a href="#cb61-609" aria-hidden="true" tabindex="-1"></a><span class="fu">ar2</span>(m7)</span>
+<span id="cb61-610"><a href="#cb61-610" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb61-611"><a href="#cb61-611" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-612"><a href="#cb61-612" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-613"><a href="#cb61-613" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prediction: SLR</span></span>
-<span id="cb61-614"><a href="#cb61-614" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-615"><a href="#cb61-615" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb61-616"><a href="#cb61-616" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
-<span id="cb61-617"><a href="#cb61-617" aria-hidden="true" tabindex="-1"></a>ndf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">X =</span> VAL)</span>
-<span id="cb61-618"><a href="#cb61-618" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(m, <span class="at">newdata =</span> ndf)</span>
-<span id="cb61-619"><a href="#cb61-619" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-620"><a href="#cb61-620" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-621"><a href="#cb61-621" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb61-622"><a href="#cb61-622" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
-<span id="cb61-623"><a href="#cb61-623" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_len`</span>)</span>
+<span id="cb61-612"><a href="#cb61-612" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb61-613"><a href="#cb61-613" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
+<span id="cb61-614"><a href="#cb61-614" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X1`, `X2`, ..., `Xp`** → predictor variables (e.g <span class="in">`flipper_len`</span>, <span class="in">`species`</span>)</span>
+<span id="cb61-615"><a href="#cb61-615" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-616"><a href="#cb61-616" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-617"><a href="#cb61-617" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prediction: SLR and Group Model</span></span>
+<span id="cb61-618"><a href="#cb61-618" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-619"><a href="#cb61-619" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb61-620"><a href="#cb61-620" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X, <span class="at">data =</span> DATA)</span>
+<span id="cb61-621"><a href="#cb61-621" aria-hidden="true" tabindex="-1"></a>ndf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">X =</span> VAL)</span>
+<span id="cb61-622"><a href="#cb61-622" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(m, <span class="at">newdata =</span> ndf)</span>
+<span id="cb61-623"><a href="#cb61-623" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb61-624"><a href="#cb61-624" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-625"><a href="#cb61-625" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-626"><a href="#cb61-626" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prediction: MLR</span></span>
-<span id="cb61-627"><a href="#cb61-627" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-628"><a href="#cb61-628" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
-<span id="cb61-629"><a href="#cb61-629" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
-<span id="cb61-630"><a href="#cb61-630" aria-hidden="true" tabindex="-1"></a>ndf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">X1 =</span> VAL1, <span class="at">X2 =</span> VAL2, ..., <span class="at">Xp =</span> VALp)</span>
-<span id="cb61-631"><a href="#cb61-631" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(m, <span class="at">newdata =</span> ndf)</span>
-<span id="cb61-632"><a href="#cb61-632" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-633"><a href="#cb61-633" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-634"><a href="#cb61-634" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
-<span id="cb61-635"><a href="#cb61-635" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
-<span id="cb61-636"><a href="#cb61-636" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X1`, `X2`, ..., `Xp`** → predictor variables (e.g <span class="in">`flipper_len`</span>, <span class="in">`species`</span>)</span>
-<span id="cb61-637"><a href="#cb61-637" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`VAL1`, `VAL2`, ..., `VALp`** → predictor values (e.g <span class="in">`150`</span>, <span class="in">`"Gentoo"`</span>)</span>
-<span id="cb61-638"><a href="#cb61-638" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-639"><a href="#cb61-639" aria-hidden="true" tabindex="-1"></a><span class="fu">## Scatter Plot</span></span>
-<span id="cb61-640"><a href="#cb61-640" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-641"><a href="#cb61-641" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb61-642"><a href="#cb61-642" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">y =</span> VAR2)) <span class="sc">+</span> </span>
-<span id="cb61-643"><a href="#cb61-643" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span>
-<span id="cb61-644"><a href="#cb61-644" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-645"><a href="#cb61-645" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-646"><a href="#cb61-646" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`DATA`</span> → the name of your dataset (e.g., <span class="in">`penguins`</span>).</span>
-<span id="cb61-647"><a href="#cb61-647" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR1`</span> → a single numerical variable (e.g., <span class="in">`body_mass`</span>).</span>
-<span id="cb61-648"><a href="#cb61-648" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR2`</span> → a single numerical variable (e.g., <span class="in">`flipper_len`</span>).</span>
+<span id="cb61-625"><a href="#cb61-625" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb61-626"><a href="#cb61-626" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
+<span id="cb61-627"><a href="#cb61-627" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X`** → predictor variables (e.g <span class="in">`flipper_len`</span>)</span>
+<span id="cb61-628"><a href="#cb61-628" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-629"><a href="#cb61-629" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-630"><a href="#cb61-630" aria-hidden="true" tabindex="-1"></a><span class="fu">## Prediction: MLR</span></span>
+<span id="cb61-631"><a href="#cb61-631" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-632"><a href="#cb61-632" aria-hidden="true" tabindex="-1"></a><span class="in">``` r</span></span>
+<span id="cb61-633"><a href="#cb61-633" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, <span class="at">data =</span> DATA)</span>
+<span id="cb61-634"><a href="#cb61-634" aria-hidden="true" tabindex="-1"></a>ndf <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">X1 =</span> VAL1, <span class="at">X2 =</span> VAL2, ..., <span class="at">Xp =</span> VALP)</span>
+<span id="cb61-635"><a href="#cb61-635" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(m, <span class="at">newdata =</span> ndf)</span>
+<span id="cb61-636"><a href="#cb61-636" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb61-637"><a href="#cb61-637" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-638"><a href="#cb61-638" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`DATA`** → your data frame (e.g., <span class="in">`penguins`</span>)</span>
+<span id="cb61-639"><a href="#cb61-639" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`Y`** → the outcome variable (e.g., <span class="in">`body_mass`</span>)</span>
+<span id="cb61-640"><a href="#cb61-640" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`X1`, `X2`, ..., `Xp`** → predictor variables (e.g <span class="in">`flipper_len`</span>, <span class="in">`species`</span>)</span>
+<span id="cb61-641"><a href="#cb61-641" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>**`VAL1`, `VAL2`, ..., `VALP`** → predictor values (e.g <span class="in">`150`</span>, <span class="in">`"Gentoo"`</span>)</span>
+<span id="cb61-642"><a href="#cb61-642" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-643"><a href="#cb61-643" aria-hidden="true" tabindex="-1"></a><span class="fu">## Scatter Plot</span></span>
+<span id="cb61-644"><a href="#cb61-644" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-645"><a href="#cb61-645" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb61-646"><a href="#cb61-646" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">y =</span> VAR2)) <span class="sc">+</span> </span>
+<span id="cb61-647"><a href="#cb61-647" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>()</span>
+<span id="cb61-648"><a href="#cb61-648" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb61-649"><a href="#cb61-649" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-650"><a href="#cb61-650" aria-hidden="true" tabindex="-1"></a><span class="fu">## Scatter Plot + trend line</span></span>
-<span id="cb61-651"><a href="#cb61-651" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-652"><a href="#cb61-652" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb61-653"><a href="#cb61-653" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">y =</span> VAR2)) <span class="sc">+</span> </span>
-<span id="cb61-654"><a href="#cb61-654" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb61-655"><a href="#cb61-655" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb61-656"><a href="#cb61-656" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-657"><a href="#cb61-657" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-658"><a href="#cb61-658" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`DATA`</span> → the name of your dataset (e.g., <span class="in">`penguins`</span>).</span>
-<span id="cb61-659"><a href="#cb61-659" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR1`</span> → a single numerical variable (e.g., <span class="in">`body_mass`</span>).</span>
-<span id="cb61-660"><a href="#cb61-660" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR2`</span> → a single numerical variable (e.g., <span class="in">`flipper_len`</span>).</span>
+<span id="cb61-650"><a href="#cb61-650" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`DATA`</span> → the name of your dataset (e.g., <span class="in">`penguins`</span>).</span>
+<span id="cb61-651"><a href="#cb61-651" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR1`</span> → a single numerical variable (e.g., <span class="in">`body_mass`</span>).</span>
+<span id="cb61-652"><a href="#cb61-652" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR2`</span> → a single numerical variable (e.g., <span class="in">`flipper_len`</span>).</span>
+<span id="cb61-653"><a href="#cb61-653" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-654"><a href="#cb61-654" aria-hidden="true" tabindex="-1"></a><span class="fu">## Scatter Plot + trend line</span></span>
+<span id="cb61-655"><a href="#cb61-655" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-656"><a href="#cb61-656" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb61-657"><a href="#cb61-657" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> VAR1, <span class="at">y =</span> VAR2)) <span class="sc">+</span> </span>
+<span id="cb61-658"><a href="#cb61-658" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb61-659"><a href="#cb61-659" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_smooth</span>(<span class="at">method =</span> <span class="st">"lm"</span>, <span class="at">se =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb61-660"><a href="#cb61-660" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb61-661"><a href="#cb61-661" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-662"><a href="#cb61-662" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-663"><a href="#cb61-663" aria-hidden="true" tabindex="-1"></a><span class="fu">## Multiple Density Plot (Continous vs Categorical)</span></span>
-<span id="cb61-664"><a href="#cb61-664" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-665"><a href="#cb61-665" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb61-666"><a href="#cb61-666" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> NUM, <span class="at">color =</span> CAT)) <span class="sc">+</span> </span>
-<span id="cb61-667"><a href="#cb61-667" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>() </span>
-<span id="cb61-668"><a href="#cb61-668" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-669"><a href="#cb61-669" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-670"><a href="#cb61-670" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`DATA`</span> → the name of your dataset (e.g., <span class="in">`penguins`</span>).</span>
-<span id="cb61-671"><a href="#cb61-671" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`NUM`</span> → a single numerical variable (e.g., <span class="in">`body_mass`</span>).</span>
-<span id="cb61-672"><a href="#cb61-672" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`CAT`</span> → a single categorical variable (e.g., <span class="in">`species`</span>).</span>
+<span id="cb61-662"><a href="#cb61-662" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`DATA`</span> → the name of your dataset (e.g., <span class="in">`penguins`</span>).</span>
+<span id="cb61-663"><a href="#cb61-663" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR1`</span> → a single numerical variable (e.g., <span class="in">`body_mass`</span>).</span>
+<span id="cb61-664"><a href="#cb61-664" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`VAR2`</span> → a single numerical variable (e.g., <span class="in">`flipper_len`</span>).</span>
+<span id="cb61-665"><a href="#cb61-665" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-666"><a href="#cb61-666" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-667"><a href="#cb61-667" aria-hidden="true" tabindex="-1"></a><span class="fu">## Multiple Density Plot (Continous vs Categorical)</span></span>
+<span id="cb61-668"><a href="#cb61-668" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-669"><a href="#cb61-669" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb61-670"><a href="#cb61-670" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> NUM, <span class="at">color =</span> CAT)) <span class="sc">+</span> </span>
+<span id="cb61-671"><a href="#cb61-671" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_density</span>() </span>
+<span id="cb61-672"><a href="#cb61-672" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb61-673"><a href="#cb61-673" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-674"><a href="#cb61-674" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-675"><a href="#cb61-675" aria-hidden="true" tabindex="-1"></a><span class="fu">## Multiple Box Plots (Continous vs Categorical)</span></span>
-<span id="cb61-676"><a href="#cb61-676" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-677"><a href="#cb61-677" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb61-678"><a href="#cb61-678" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> NUM, <span class="at">y =</span> CAT)) <span class="sc">+</span> </span>
-<span id="cb61-679"><a href="#cb61-679" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() </span>
-<span id="cb61-680"><a href="#cb61-680" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-681"><a href="#cb61-681" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-682"><a href="#cb61-682" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`DATA`</span> → the name of your dataset (e.g., <span class="in">`penguins`</span>).</span>
-<span id="cb61-683"><a href="#cb61-683" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`NUM`</span> → a single numerical variable (e.g., <span class="in">`body_mass`</span>).</span>
-<span id="cb61-684"><a href="#cb61-684" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`CAT`</span> → a single categorical variable (e.g., <span class="in">`species`</span>).</span>
+<span id="cb61-674"><a href="#cb61-674" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`DATA`</span> → the name of your dataset (e.g., <span class="in">`penguins`</span>).</span>
+<span id="cb61-675"><a href="#cb61-675" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`NUM`</span> → a single numerical variable (e.g., <span class="in">`body_mass`</span>).</span>
+<span id="cb61-676"><a href="#cb61-676" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`CAT`</span> → a single categorical variable (e.g., <span class="in">`species`</span>).</span>
+<span id="cb61-677"><a href="#cb61-677" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-678"><a href="#cb61-678" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-679"><a href="#cb61-679" aria-hidden="true" tabindex="-1"></a><span class="fu">## Multiple Box Plots (Continous vs Categorical)</span></span>
+<span id="cb61-680"><a href="#cb61-680" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-681"><a href="#cb61-681" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb61-682"><a href="#cb61-682" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(DATA, <span class="fu">aes</span>(<span class="at">x =</span> NUM, <span class="at">y =</span> CAT)) <span class="sc">+</span> </span>
+<span id="cb61-683"><a href="#cb61-683" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_boxplot</span>() </span>
+<span id="cb61-684"><a href="#cb61-684" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
 <span id="cb61-685"><a href="#cb61-685" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-686"><a href="#cb61-686" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conducting HT of $\beta_j$</span></span>
-<span id="cb61-687"><a href="#cb61-687" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-688"><a href="#cb61-688" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb61-689"><a href="#cb61-689" aria-hidden="true" tabindex="-1"></a>XLM <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, </span>
-<span id="cb61-690"><a href="#cb61-690" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> DATA)</span>
-<span id="cb61-691"><a href="#cb61-691" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(XLM)</span>
-<span id="cb61-692"><a href="#cb61-692" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-693"><a href="#cb61-693" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-694"><a href="#cb61-694" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`XLM`</span>: Object where the model is stored</span>
-<span id="cb61-695"><a href="#cb61-695" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Y`</span>: Name of the outcome variable in <span class="in">`DATA`</span></span>
-<span id="cb61-696"><a href="#cb61-696" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`X1`</span>, <span class="in">`X2`</span>, ..., <span class="in">`Xp`</span>: predictor variables (e.g <span class="in">`flipper_len`</span>, <span class="in">`species`</span>) found in <span class="in">`DATA`</span></span>
-<span id="cb61-697"><a href="#cb61-697" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`DATA`</span>: Name of the data set</span>
-<span id="cb61-698"><a href="#cb61-698" aria-hidden="true" tabindex="-1"></a><span class="fu">## 95% Confidence Interval</span></span>
-<span id="cb61-699"><a href="#cb61-699" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-700"><a href="#cb61-700" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb61-701"><a href="#cb61-701" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(XLM, </span>
-<span id="cb61-702"><a href="#cb61-702" aria-hidden="true" tabindex="-1"></a>     <span class="at">conf.int =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb61-703"><a href="#cb61-703" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-704"><a href="#cb61-704" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-705"><a href="#cb61-705" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`XLM`</span>: Object where the model is stored</span>
-<span id="cb61-706"><a href="#cb61-706" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-707"><a href="#cb61-707" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-708"><a href="#cb61-708" aria-hidden="true" tabindex="-1"></a><span class="fu">## X% Confidence Interval</span></span>
-<span id="cb61-709"><a href="#cb61-709" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-710"><a href="#cb61-710" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
-<span id="cb61-711"><a href="#cb61-711" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(XLM, </span>
-<span id="cb61-712"><a href="#cb61-712" aria-hidden="true" tabindex="-1"></a>     <span class="at">conf.int =</span> <span class="cn">TRUE</span>, </span>
-<span id="cb61-713"><a href="#cb61-713" aria-hidden="true" tabindex="-1"></a>     <span class="at">conf.level =</span> X)</span>
-<span id="cb61-714"><a href="#cb61-714" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb61-715"><a href="#cb61-715" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb61-716"><a href="#cb61-716" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`XLM`</span>: Object where the model is stored</span>
-<span id="cb61-717"><a href="#cb61-717" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`X`</span>: A number between 0 and 1 to specify confidence level</span>
+<span id="cb61-686"><a href="#cb61-686" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`DATA`</span> → the name of your dataset (e.g., <span class="in">`penguins`</span>).</span>
+<span id="cb61-687"><a href="#cb61-687" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`NUM`</span> → a single numerical variable (e.g., <span class="in">`body_mass`</span>).</span>
+<span id="cb61-688"><a href="#cb61-688" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span><span class="in">`CAT`</span> → a single categorical variable (e.g., <span class="in">`species`</span>).</span>
+<span id="cb61-689"><a href="#cb61-689" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-690"><a href="#cb61-690" aria-hidden="true" tabindex="-1"></a><span class="fu">## Conducting HT of $\beta_j$</span></span>
+<span id="cb61-691"><a href="#cb61-691" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-692"><a href="#cb61-692" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb61-693"><a href="#cb61-693" aria-hidden="true" tabindex="-1"></a>XLM <span class="ot">&lt;-</span> <span class="fu">lm</span>(Y <span class="sc">~</span> X1 <span class="sc">+</span> X2 <span class="sc">+</span> ... <span class="sc">+</span> Xp, </span>
+<span id="cb61-694"><a href="#cb61-694" aria-hidden="true" tabindex="-1"></a>          <span class="at">data =</span> DATA)</span>
+<span id="cb61-695"><a href="#cb61-695" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(XLM)</span>
+<span id="cb61-696"><a href="#cb61-696" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb61-697"><a href="#cb61-697" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-698"><a href="#cb61-698" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`XLM`</span>: Object where the model is stored</span>
+<span id="cb61-699"><a href="#cb61-699" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`Y`</span>: Name of the outcome variable in <span class="in">`DATA`</span></span>
+<span id="cb61-700"><a href="#cb61-700" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`X1`</span>, <span class="in">`X2`</span>, ..., <span class="in">`Xp`</span>: predictor variables (e.g <span class="in">`flipper_len`</span>, <span class="in">`species`</span>) found in <span class="in">`DATA`</span></span>
+<span id="cb61-701"><a href="#cb61-701" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`DATA`</span>: Name of the data set</span>
+<span id="cb61-702"><a href="#cb61-702" aria-hidden="true" tabindex="-1"></a><span class="fu">## 95% Confidence Interval</span></span>
+<span id="cb61-703"><a href="#cb61-703" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-704"><a href="#cb61-704" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb61-705"><a href="#cb61-705" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(XLM, </span>
+<span id="cb61-706"><a href="#cb61-706" aria-hidden="true" tabindex="-1"></a>     <span class="at">conf.int =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb61-707"><a href="#cb61-707" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb61-708"><a href="#cb61-708" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-709"><a href="#cb61-709" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`XLM`</span>: Object where the model is stored</span>
+<span id="cb61-710"><a href="#cb61-710" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-711"><a href="#cb61-711" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-712"><a href="#cb61-712" aria-hidden="true" tabindex="-1"></a><span class="fu">## X% Confidence Interval</span></span>
+<span id="cb61-713"><a href="#cb61-713" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-714"><a href="#cb61-714" aria-hidden="true" tabindex="-1"></a><span class="in">```r</span></span>
+<span id="cb61-715"><a href="#cb61-715" aria-hidden="true" tabindex="-1"></a><span class="fu">tidy</span>(XLM, </span>
+<span id="cb61-716"><a href="#cb61-716" aria-hidden="true" tabindex="-1"></a>     <span class="at">conf.int =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb61-717"><a href="#cb61-717" aria-hidden="true" tabindex="-1"></a>     <span class="at">conf.level =</span> X)</span>
+<span id="cb61-718"><a href="#cb61-718" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb61-719"><a href="#cb61-719" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb61-720"><a href="#cb61-720" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`XLM`</span>: Object where the model is stored</span>
+<span id="cb61-721"><a href="#cb61-721" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`X`</span>: A number between 0 and 1 to specify confidence level</span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->

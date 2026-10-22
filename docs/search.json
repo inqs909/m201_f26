@@ -277,49 +277,63 @@
     "href": "rcode/logistic.html#simple-logistic-regression",
     "title": "Logistic Regression Models",
     "section": "5.1 Simple Logistic Regression",
-    "text": "5.1 Simple Logistic Regression\n# Fit\nglm(Y ~ X, data = DATA, family = binomial())\n\nDATA → your data frame (e.g., Melanoma)\nY → the outcome variable (e.g., dead)\nX → predictor variables (e.g thickness)"
+    "text": "5.1 Simple Logistic Regression\n# Fit\nm1 &lt;- glm(Y ~ X, data = DATA, family = binomial())\nm1\n\nDATA → your data frame (e.g., Melanoma)\nY → the outcome variable (e.g., dead)\nX → numerical predictor variables (e.g thickness)"
+  },
+  {
+    "objectID": "rcode/logistic.html#group-logistic-regression",
+    "href": "rcode/logistic.html#group-logistic-regression",
+    "title": "Logistic Regression Models",
+    "section": "5.2 Group Logistic Regression",
+    "text": "5.2 Group Logistic Regression\n# Fit\nm2 &lt;- glm(Y ~ X, data = DATA, family = binomial())\nm2\n\nDATA → your data frame (e.g., Melanoma)\nY → the outcome variable (e.g., dead)\nX → categorical predictor variables (e.g sex)"
   },
   {
     "objectID": "rcode/logistic.html#logistic-regression",
     "href": "rcode/logistic.html#logistic-regression",
     "title": "Logistic Regression Models",
-    "section": "5.2 Logistic Regression",
-    "text": "5.2 Logistic Regression\n# Fit\nglm(Y ~ X1 + X2 + ... + Xp, data = DATA, family = binomial())\n\nDATA → your data frame (e.g., Melanoma)\nY → the outcome variable (e.g., dead)\nX1, X2, …, Xp → predictor variables (e.g age, thickness)"
+    "section": "5.3 Logistic Regression",
+    "text": "5.3 Logistic Regression\n# Fit\nm3 &lt;- glm(Y ~ X1 + X2 + ... + Xp, data = DATA, family = binomial())\nm3\n\nDATA → your data frame (e.g., Melanoma)\nY → the outcome variable (e.g., dead)\nX1, X2, …, Xp → predictor variables (e.g age, thickness)"
   },
   {
     "objectID": "rcode/logistic.html#odds-ratio",
     "href": "rcode/logistic.html#odds-ratio",
     "title": "Logistic Regression Models",
-    "section": "5.3 Odds Ratio",
-    "text": "5.3 Odds Ratio\nm &lt;- glm(Y ~ X1 + X2 + ... + Xp, data = DATA, family = binomial())\n\n# Odds Ratio\nexp(coef(m))\n\nDATA → your data frame (e.g., Melanoma)\nY → the outcome variable (e.g., dead)\nX1, X2, …, Xp → predictor variables (e.g age, thickness)"
+    "section": "5.4 Odds Ratio",
+    "text": "5.4 Odds Ratio\nm &lt;- glm(Y ~ X1 + X2 + ... + Xp, data = DATA, family = binomial())\n\n# Odds Ratio\nexp(coef(m))\n\nDATA → your data frame (e.g., Melanoma)\nY → the outcome variable (e.g., dead)\nX1, X2, …, Xp → predictor variables (e.g age, thickness)"
+  },
+  {
+    "objectID": "rcode/logistic.html#predict-probabilities-simple-and-group",
+    "href": "rcode/logistic.html#predict-probabilities-simple-and-group",
+    "title": "Logistic Regression Models",
+    "section": "5.5 Predict Probabilities (Simple and Group)",
+    "text": "5.5 Predict Probabilities (Simple and Group)\nm &lt;- glm(Y ~ X, data = DATA, family = binomial())\n# Predict probabilities\nnew_df &lt;- data.frame(X = VAL)\npredict(m, newdata = new_df, type = \"response\")\n\nDATA → your data frame (e.g., Melanoma)\nY → the outcome variable (e.g., dead)\nX → numerical or categorical predictor variables (e.g age, sex)\nVAL → predictor values (e.g 55, Female)"
   },
   {
     "objectID": "rcode/logistic.html#predict-probabilities",
     "href": "rcode/logistic.html#predict-probabilities",
     "title": "Logistic Regression Models",
-    "section": "5.4 Predict Probabilities",
-    "text": "5.4 Predict Probabilities\nm &lt;- glm(Y ~ X1 + X2 + ... + Xp, data = DATA, family = binomial())\n# Predict probabilities\nnew_df &lt;- data.frame(X1 = VAL1, X2 = VAL2, ...,  Xp = VALp)\npredict(m, newdata = new_df, type = \"response\")\n\nDATA → your data frame (e.g., Melanoma)\nY → the outcome variable (e.g., dead)\nX1, X2, …, Xp → predictor variables (e.g age, thickness)\nVAL1, VAL2, …, VALp → predictor values (e.g 55, 2.8)"
+    "section": "5.6 Predict Probabilities",
+    "text": "5.6 Predict Probabilities\nm &lt;- glm(Y ~ X1 + X2 + ... + Xp, data = DATA, family = binomial())\n# Predict probabilities\nnew_df &lt;- data.frame(X1 = VAL1, X2 = VAL2, ...,  Xp = VALp)\npredict(m, newdata = new_df, type = \"response\")\n\nDATA → your data frame (e.g., Melanoma)\nY → the outcome variable (e.g., dead)\nX1, X2, …, Xp → predictor variables (e.g age, thickness)\nVAL1, VAL2, …, VALp → predictor values (e.g 55, 2.8)"
   },
   {
     "objectID": "rcode/logistic.html#conducting-ht-of-beta_j",
     "href": "rcode/logistic.html#conducting-ht-of-beta_j",
     "title": "Logistic Regression Models",
-    "section": "5.5 Conducting HT of \\(\\beta_j\\)",
-    "text": "5.5 Conducting HT of \\(\\beta_j\\)\nXLM &lt;- glm(Y ~ X1 + X2 + ... + Xp, \n           data = DATA, \n           family = binomial())\ntidy(XLM)\n\nXLM: Object where the model is stored\nY: Name of the outcome variable in DATA\nX1, X2, …, Xp: predictor variables (e.g age, thickness) found in DATA\nDATA: Name of the data set"
+    "section": "5.7 Conducting HT of \\(\\beta_j\\)",
+    "text": "5.7 Conducting HT of \\(\\beta_j\\)\nXLM &lt;- glm(Y ~ X1 + X2 + ... + Xp, \n           data = DATA, \n           family = binomial())\ntidy(XLM)\n\nXLM: Object where the model is stored\nY: Name of the outcome variable in DATA\nX1, X2, …, Xp: predictor variables (e.g age, thickness) found in DATA\nDATA: Name of the data set"
   },
   {
     "objectID": "rcode/logistic.html#confidence-interval",
     "href": "rcode/logistic.html#confidence-interval",
     "title": "Logistic Regression Models",
-    "section": "5.6 Confidence Interval",
-    "text": "5.6 Confidence Interval\ntidy(XLM, \n     conf.int = TRUE, \n     conf.level = LEVEL)\n\nXLM: Object where the model is stored\nLEVEL: A number between 0 and 1 to specify confidence level\ndefaults to 0.95"
+    "section": "5.8 Confidence Interval",
+    "text": "5.8 Confidence Interval\ntidy(XLM, \n     conf.int = TRUE, \n     conf.level = LEVEL)\n\nXLM: Object where the model is stored\nLEVEL: A number between 0 and 1 to specify confidence level\ndefaults to 0.95"
   },
   {
     "objectID": "rcode/logistic.html#odds-ratio-confidence-intervat",
     "href": "rcode/logistic.html#odds-ratio-confidence-intervat",
     "title": "Logistic Regression Models",
-    "section": "5.7 Odds Ratio & Confidence Intervat",
-    "text": "5.7 Odds Ratio & Confidence Intervat\ntidy(XLM, \n     exponentiate = TRUE, \n     conf.int = TRUE)\n\nXLM: Object where the model is stored"
+    "section": "5.9 Odds Ratio & Confidence Intervat",
+    "text": "5.9 Odds Ratio & Confidence Intervat\ntidy(XLM, \n     exponentiate = TRUE, \n     conf.int = TRUE)\n\nXLM: Object where the model is stored"
   },
   {
     "objectID": "rcode.html",
@@ -5310,35 +5324,35 @@
     "href": "rcode/regression.html#adjusted-r2",
     "title": "Linear Regression Models",
     "section": "7.1 Adjusted \\(R^2\\)",
-    "text": "7.1 Adjusted \\(R^2\\)\n\\[R^2 = 1 - \\frac{\\text{Var(resid)}}{\\text{Var}(Y)}, \\quad\nR^2_{adj} = 1 - \\Big(\\frac{\\text{Var(resid)}}{\\text{Var}(Y)}\\Big) \\cdot \\frac{n-1}{n-k-1}\\]\n\nm &lt;- lm(danceability ~ mode_name + valence + energy, data = taylor_album_songs)\nar2(m)\n\n#&gt; [1] 0.09148268"
+    "text": "7.1 Adjusted \\(R^2\\)\n\\[R^2 = 1 - \\frac{\\text{Var(resid)}}{\\text{Var}(Y)}, \\quad\nR^2_{adj} = 1 - \\Big(\\frac{\\text{Var(resid)}}{\\text{Var}(Y)}\\Big) \\cdot \\frac{n-1}{n-k-1}\\]\n\nm &lt;- lm(danceability ~ mode_name + valence + energy, data = taylor_album_songs)\nar2(m)\n\n#&gt; [1] 0.05429238"
   },
   {
     "objectID": "rcode/regression.html#simple-model",
     "href": "rcode/regression.html#simple-model",
     "title": "Linear Regression Models",
     "section": "8.1 Simple Model",
-    "text": "8.1 Simple Model\nlm(Y ~ 1, data = DATA)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)"
+    "text": "8.1 Simple Model\nm1 &lt;- lm(Y ~ 1, data = DATA)\nm1\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)"
   },
   {
     "objectID": "rcode/regression.html#simple-linear-regression",
     "href": "rcode/regression.html#simple-linear-regression",
     "title": "Linear Regression Models",
     "section": "8.2 Simple linear regression",
-    "text": "8.2 Simple linear regression\nlm(Y ~ X, data = DATA)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX → predictor variables (e.g flipper_length_mm)"
+    "text": "8.2 Simple linear regression\nm2 &lt;- lm(Y ~ X, data = DATA)\nm2\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX → numerical predictor variables (e.g flipper_length_mm)"
   },
   {
-    "objectID": "rcode/regression.html#slr-categorical-predictor",
-    "href": "rcode/regression.html#slr-categorical-predictor",
+    "objectID": "rcode/regression.html#slr-group-model",
+    "href": "rcode/regression.html#slr-group-model",
     "title": "Linear Regression Models",
-    "section": "8.3 SLR: Categorical predictor",
-    "text": "8.3 SLR: Categorical predictor\nlm(Y ~ X, data = DATA) \n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX → predictor variables (e.g species)"
+    "section": "8.3 SLR: Group Model",
+    "text": "8.3 SLR: Group Model\nm3 &lt;- lm(Y ~ X, data = DATA) \nm3\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX → predictor variables (e.g species)"
   },
   {
-    "objectID": "rcode/regression.html#slr-categorical-predictor-create-factor",
-    "href": "rcode/regression.html#slr-categorical-predictor-create-factor",
+    "objectID": "rcode/regression.html#slr-group-model-when-it-does-not-work",
+    "href": "rcode/regression.html#slr-group-model-when-it-does-not-work",
     "title": "Linear Regression Models",
-    "section": "8.4 SLR: Categorical predictor (Create Factor)",
-    "text": "8.4 SLR: Categorical predictor (Create Factor)\nlm(Y ~ factor(X), data = DATA)   # coerce X to factor\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX → predictor variables (e.g species)"
+    "section": "8.4 SLR: Group Model (when it does not work)",
+    "text": "8.4 SLR: Group Model (when it does not work)\nm4 &lt;- lm(Y ~ factor(X), data = DATA)   # coerce X to factor\nm4\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX → predictor variables (e.g species)"
   },
   {
     "objectID": "rcode/regression.html#numerical-statistics-by-categories",
@@ -5359,35 +5373,35 @@
     "href": "rcode/regression.html#r2",
     "title": "Linear Regression Models",
     "section": "8.7 \\(R^2\\)",
-    "text": "8.7 \\(R^2\\)\nm &lt;- lm(Y ~ X, data = DATA)\nr2(m)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX → predictor variables (e.g flipper_len)"
+    "text": "8.7 \\(R^2\\)\nm5 &lt;- lm(Y ~ X, data = DATA)\nr2(m5)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX → predictor variables (e.g flipper_len)"
   },
   {
     "objectID": "rcode/regression.html#multiple-linear-regression",
     "href": "rcode/regression.html#multiple-linear-regression",
     "title": "Linear Regression Models",
     "section": "8.8 Multiple linear regression",
-    "text": "8.8 Multiple linear regression\nlm(Y ~ X1 + X2 + ... + Xp, data = DATA)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX1, X2, …, Xp → predictor variables (e.g flipper_len, species)"
+    "text": "8.8 Multiple linear regression\nm6 &lt;- lm(Y ~ X1 + X2 + ... + Xp, data = DATA)\nm6\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX1, X2, …, Xp → predictor variables (e.g flipper_len, species)"
   },
   {
     "objectID": "rcode/regression.html#adjusted-r2-1",
     "href": "rcode/regression.html#adjusted-r2-1",
     "title": "Linear Regression Models",
     "section": "8.9 Adjusted \\(R^2\\)",
-    "text": "8.9 Adjusted \\(R^2\\)\n# Adjusted R^2\nm &lt;- lm(Y ~ X1 + X2 + ... + Xp, data = DATA)\nar2(m)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX1, X2, …, Xp → predictor variables (e.g flipper_len, species)"
+    "text": "8.9 Adjusted \\(R^2\\)\n# Adjusted R^2\nm7 &lt;- lm(Y ~ X1 + X2 + ... + Xp, data = DATA)\nar2(m7)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX1, X2, …, Xp → predictor variables (e.g flipper_len, species)"
   },
   {
-    "objectID": "rcode/regression.html#prediction-slr",
-    "href": "rcode/regression.html#prediction-slr",
+    "objectID": "rcode/regression.html#prediction-slr-and-group-model",
+    "href": "rcode/regression.html#prediction-slr-and-group-model",
     "title": "Linear Regression Models",
-    "section": "8.10 Prediction: SLR",
-    "text": "8.10 Prediction: SLR\nm &lt;- lm(Y ~ X, data = DATA)\nndf &lt;- data.frame(X = VAL)\npredict(m, newdata = ndf)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX → predictor variables (e.g flipper_len)"
+    "section": "8.10 Prediction: SLR and Group Model",
+    "text": "8.10 Prediction: SLR and Group Model\nm &lt;- lm(Y ~ X, data = DATA)\nndf &lt;- data.frame(X = VAL)\npredict(m, newdata = ndf)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX → predictor variables (e.g flipper_len)"
   },
   {
     "objectID": "rcode/regression.html#prediction-mlr",
     "href": "rcode/regression.html#prediction-mlr",
     "title": "Linear Regression Models",
     "section": "8.11 Prediction: MLR",
-    "text": "8.11 Prediction: MLR\nm &lt;- lm(Y ~ X1 + X2 + ... + Xp, data = DATA)\nndf &lt;- data.frame(X1 = VAL1, X2 = VAL2, ..., Xp = VALp)\npredict(m, newdata = ndf)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX1, X2, …, Xp → predictor variables (e.g flipper_len, species)\nVAL1, VAL2, …, VALp → predictor values (e.g 150, \"Gentoo\")"
+    "text": "8.11 Prediction: MLR\nm &lt;- lm(Y ~ X1 + X2 + ... + Xp, data = DATA)\nndf &lt;- data.frame(X1 = VAL1, X2 = VAL2, ..., Xp = VALP)\npredict(m, newdata = ndf)\n\nDATA → your data frame (e.g., penguins)\nY → the outcome variable (e.g., body_mass)\nX1, X2, …, Xp → predictor variables (e.g flipper_len, species)\nVAL1, VAL2, …, VALP → predictor values (e.g 150, \"Gentoo\")"
   },
   {
     "objectID": "rcode/regression.html#scatter-plot",

@@ -203,18 +203,35 @@ tibble(age = new3$age, probability = scales::percent(pred3, accuracy = 0.1))
 
 ```r
 # Fit
-glm(Y ~ X, data = DATA, family = binomial())
+m1 <- glm(Y ~ X, data = DATA, family = binomial())
+m1
 ```
 
 -   **`DATA`** → your data frame (e.g., `Melanoma`)
 -   **`Y`** → the outcome variable (e.g., `dead`)
--   **`X`** → predictor variables (e.g `thickness`)
+-   **`X`** → numerical predictor variables (e.g `thickness`)
+
+## Group Logistic Regression
+
+
+
+```r
+# Fit
+m2 <- glm(Y ~ X, data = DATA, family = binomial())
+m2
+```
+
+-   **`DATA`** → your data frame (e.g., `Melanoma`)
+-   **`Y`** → the outcome variable (e.g., `dead`)
+-   **`X`** → categorical predictor variables (e.g `sex`)
+
 
 ## Logistic Regression
 
 ```r
 # Fit
-glm(Y ~ X1 + X2 + ... + Xp, data = DATA, family = binomial())
+m3 <- glm(Y ~ X1 + X2 + ... + Xp, data = DATA, family = binomial())
+m3
 ```
 
 -   **`DATA`** → your data frame (e.g., `Melanoma`)
@@ -234,6 +251,21 @@ exp(coef(m))
 -   **`DATA`** → your data frame (e.g., `Melanoma`)
 -   **`Y`** → the outcome variable (e.g., `dead`)
 -   **`X1`, `X2`, ..., `Xp`** → predictor variables (e.g `age`, `thickness`)
+
+
+## Predict Probabilities (Simple and Group)
+
+```r
+m <- glm(Y ~ X, data = DATA, family = binomial())
+# Predict probabilities
+new_df <- data.frame(X = VAL)
+predict(m, newdata = new_df, type = "response")
+```
+
+-   **`DATA`** → your data frame (e.g., `Melanoma`)
+-   **`Y`** → the outcome variable (e.g., `dead`)
+-   **`X`** → numerical or categorical predictor variables (e.g `age`, `sex`)
+-   **`VAL`** → predictor values (e.g `55`, `Female`)
 
 
 ## Predict Probabilities
