@@ -409,7 +409,7 @@ $$
 :::
 ::: 
 
-On average, CAT has a larger/smaller Y than REF by about $\beta_1$.
+On **average**, CAT has an **expected** larger/smaller Y than REF by about $\beta_1$.
 
 ## GLM: Interpreting $\beta$
 
@@ -435,7 +435,7 @@ $$
 :::
 ::: 
 
-The odds of having Y is $e^{\beta_1}$ times higher/lower for CAT than Ref. 
+The odds of having Y is **expected** to be $e^{\beta_1}$ times higher/lower for CAT than Ref, on **average**. 
 
 
 # Group Models in R
@@ -498,11 +498,11 @@ $$
 
 ## Intepreting $\hat \beta_1$
 
-On average, Chinstrap has a larger mass than Adelie by about 26.92 grams.
+On **average**, Chinstrap is **expected** to have a larger mass than Adelie by about 26.92 grams.
 
 ## Intepreting $\hat \beta_2$
 
-On average, Gentoo has a larger mass than Adelie by about 1386.27 grams.
+On **average**, Gentoo is **expected** to have a  larger mass than Adelie by about 1386.27 grams.
 
 
 ## Finding the Adelie MASS
@@ -587,7 +587,7 @@ $$
 exp(1.926)
 ```
 
-The odds of having heart disease is 6.86 times higher for a patient who has a fixed defect than a patient who is normal.
+The odds of having heart disease is **expected** to be 6.86 times higher, on **average**, for a patient who has a fixed defect than a patient who is normal.
 
 ## Intepreting $\hat \beta_2$
 
@@ -595,7 +595,7 @@ The odds of having heart disease is 6.86 times higher for a patient who has a fi
 exp(2.415)
 ```
 
-The odds of having heart disease is 11.19 times higher for a patient who has a reversible defect than a patient who is normal.
+The odds of having heart disease is **expected** to be 11.19 times higher, on **average** for a patient who has a reversible defect than a patient who is normal.
 
 ## Prediction in R
 

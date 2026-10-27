@@ -688,7 +688,7 @@ D = \left\{
 \right.
 \]</span></p>
 </div></div>
-<p>On average, CAT has a larger/smaller Y than REF by about <span class="math inline">\(\beta_1\)</span>.</p>
+<p>On <strong>average</strong>, CAT has an <strong>expected</strong> larger/smaller Y than REF by about <span class="math inline">\(\beta_1\)</span>.</p>
 </section>
 <section id="glm-interpreting-beta" class="slide level2">
 <h2>GLM: Interpreting <span class="math inline">\(\beta\)</span></h2>
@@ -707,7 +707,7 @@ D = \left\{
 \right.
 \]</span></p>
 </div></div>
-<p>The odds of having Y is <span class="math inline">\(e^{\beta_1}\)</span> times higher/lower for CAT than Ref.</p>
+<p>The odds of having Y is <strong>expected</strong> to be <span class="math inline">\(e^{\beta_1}\)</span> times higher/lower for CAT than Ref, on <strong>average</strong>.</p>
 </section></section>
 <section>
 <section id="group-models-in-r" class="title-slide slide level1 agenda-slide center">
@@ -813,11 +813,11 @@ D = \left\{
 </section>
 <section id="intepreting-hat-beta_1" class="slide level2">
 <h2>Intepreting <span class="math inline">\(\hat \beta_1\)</span></h2>
-<p>On average, Chinstrap has a larger mass than Adelie by about 26.92 grams.</p>
+<p>On <strong>average</strong>, Chinstrap is <strong>expected</strong> to have a larger mass than Adelie by about 26.92 grams.</p>
 </section>
 <section id="intepreting-hat-beta_2" class="slide level2">
 <h2>Intepreting <span class="math inline">\(\hat \beta_2\)</span></h2>
-<p>On average, Gentoo has a larger mass than Adelie by about 1386.27 grams.</p>
+<p>On <strong>average</strong>, Gentoo is <strong>expected</strong> to have a larger mass than Adelie by about 1386.27 grams.</p>
 </section>
 <section id="finding-the-adelie-mass" class="slide level2">
 <h2>Finding the Adelie MASS</h2>
@@ -945,7 +945,7 @@ lo(disease) = -1.233 + 1.926 (Fixed) + 2.415 (Reversible)
 <pre><code>#&gt; [1] 6.862007</code></pre>
 </div>
 </div>
-<p>The odds of having heart disease is 6.86 times higher for a patient who has a fixed defect than a patient who is normal.</p>
+<p>The odds of having heart disease is <strong>expected</strong> to be 6.86 times higher, on <strong>average</strong>, for a patient who has a fixed defect than a patient who is normal.</p>
 </section>
 <section id="intepreting-hat-beta_2-1" class="slide level2">
 <h2>Intepreting <span class="math inline">\(\hat \beta_2\)</span></h2>
@@ -958,7 +958,7 @@ lo(disease) = -1.233 + 1.926 (Fixed) + 2.415 (Reversible)
 <pre><code>#&gt; [1] 11.18977</code></pre>
 </div>
 </div>
-<p>The odds of having heart disease is 11.19 times higher for a patient who has a reversible defect than a patient who is normal.</p>
+<p>The odds of having heart disease is <strong>expected</strong> to be 11.19 times higher, on <strong>average</strong> for a patient who has a reversible defect than a patient who is normal.</p>
 </section>
 <section id="prediction-in-r-1" class="slide level2">
 <h2>Prediction in R</h2>

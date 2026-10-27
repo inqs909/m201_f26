@@ -294,11 +294,11 @@ $$
 
 For a continuous predictor variable:
 
-As X increases by 1 unit, Y will increases/decrease by an average of $\hat\beta_j$, adjusting for all the other predictor variables.
+As X increases by 1 unit, Y is **expected** to increases/decrease by an **average** of $\hat\beta_j$, keeping all the other predictor variables constant.
 
 For a categorical predictor variable (first dummy variable):
 
-On average, the average Y in category 1 (D = 1) is $\hat\beta_j$ higher/lower than the reference category (D = 0), adjusting for the other predictor variables.
+On average, the average Y in category 1 (D = 1) is **expected** to be $\hat\beta_j$ higher/lower than the reference category (D = 0), keeping all other predictor variables constant.
 
 
 ## Fitting a LM in R
@@ -358,11 +358,11 @@ Exponentiating the estimate ($e^{\hat \beta}$) will give you the relationship be
 
 For a continuous predictor variable:
 
-As X increases by 1 unit, the odds of observing the first category ($Y = 1$) increases by a factor of $e^{\hat\beta_j}$, adjusting for all the other predictor variables.
+As X increases by 1 unit, the odds of observing the first category ($Y = 1$) is **expected** to increase by a **average** factor of $e^{\hat\beta_j}$, keeping all the other predictor variables constant.
 
 For a categorical predictor variable (first dummy variable):
 
-The odds of observing the first category ($Y = 1$) in the indicated category ($D=1$) is $e^{\hat\beta_j}$ times higher/lower compared to the reference category ($D=0$), adjusting for all the other predictor variables.
+The odds of observing the first category ($Y = 1$) in the indicated category ($D=1$) is **expected** to on **average** $e^{\hat\beta_j}$ times higher/lower compared to the reference category ($D=0$), keeping all the other predictor variables constant.
 
 ## Fitting a GLM in R
 
@@ -422,7 +422,7 @@ $$
 body\_mass = -4013.18 -205.38 (Chinstrap)\\ + 284.52 (Gentoo) + 40.61 (flipper\_len)
 $$
 
-As flipper length increased by 1 unit, body mass increases by an **average** of 40.61, adjusting for penguin species.
+As flipper length increased by 1 unit, body mass is **expected** to increases by an **average** of 40.61, keeping penguin species constant.
 
 
 
@@ -437,18 +437,18 @@ $$
 
 ### Chinstrap
 
-On average, the body mass of a Chinstrap species is 205.6 grams lower than an Adelie species, adjusting for flipper length.
+On **average**, the body mass of a Chinstrap species is **expected** to be 205.6 grams lower than an Adelie species, keeping flipper length constant.
 
 ### Gentoo
 
-On average, the body mass of a Gentoo species is 284.5 grams higher than an Adelie species, adjusting for flipper length.
+On **average**, the body mass of a Gentoo species is **expected** to be 284.5 grams higher than an Adelie species, keeping flipper length constant.
 
 :::
 
 
 ## Predicting Body Mass
 
-Let's predict the body mass for a Adelie penguin with a flipper length of 190.
+Let's predict the **average** body mass for a Adelie penguin with a flipper length of 190.
 
 ::: {.fragment}
 
@@ -505,7 +505,7 @@ $$
 exp(-0.04)
 ```
 
-As maximum heart rate achieved increases by 1 unit, the odds of having heart disease decresease by a factor of 0.951, adjusting for thallium stress test results.
+As maximum heart rate achieved increases by 1 unit, the **expected** odds of having heart disease decresease by a factor of 0.951, on **average**, maintaining thallium stress test results constant.
 
 ## Intepreting $thal$ coefficient
 
@@ -522,7 +522,7 @@ $$
 exp(1.38)
 ```
 
-The odds of having heart disease is 3.97 times higher in patients with fixed defects thallium stress results than patients with normal thallium stress results, adjusting for maximum heart rate achieved. 
+The **expectd** odds of having heart disease is 3.97 times higher, on **average**, in patients with fixed defects thallium stress results than patients with normal thallium stress results, maintaining maximum heart rate achieved constant. 
 
 ### Reversible Defect
 
@@ -532,13 +532,13 @@ exp(2.289)
 
 ```
 
-The odds of having heart disease is 9.865 times higher in patients with reversible defects thallium stress results than patients with normal thallium stress results, adjusting for maximum heart rate achieved. 
+The **expected** odds of having heart disease is 9.865 times higher, on **average**, in patients with reversible defects thallium stress results than patients with normal thallium stress results, keeping maximum heart rate achieved constant. 
 
 :::
 
 ##  Predicting Heart Disease
 
-Predict the probability of geting heart disease for a patient who has a fixed defect and thalach of 145.
+Predict the **expected** probability of geting heart disease for a patient who has a fixed defect and thalach of 145.
 
 ::: {.fragment}
 

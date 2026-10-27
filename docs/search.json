@@ -928,14 +928,14 @@
     "href": "lectures/7.html#lm-interpreting-beta",
     "title": "Group  Models",
     "section": "LM: Interpreting \\(\\beta\\)",
-    "text": "LM: Interpreting \\(\\beta\\)\n\n\n\\[\n\\hat Y = \\hat \\beta_0 + \\hat\\beta_1 D\n\\]\n\n\\[\nD = \\left\\{\n\\begin{array}{cc}\n1 & CAT\\\\\n0 & REF\n\\end{array}\n\\right.\n\\]\n\nOn average, CAT has a larger/smaller Y than REF by about \\(\\beta_1\\)."
+    "text": "LM: Interpreting \\(\\beta\\)\n\n\n\\[\n\\hat Y = \\hat \\beta_0 + \\hat\\beta_1 D\n\\]\n\n\\[\nD = \\left\\{\n\\begin{array}{cc}\n1 & CAT\\\\\n0 & REF\n\\end{array}\n\\right.\n\\]\n\nOn average, CAT has an expected larger/smaller Y than REF by about \\(\\beta_1\\)."
   },
   {
     "objectID": "lectures/7.html#glm-interpreting-beta",
     "href": "lectures/7.html#glm-interpreting-beta",
     "title": "Group  Models",
     "section": "GLM: Interpreting \\(\\beta\\)",
-    "text": "GLM: Interpreting \\(\\beta\\)\n\n\n\\[\nlo(Y) = \\hat \\beta_0 + \\hat\\beta_1 D\n\\]\n\n\\[\nD = \\left\\{\n\\begin{array}{cc}\n1 & CAT\\\\\n0 & REF\n\\end{array}\n\\right.\n\\]\n\nThe odds of having Y is \\(e^{\\beta_1}\\) times higher/lower for CAT than Ref."
+    "text": "GLM: Interpreting \\(\\beta\\)\n\n\n\\[\nlo(Y) = \\hat \\beta_0 + \\hat\\beta_1 D\n\\]\n\n\\[\nD = \\left\\{\n\\begin{array}{cc}\n1 & CAT\\\\\n0 & REF\n\\end{array}\n\\right.\n\\]\n\nThe odds of having Y is expected to be \\(e^{\\beta_1}\\) times higher/lower for CAT than Ref, on average."
   },
   {
     "objectID": "lectures/7.html#fitting-an-lm-in-r",
@@ -970,14 +970,14 @@
     "href": "lectures/7.html#intepreting-hat-beta_1",
     "title": "Group  Models",
     "section": "Intepreting \\(\\hat \\beta_1\\)",
-    "text": "Intepreting \\(\\hat \\beta_1\\)\nOn average, Chinstrap has a larger mass than Adelie by about 26.92 grams."
+    "text": "Intepreting \\(\\hat \\beta_1\\)\nOn average, Chinstrap is expected to have a larger mass than Adelie by about 26.92 grams."
   },
   {
     "objectID": "lectures/7.html#intepreting-hat-beta_2",
     "href": "lectures/7.html#intepreting-hat-beta_2",
     "title": "Group  Models",
     "section": "Intepreting \\(\\hat \\beta_2\\)",
-    "text": "Intepreting \\(\\hat \\beta_2\\)\nOn average, Gentoo has a larger mass than Adelie by about 1386.27 grams."
+    "text": "Intepreting \\(\\hat \\beta_2\\)\nOn average, Gentoo is expected to have a larger mass than Adelie by about 1386.27 grams."
   },
   {
     "objectID": "lectures/7.html#finding-the-adelie-mass",
@@ -1019,14 +1019,14 @@
     "href": "lectures/7.html#intepreting-hat-beta_1-1",
     "title": "Group  Models",
     "section": "Intepreting \\(\\hat \\beta_1\\)",
-    "text": "Intepreting \\(\\hat \\beta_1\\)\n\n\nCode\nexp(1.926)\n\n\n#&gt; [1] 6.862007\n\n\nThe odds of having heart disease is 6.86 times higher for a patient who has a fixed defect than a patient who is normal."
+    "text": "Intepreting \\(\\hat \\beta_1\\)\n\n\nCode\nexp(1.926)\n\n\n#&gt; [1] 6.862007\n\n\nThe odds of having heart disease is expected to be 6.86 times higher, on average, for a patient who has a fixed defect than a patient who is normal."
   },
   {
     "objectID": "lectures/7.html#intepreting-hat-beta_2-1",
     "href": "lectures/7.html#intepreting-hat-beta_2-1",
     "title": "Group  Models",
     "section": "Intepreting \\(\\hat \\beta_2\\)",
-    "text": "Intepreting \\(\\hat \\beta_2\\)\n\n\nCode\nexp(2.415)\n\n\n#&gt; [1] 11.18977\n\n\nThe odds of having heart disease is 11.19 times higher for a patient who has a reversible defect than a patient who is normal."
+    "text": "Intepreting \\(\\hat \\beta_2\\)\n\n\nCode\nexp(2.415)\n\n\n#&gt; [1] 11.18977\n\n\nThe odds of having heart disease is expected to be 11.19 times higher, on average for a patient who has a reversible defect than a patient who is normal."
   },
   {
     "objectID": "lectures/7.html#prediction-in-r-1",
@@ -1285,14 +1285,14 @@
     "href": "lectures/5.html#interpretation-of-hat-beta_1",
     "title": "Simple  Linear Regression",
     "section": "Interpretation of \\(\\hat \\beta_1\\)",
-    "text": "Interpretation of \\(\\hat \\beta_1\\)\nThe slope \\(\\hat \\beta_1\\) indicates how will y change when x increases by 1 unit.\n\nIt will demonstrate if there is, on average, a positive or negative relationship based on the sign provided."
+    "text": "Interpretation of \\(\\hat \\beta_1\\)\nThe slope \\(\\hat \\beta_1\\) indicates how we expect y to change when x increases by 1 unit, on average.\n\nIt will demonstrate if there is, on average, a positive or negative relationship based on the sign provided."
   },
   {
     "objectID": "lectures/5.html#interpreting-example-1",
     "href": "lectures/5.html#interpreting-example-1",
     "title": "Simple  Linear Regression",
     "section": "Interpreting Example",
-    "text": "Interpreting Example\n\\[\n\\hat Y_i = -5872.09 + 50.15 X_i\n\\]\nWhen flipper length increases by 1 mm, the body mass will increase by an average of 50.15 grams."
+    "text": "Interpreting Example\n\\[\n\\hat Y_i = -5872.09 + 50.15 X_i\n\\]\nWhen flipper length increases by 1 mm, the body mass is expected to increase by an average of 50.15 grams."
   },
   {
     "objectID": "lectures/5.html#statistical-model",
@@ -4554,7 +4554,7 @@
     "href": "lectures/6.html#interpreting-hat-beta",
     "title": "Simple  Logistic Regression",
     "section": "Interpreting \\(\\hat \\beta\\)",
-    "text": "Interpreting \\(\\hat \\beta\\)\nFor a continuous predictor variable:\nAs X increases by 1 unit, the odds of observing the first category (\\(Y = 1\\)) increases/decreases by a factor of \\(e^{\\hat\\beta}\\)."
+    "text": "Interpreting \\(\\hat \\beta\\)\nFor a continuous predictor variable:\nAs X increases by 1 unit, the odds of observing the first category (\\(Y = 1\\)) is expected increases/decreases by an average factor of \\(e^{\\hat\\beta}\\), ."
   },
   {
     "objectID": "lectures/6.html#logistic-regression-in-r-1",
@@ -4722,7 +4722,7 @@
     "href": "lectures/8.html#interpreting-hat-beta_j",
     "title": "Multivariable  Regression",
     "section": "Interpreting \\(\\hat \\beta_j\\)",
-    "text": "Interpreting \\(\\hat \\beta_j\\)\nFor a continuous predictor variable:\nAs X increases by 1 unit, Y will increases/decrease by an average of \\(\\hat\\beta_j\\), adjusting for all the other predictor variables.\nFor a categorical predictor variable (first dummy variable):\nOn average, the average Y in category 1 (D = 1) is \\(\\hat\\beta_j\\) higher/lower than the reference category (D = 0), adjusting for the other predictor variables."
+    "text": "Interpreting \\(\\hat \\beta_j\\)\nFor a continuous predictor variable:\nAs X increases by 1 unit, Y is expected to increases/decrease by an average of \\(\\hat\\beta_j\\), keeping all the other predictor variables constant.\nFor a categorical predictor variable (first dummy variable):\nOn average, the average Y in category 1 (D = 1) is expected to be \\(\\hat\\beta_j\\) higher/lower than the reference category (D = 0), keeping all other predictor variables constant."
   },
   {
     "objectID": "lectures/8.html#fitting-a-lm-in-r",
@@ -4771,7 +4771,7 @@
     "href": "lectures/8.html#interpreting-hat-beta_j-1",
     "title": "Multivariable  Regression",
     "section": "Interpreting \\(\\hat \\beta_j\\)",
-    "text": "Interpreting \\(\\hat \\beta_j\\)\nFor a continuous predictor variable:\nAs X increases by 1 unit, the odds of observing the first category (\\(Y = 1\\)) increases by a factor of \\(e^{\\hat\\beta_j}\\), adjusting for all the other predictor variables.\nFor a categorical predictor variable (first dummy variable):\nThe odds of observing the first category (\\(Y = 1\\)) in the indicated category (\\(D=1\\)) is \\(e^{\\hat\\beta_j}\\) times higher/lower compared to the reference category (\\(D=0\\)), adjusting for all the other predictor variables."
+    "text": "Interpreting \\(\\hat \\beta_j\\)\nFor a continuous predictor variable:\nAs X increases by 1 unit, the odds of observing the first category (\\(Y = 1\\)) is expected to increase by a average factor of \\(e^{\\hat\\beta_j}\\), keeping all the other predictor variables constant.\nFor a categorical predictor variable (first dummy variable):\nThe odds of observing the first category (\\(Y = 1\\)) in the indicated category (\\(D=1\\)) is expected to on average \\(e^{\\hat\\beta_j}\\) times higher/lower compared to the reference category (\\(D=0\\)), keeping all the other predictor variables constant."
   },
   {
     "objectID": "lectures/8.html#fitting-a-glm-in-r",
@@ -4806,21 +4806,21 @@
     "href": "lectures/8.html#intepreting-flipper_len-coefficient",
     "title": "Multivariable  Regression",
     "section": "Intepreting \\(flipper\\_len\\) coefficient",
-    "text": "Intepreting \\(flipper\\_len\\) coefficient\n\\[\nbody\\_mass = -4013.18 -205.38 (Chinstrap)\\\\ + 284.52 (Gentoo) + 40.61 (flipper\\_len)\n\\]\nAs flipper length increased by 1 unit, body mass increases by an average of 40.61, adjusting for penguin species."
+    "text": "Intepreting \\(flipper\\_len\\) coefficient\n\\[\nbody\\_mass = -4013.18 -205.38 (Chinstrap)\\\\ + 284.52 (Gentoo) + 40.61 (flipper\\_len)\n\\]\nAs flipper length increased by 1 unit, body mass is expected to increases by an average of 40.61, keeping penguin species constant."
   },
   {
     "objectID": "lectures/8.html#intepreting-species-coefficient",
     "href": "lectures/8.html#intepreting-species-coefficient",
     "title": "Multivariable  Regression",
     "section": "Intepreting \\(species\\) coefficient",
-    "text": "Intepreting \\(species\\) coefficient\n\\[\nbody\\_mass = -4013.18 -205.38 (Chinstrap)\\\\ + 284.52 (Gentoo) + 40.61 (flipper\\_len)\n\\]\n\nChinstrapGentoo\n\n\nOn average, the body mass of a Chinstrap species is 205.6 grams lower than an Adelie species, adjusting for flipper length.\n\n\nOn average, the body mass of a Gentoo species is 284.5 grams higher than an Adelie species, adjusting for flipper length."
+    "text": "Intepreting \\(species\\) coefficient\n\\[\nbody\\_mass = -4013.18 -205.38 (Chinstrap)\\\\ + 284.52 (Gentoo) + 40.61 (flipper\\_len)\n\\]\n\nChinstrapGentoo\n\n\nOn average, the body mass of a Chinstrap species is expected to be 205.6 grams lower than an Adelie species, keeping flipper length constant.\n\n\nOn average, the body mass of a Gentoo species is expected to be 284.5 grams higher than an Adelie species, keeping flipper length constant."
   },
   {
     "objectID": "lectures/8.html#predicting-body-mass",
     "href": "lectures/8.html#predicting-body-mass",
     "title": "Multivariable  Regression",
     "section": "Predicting Body Mass",
-    "text": "Predicting Body Mass\nLet’s predict the body mass for a Adelie penguin with a flipper length of 190.\n\n\ndf &lt;- data.frame(species = \"Adelie\", flipper_len =  190)\npredict(xlm, df)\n\n#&gt;        1 \n#&gt; 3701.993"
+    "text": "Predicting Body Mass\nLet’s predict the average body mass for a Adelie penguin with a flipper length of 190.\n\n\ndf &lt;- data.frame(species = \"Adelie\", flipper_len =  190)\npredict(xlm, df)\n\n#&gt;        1 \n#&gt; 3701.993"
   },
   {
     "objectID": "lectures/8.html#modelling-heart-disease",
@@ -4848,21 +4848,21 @@
     "href": "lectures/8.html#intepreting-thalach-coefficient",
     "title": "Multivariable  Regression",
     "section": "Intepreting \\(thalach\\) coefficient",
-    "text": "Intepreting \\(thalach\\) coefficient\n\\[\nlo(disease) = 4.70 + 1.38 (Fixed) + 2.29 (Reversible)\\\\ - 0.04 (thalach)\n\\]\n\nexp(-0.04)\n\n#&gt; [1] 0.9607894\n\n\nAs maximum heart rate achieved increases by 1 unit, the odds of having heart disease decresease by a factor of 0.951, adjusting for thallium stress test results."
+    "text": "Intepreting \\(thalach\\) coefficient\n\\[\nlo(disease) = 4.70 + 1.38 (Fixed) + 2.29 (Reversible)\\\\ - 0.04 (thalach)\n\\]\n\nexp(-0.04)\n\n#&gt; [1] 0.9607894\n\n\nAs maximum heart rate achieved increases by 1 unit, the expected odds of having heart disease decresease by a factor of 0.951, on average, maintaining thallium stress test results constant."
   },
   {
     "objectID": "lectures/8.html#intepreting-thal-coefficient",
     "href": "lectures/8.html#intepreting-thal-coefficient",
     "title": "Multivariable  Regression",
     "section": "Intepreting \\(thal\\) coefficient",
-    "text": "Intepreting \\(thal\\) coefficient\n\\[\nlo(disease) = 4.70 + 1.38 (Fixed) + 2.29 (Reversible)\\\\ - 0.04 (thalach)\n\\]\n\nFixed DefectReversible Defect\n\n\n\nexp(1.38)\n\n#&gt; [1] 3.974902\n\n\nThe odds of having heart disease is 3.97 times higher in patients with fixed defects thallium stress results than patients with normal thallium stress results, adjusting for maximum heart rate achieved.\n\n\n\nexp(2.289)\n\n#&gt; [1] 9.865068\n\n\nThe odds of having heart disease is 9.865 times higher in patients with reversible defects thallium stress results than patients with normal thallium stress results, adjusting for maximum heart rate achieved."
+    "text": "Intepreting \\(thal\\) coefficient\n\\[\nlo(disease) = 4.70 + 1.38 (Fixed) + 2.29 (Reversible)\\\\ - 0.04 (thalach)\n\\]\n\nFixed DefectReversible Defect\n\n\n\nexp(1.38)\n\n#&gt; [1] 3.974902\n\n\nThe expectd odds of having heart disease is 3.97 times higher, on average, in patients with fixed defects thallium stress results than patients with normal thallium stress results, maintaining maximum heart rate achieved constant.\n\n\n\nexp(2.289)\n\n#&gt; [1] 9.865068\n\n\nThe expected odds of having heart disease is 9.865 times higher, on average, in patients with reversible defects thallium stress results than patients with normal thallium stress results, keeping maximum heart rate achieved constant."
   },
   {
     "objectID": "lectures/8.html#predicting-heart-disease",
     "href": "lectures/8.html#predicting-heart-disease",
     "title": "Multivariable  Regression",
     "section": "Predicting Heart Disease",
-    "text": "Predicting Heart Disease\nPredict the probability of geting heart disease for a patient who has a fixed defect and thalach of 145.\n\n\ndf &lt;- data.frame(thal = \"Fixed Defect\", thalach =  145)\npredict(xglm, df)\n\n#&gt;         1 \n#&gt; 0.3930531"
+    "text": "Predicting Heart Disease\nPredict the expected probability of geting heart disease for a patient who has a fixed defect and thalach of 145.\n\n\ndf &lt;- data.frame(thal = \"Fixed Defect\", thalach =  145)\npredict(xglm, df)\n\n#&gt;         1 \n#&gt; 0.3930531"
   },
   {
     "objectID": "lectures/8.html#model-building-1",

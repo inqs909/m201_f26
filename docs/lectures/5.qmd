@@ -486,7 +486,7 @@ When flipper length is 0 mm, the body mass is -5872 grams.
 
 ## Interpretation of $\hat \beta_1$
 
-The slope $\hat \beta_1$ indicates how will y change when x increases by 1 unit.
+The slope $\hat \beta_1$ indicates how we **expect** y to change when x increases by 1 unit, on **average**.
 
 ::: fragment
 It will demonstrate if there is, on average, a positive or negative relationship based on the sign provided.
@@ -498,7 +498,7 @@ $$
 \hat Y_i = -5872.09 + 50.15 X_i
 $$
 
-When flipper length increases by 1 mm, the body mass will increase by an average of 50.15 grams.
+When flipper length increases by 1 mm, the body mass is **expected** to increase by an **average** of 50.15 grams.
 
 
 # Prediction

@@ -243,7 +243,7 @@ Exponentiating the estimate ($e^{\hat \beta}$) will give you the relationship be
 
 For a continuous predictor variable:
 
-As X increases by 1 unit, the odds of observing the first category ($Y = 1$) increases/decreases by a factor of $e^{\hat\beta}$.
+As X increases by 1 unit, the odds of observing the first category ($Y = 1$) is **expected** increases/decreases by an **average** factor of $e^{\hat\beta}$, .
 
 # Logistic Regression in R
 

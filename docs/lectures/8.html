@@ -548,9 +548,9 @@ Y_i = \beta_0 + \beta_1 X_{i1} + \beta_2 X_{i2} + \cdots + \beta_p X_{ip} + \var
 <section id="interpreting-hat-beta_j" class="slide level2">
 <h2>Interpreting <span class="math inline">\(\hat \beta_j\)</span></h2>
 <p>For a continuous predictor variable:</p>
-<p>As X increases by 1 unit, Y will increases/decrease by an average of <span class="math inline">\(\hat\beta_j\)</span>, adjusting for all the other predictor variables.</p>
+<p>As X increases by 1 unit, Y is <strong>expected</strong> to increases/decrease by an <strong>average</strong> of <span class="math inline">\(\hat\beta_j\)</span>, keeping all the other predictor variables constant.</p>
 <p>For a categorical predictor variable (first dummy variable):</p>
-<p>On average, the average Y in category 1 (D = 1) is <span class="math inline">\(\hat\beta_j\)</span> higher/lower than the reference category (D = 0), adjusting for the other predictor variables.</p>
+<p>On average, the average Y in category 1 (D = 1) is <strong>expected</strong> to be <span class="math inline">\(\hat\beta_j\)</span> higher/lower than the reference category (D = 0), keeping all other predictor variables constant.</p>
 </section>
 <section id="fitting-a-lm-in-r" class="slide level2">
 <h2>Fitting a LM in R</h2>
@@ -623,9 +623,9 @@ L(\boldsymbol \beta) = \prod_{i=1}^n \left(\frac{e^{\beta_0 + \beta_1X_1 + \cdot
 <section id="interpreting-hat-beta_j-1" class="slide level2">
 <h2>Interpreting <span class="math inline">\(\hat \beta_j\)</span></h2>
 <p>For a continuous predictor variable:</p>
-<p>As X increases by 1 unit, the odds of observing the first category (<span class="math inline">\(Y = 1\)</span>) increases by a factor of <span class="math inline">\(e^{\hat\beta_j}\)</span>, adjusting for all the other predictor variables.</p>
+<p>As X increases by 1 unit, the odds of observing the first category (<span class="math inline">\(Y = 1\)</span>) is <strong>expected</strong> to increase by a <strong>average</strong> factor of <span class="math inline">\(e^{\hat\beta_j}\)</span>, keeping all the other predictor variables constant.</p>
 <p>For a categorical predictor variable (first dummy variable):</p>
-<p>The odds of observing the first category (<span class="math inline">\(Y = 1\)</span>) in the indicated category (<span class="math inline">\(D=1\)</span>) is <span class="math inline">\(e^{\hat\beta_j}\)</span> times higher/lower compared to the reference category (<span class="math inline">\(D=0\)</span>), adjusting for all the other predictor variables.</p>
+<p>The odds of observing the first category (<span class="math inline">\(Y = 1\)</span>) in the indicated category (<span class="math inline">\(D=1\)</span>) is <strong>expected</strong> to on <strong>average</strong> <span class="math inline">\(e^{\hat\beta_j}\)</span> times higher/lower compared to the reference category (<span class="math inline">\(D=0\)</span>), keeping all the other predictor variables constant.</p>
 </section>
 <section id="fitting-a-glm-in-r" class="slide level2">
 <h2>Fitting a GLM in R</h2>
@@ -704,7 +704,7 @@ body\_mass = -4013.18 -205.38 (Chinstrap)\\ + 284.52 (Gentoo) + 40.61 (flipper\_
 <p><span class="math display">\[
 body\_mass = -4013.18 -205.38 (Chinstrap)\\ + 284.52 (Gentoo) + 40.61 (flipper\_len)
 \]</span></p>
-<p>As flipper length increased by 1 unit, body mass increases by an <strong>average</strong> of 40.61, adjusting for penguin species.</p>
+<p>As flipper length increased by 1 unit, body mass is <strong>expected</strong> to increases by an <strong>average</strong> of 40.61, keeping penguin species constant.</p>
 </section>
 <section id="intepreting-species-coefficient" class="slide level2">
 <h2>Intepreting <span class="math inline">\(species\)</span> coefficient</h2>
@@ -715,17 +715,17 @@ body\_mass = -4013.18 -205.38 (Chinstrap)\\ + 284.52 (Gentoo) + 40.61 (flipper\_
 <ul id="tabset-3" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-3-1">Chinstrap</a></li><li><a href="#tabset-3-2">Gentoo</a></li></ul>
 <div class="tab-content">
 <div id="tabset-3-1">
-<p>On average, the body mass of a Chinstrap species is 205.6 grams lower than an Adelie species, adjusting for flipper length.</p>
+<p>On <strong>average</strong>, the body mass of a Chinstrap species is <strong>expected</strong> to be 205.6 grams lower than an Adelie species, keeping flipper length constant.</p>
 </div>
 <div id="tabset-3-2">
-<p>On average, the body mass of a Gentoo species is 284.5 grams higher than an Adelie species, adjusting for flipper length.</p>
+<p>On <strong>average</strong>, the body mass of a Gentoo species is <strong>expected</strong> to be 284.5 grams higher than an Adelie species, keeping flipper length constant.</p>
 </div>
 </div>
 </div>
 </section>
 <section id="predicting-body-mass" class="slide level2">
 <h2>Predicting Body Mass</h2>
-<p>Let’s predict the body mass for a Adelie penguin with a flipper length of 190.</p>
+<p>Let’s predict the <strong>average</strong> body mass for a Adelie penguin with a flipper length of 190.</p>
 <div class="fragment">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">species =</span> <span class="st">"Adelie"</span>, <span class="at">flipper_len =</span>  <span class="dv">190</span>)</span>
@@ -829,7 +829,7 @@ lo(disease) = 4.70 + 1.38 (Fixed) + 2.29 (Reversible)\\ - 0.04 (thalach)
 <pre><code>#&gt; [1] 0.9607894</code></pre>
 </div>
 </div>
-<p>As maximum heart rate achieved increases by 1 unit, the odds of having heart disease decresease by a factor of 0.951, adjusting for thallium stress test results.</p>
+<p>As maximum heart rate achieved increases by 1 unit, the <strong>expected</strong> odds of having heart disease decresease by a factor of 0.951, on <strong>average</strong>, maintaining thallium stress test results constant.</p>
 </section>
 <section id="intepreting-thal-coefficient" class="slide level2">
 <h2>Intepreting <span class="math inline">\(thal\)</span> coefficient</h2>
@@ -846,7 +846,7 @@ lo(disease) = 4.70 + 1.38 (Fixed) + 2.29 (Reversible)\\ - 0.04 (thalach)
 <pre><code>#&gt; [1] 3.974902</code></pre>
 </div>
 </div>
-<p>The odds of having heart disease is 3.97 times higher in patients with fixed defects thallium stress results than patients with normal thallium stress results, adjusting for maximum heart rate achieved.</p>
+<p>The <strong>expectd</strong> odds of having heart disease is 3.97 times higher, on <strong>average</strong>, in patients with fixed defects thallium stress results than patients with normal thallium stress results, maintaining maximum heart rate achieved constant.</p>
 </div>
 <div id="tabset-4-2">
 <div class="cell">
@@ -855,14 +855,14 @@ lo(disease) = 4.70 + 1.38 (Fixed) + 2.29 (Reversible)\\ - 0.04 (thalach)
 <pre><code>#&gt; [1] 9.865068</code></pre>
 </div>
 </div>
-<p>The odds of having heart disease is 9.865 times higher in patients with reversible defects thallium stress results than patients with normal thallium stress results, adjusting for maximum heart rate achieved.</p>
+<p>The <strong>expected</strong> odds of having heart disease is 9.865 times higher, on <strong>average</strong>, in patients with reversible defects thallium stress results than patients with normal thallium stress results, keeping maximum heart rate achieved constant.</p>
 </div>
 </div>
 </div>
 </section>
 <section id="predicting-heart-disease" class="slide level2">
 <h2>Predicting Heart Disease</h2>
-<p>Predict the probability of geting heart disease for a patient who has a fixed defect and thalach of 145.</p>
+<p>Predict the <strong>expected</strong> probability of geting heart disease for a patient who has a fixed defect and thalach of 145.</p>
 <div class="fragment">
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">thal =</span> <span class="st">"Fixed Defect"</span>, <span class="at">thalach =</span>  <span class="dv">145</span>)</span>
