@@ -378,7 +378,7 @@ L(\boldsymbol \beta) = \prod_{i=1}^n \left(\frac{e^{\beta_0 + \beta_1X}}{1 + e^{
 <section id="interpreting-hat-beta" class="slide level2">
 <h2>Interpreting <span class="math inline">\(\hat \beta\)</span></h2>
 <p>For a continuous predictor variable:</p>
-<p>As X increases by 1 unit, the odds of observing the first category (<span class="math inline">\(Y = 1\)</span>) is <strong>expected</strong> increases/decreases by an <strong>average</strong> factor of <span class="math inline">\(e^{\hat\beta}\)</span>, .</p>
+<p>As X increases by 1 unit, the odds of observing the first category (<span class="math inline">\(Y = 1\)</span>) is <strong>expected</strong> to increases/decreases by an <strong>average</strong> factor of <span class="math inline">\(e^{\hat\beta}\)</span>, .</p>
 </section></section>
 <section>
 <section id="logistic-regression-in-r" class="title-slide slide level1 agenda-slide center">
@@ -476,7 +476,7 @@ lo(disease) = -3.0512 + 0.0529 (age)
 </div>
 </div>
 <div class="fragment">
-<p>As age increases by 1 year, the odds of having heart disease increases by a factor of 1.054.</p>
+<p>As age increases by 1 year, the <strong>expected</strong> odds of having heart disease increases by an <strong>average</strong> factor of 1.054.</p>
 </div>
 </section></section>
 <section>
@@ -521,7 +521,7 @@ lo(disease) = -3.0512 + 0.0529 (age)
 </section>
 <section id="example-1" class="slide level2">
 <h2>Example 1</h2>
-<p>Predict the probability of having heart disease for a patient who is 40 years old.</p>
+<p>Predict the <strong>expected</strong> probability of having heart disease for a patient who is 40 years old.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -539,7 +539,7 @@ lo(disease) = -3.0512 + 0.0529 (age)
 </section>
 <section id="example-2" class="slide level2">
 <h2>Example 2</h2>
-<p>Predict the probability of having heart disease for a patient who is 55 years old.</p>
+<p>Predict the <strong>expected</strong> probability of having heart disease for a patient who is 55 years old.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -557,7 +557,7 @@ lo(disease) = -3.0512 + 0.0529 (age)
 </section>
 <section id="example-3" class="slide level2">
 <h2>Example 3</h2>
-<p>Predict the probability of having heart disease for a patient who is 70 years old.</p>
+<p>Predict the <strong>expected</strong> probability of having heart disease for a patient who is 70 years old.</p>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>

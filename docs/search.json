@@ -907,7 +907,7 @@
     "href": "lectures/7.html#lm-penguins",
     "title": "Group  Models",
     "section": "LM: Penguins",
-    "text": "LM: Penguins\n\\[\nbody\\_mass = \\hat \\beta_0 + \\hat\\beta_1 (Chinstrap) + \\hat\\beta_2 (Gentoo)\n\\]\n\n\\(\\hat \\beta_1\\) indicates how body mass changes from Adelie to Chinstrap.\n\n\n\\(\\hat \\beta_2\\) indicates how body mass changes from Adelie to Gentoo.\n\n\n\\(\\hat \\beta_0\\) represents the baseline level, in this case the body mass of Adelie."
+    "text": "LM: Penguins\n\\[\nbody\\_mass = \\hat \\beta_0 + \\hat\\beta_1 (Chinstrap) + \\hat\\beta_2 (Gentoo)\n\\]\n\n\\(\\hat \\beta_1\\) indicates how body mass is expected to change from Adelie to Chinstrap, on average.\n\n\n\\(\\hat \\beta_2\\) indicates how body mass is expected to change from Adelie to Gentoo, on average.\n\n\n\\(\\hat \\beta_0\\) represents the baseline level, in this case the expected body mass of Adelie."
   },
   {
     "objectID": "lectures/7.html#glm-heart-disease",
@@ -1306,7 +1306,7 @@
     "href": "lectures/5.html#prediction-1",
     "title": "Simple  Linear Regression",
     "section": "Prediction",
-    "text": "Prediction\nUsing the equation \\(\\hat Y\\), we can give it a value of \\(X\\) and then, in return, a value of \\(\\hat Y\\) that predicts the true value \\(Y\\)."
+    "text": "Prediction\nUsing the equation \\(\\hat Y\\), we can give it a value of \\(X\\) and then, in return, a value of \\(\\hat Y\\) (expected Y) that predicts the true value \\(Y\\)."
   },
   {
     "objectID": "lectures/5.html#prediction-in-r",
@@ -1320,14 +1320,14 @@
     "href": "lectures/5.html#example-1",
     "title": "Simple  Linear Regression",
     "section": "Example 1",
-    "text": "Example 1\n\nExampleCode\n\n\nPredict the body mass for a penguin with a flipper length of 185.\n\n\n\n\nCode\nxlm &lt;- lm(body_mass ~ flipper_len,\n            data = penguins)\n\nxlm\n\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = body_mass ~ flipper_len, data = penguins)\n#&gt; \n#&gt; Coefficients:\n#&gt; (Intercept)  flipper_len  \n#&gt;    -5872.09        50.15\n\n\nCode\npredict_df &lt;- data.frame(flipper_len = 185)\n\npredict(xlm,\n        predict_df)\n\n\n#&gt;        1 \n#&gt; 3406.262"
+    "text": "Example 1\n\nExampleCode\n\n\nPredict the expected body mass for a penguin with a flipper length of 185.\n\n\n\n\nCode\nxlm &lt;- lm(body_mass ~ flipper_len,\n            data = penguins)\n\nxlm\n\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = body_mass ~ flipper_len, data = penguins)\n#&gt; \n#&gt; Coefficients:\n#&gt; (Intercept)  flipper_len  \n#&gt;    -5872.09        50.15\n\n\nCode\npredict_df &lt;- data.frame(flipper_len = 185)\n\npredict(xlm,\n        predict_df)\n\n\n#&gt;        1 \n#&gt; 3406.262"
   },
   {
     "objectID": "lectures/5.html#example-2-1",
     "href": "lectures/5.html#example-2-1",
     "title": "Simple  Linear Regression",
     "section": "Example 2",
-    "text": "Example 2\n\nExampleCode\n\n\nPredict the body mass for a penguin with a flipper length of 205.\n\n\n\n\nCode\nxlm &lt;- lm(body_mass ~ flipper_len,\n            data = penguins)\n\n\nxlm\n\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = body_mass ~ flipper_len, data = penguins)\n#&gt; \n#&gt; Coefficients:\n#&gt; (Intercept)  flipper_len  \n#&gt;    -5872.09        50.15\n\n\nCode\npredict_df &lt;- data.frame(flipper_len = 190)\n\npredict(xlm,\n        predict_df)\n\n\n#&gt;        1 \n#&gt; 3657.028"
+    "text": "Example 2\n\nExampleCode\n\n\nPredict the expected body mass for a penguin with a flipper length of 205.\n\n\n\n\nCode\nxlm &lt;- lm(body_mass ~ flipper_len,\n            data = penguins)\n\n\nxlm\n\n\n#&gt; \n#&gt; Call:\n#&gt; lm(formula = body_mass ~ flipper_len, data = penguins)\n#&gt; \n#&gt; Coefficients:\n#&gt; (Intercept)  flipper_len  \n#&gt;    -5872.09        50.15\n\n\nCode\npredict_df &lt;- data.frame(flipper_len = 190)\n\npredict(xlm,\n        predict_df)\n\n\n#&gt;        1 \n#&gt; 3657.028"
   },
   {
     "objectID": "lectures/5.html#interpolation",
@@ -4554,7 +4554,7 @@
     "href": "lectures/6.html#interpreting-hat-beta",
     "title": "Simple  Logistic Regression",
     "section": "Interpreting \\(\\hat \\beta\\)",
-    "text": "Interpreting \\(\\hat \\beta\\)\nFor a continuous predictor variable:\nAs X increases by 1 unit, the odds of observing the first category (\\(Y = 1\\)) is expected increases/decreases by an average factor of \\(e^{\\hat\\beta}\\), ."
+    "text": "Interpreting \\(\\hat \\beta\\)\nFor a continuous predictor variable:\nAs X increases by 1 unit, the odds of observing the first category (\\(Y = 1\\)) is expected to increases/decreases by an average factor of \\(e^{\\hat\\beta}\\), ."
   },
   {
     "objectID": "lectures/6.html#logistic-regression-in-r-1",
@@ -4596,7 +4596,7 @@
     "href": "lectures/6.html#interpretation",
     "title": "Simple  Logistic Regression",
     "section": "Interpretation",
-    "text": "Interpretation\n\\[\nlo(disease) = -3.0512 + 0.0529 (age)\n\\]\n\n\nCode\nexp(0.05291)\n\n\n#&gt; [1] 1.054335\n\n\n\nAs age increases by 1 year, the odds of having heart disease increases by a factor of 1.054."
+    "text": "Interpretation\n\\[\nlo(disease) = -3.0512 + 0.0529 (age)\n\\]\n\n\nCode\nexp(0.05291)\n\n\n#&gt; [1] 1.054335\n\n\n\nAs age increases by 1 year, the expected odds of having heart disease increases by an average factor of 1.054."
   },
   {
     "objectID": "lectures/6.html#working-with-probabilities",
@@ -4624,21 +4624,21 @@
     "href": "lectures/6.html#example-1",
     "title": "Simple  Logistic Regression",
     "section": "Example 1",
-    "text": "Example 1\nPredict the probability of having heart disease for a patient who is 40 years old.\n\n\nCode\nxglm &lt;- glm(disease ~ age,\n            data = heart_disease,\n            family = binomial())\nndf &lt;- data.frame(age = 40)\npredict(xglm, ndf, type = \"response\")\n\n\n#&gt;         1 \n#&gt; 0.2819196"
+    "text": "Example 1\nPredict the expected probability of having heart disease for a patient who is 40 years old.\n\n\nCode\nxglm &lt;- glm(disease ~ age,\n            data = heart_disease,\n            family = binomial())\nndf &lt;- data.frame(age = 40)\npredict(xglm, ndf, type = \"response\")\n\n\n#&gt;         1 \n#&gt; 0.2819196"
   },
   {
     "objectID": "lectures/6.html#example-2",
     "href": "lectures/6.html#example-2",
     "title": "Simple  Logistic Regression",
     "section": "Example 2",
-    "text": "Example 2\nPredict the probability of having heart disease for a patient who is 55 years old.\n\n\nCode\nxglm &lt;- glm(disease ~ age,\n            data = heart_disease,\n            family = binomial())\nndf &lt;- data.frame(age = 55)\npredict(xglm, ndf, type = \"response\")\n\n\n#&gt;         1 \n#&gt; 0.4647183"
+    "text": "Example 2\nPredict the expected probability of having heart disease for a patient who is 55 years old.\n\n\nCode\nxglm &lt;- glm(disease ~ age,\n            data = heart_disease,\n            family = binomial())\nndf &lt;- data.frame(age = 55)\npredict(xglm, ndf, type = \"response\")\n\n\n#&gt;         1 \n#&gt; 0.4647183"
   },
   {
     "objectID": "lectures/6.html#example-3",
     "href": "lectures/6.html#example-3",
     "title": "Simple  Logistic Regression",
     "section": "Example 3",
-    "text": "Example 3\nPredict the probability of having heart disease for a patient who is 70 years old.\n\n\nCode\nxglm &lt;- glm(disease ~ age,\n            data = heart_disease,\n            family = binomial())\nndf &lt;- data.frame(age = 70)\npredict(xglm, ndf, type = \"response\")\n\n\n#&gt;         1 \n#&gt; 0.6575143"
+    "text": "Example 3\nPredict the expected probability of having heart disease for a patient who is 70 years old.\n\n\nCode\nxglm &lt;- glm(disease ~ age,\n            data = heart_disease,\n            family = binomial())\nndf &lt;- data.frame(age = 70)\npredict(xglm, ndf, type = \"response\")\n\n\n#&gt;         1 \n#&gt; 0.6575143"
   },
   {
     "objectID": "lectures/6.html#example-4",

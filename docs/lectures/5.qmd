@@ -514,7 +514,7 @@ $$
 
 ## Prediction
 
-Using the equation $\hat Y$, we can give it a value of $X$ and then, in return, a value of $\hat Y$ that predicts the true value $Y$.
+Using the equation $\hat Y$, we can give it a value of $X$ and then, in return, a value of $\hat Y$ (**expected** Y) that predicts the true value $Y$.
 
 ## Prediction in R
 
@@ -543,7 +543,7 @@ predict(xlm,
 
 ### Example
 
-Predict the body mass for a penguin with a flipper length of 185.
+Predict the **expected** body mass for a penguin with a flipper length of 185.
 
 ### Code
 
@@ -568,7 +568,7 @@ predict(xlm,
 
 ### Example
 
-Predict the body mass for a penguin with a flipper length of 205.
+Predict the **expected** body mass for a penguin with a flipper length of 205.
 
 ### Code
 

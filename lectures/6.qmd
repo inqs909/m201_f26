@@ -317,7 +317,7 @@ exp(0.05291)
 ```
 
 ::: fragment
-As age increases by 1 year, the odds of having heart disease increases by a factor of 1.054.
+As age increases by 1 year, the **expected** odds of having heart disease increases by an **average** factor of 1.054.
 :::
 
 # Prediction with Models
@@ -348,7 +348,7 @@ predict(xglm,
 
 ## Example 1
 
-Predict the probability of having heart disease for a patient who is 40 years old.
+Predict the **expected** probability of having heart disease for a patient who is 40 years old.
 
 ```{r}
 xglm <- glm(disease ~ age,
@@ -361,7 +361,7 @@ predict(xglm, ndf, type = "response")
 
 ## Example 2
 
-Predict the probability of having heart disease for a patient who is 55 years old.
+Predict the **expected** probability of having heart disease for a patient who is 55 years old.
 
 ```{r}
 xglm <- glm(disease ~ age,
@@ -373,7 +373,7 @@ predict(xglm, ndf, type = "response")
 
 ## Example 3
 
-Predict the probability of having heart disease for a patient who is 70 years old.
+Predict the **expected** probability of having heart disease for a patient who is 70 years old.
 
 ```{r}
 xglm <- glm(disease ~ age,

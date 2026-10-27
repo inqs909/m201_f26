@@ -352,15 +352,15 @@ body\_mass = \hat \beta_0 + \hat\beta_1 (Chinstrap) + \hat\beta_2 (Gentoo)
 $$
 
 ::: fragment
-$\hat \beta_1$ indicates how body mass changes from Adelie to Chinstrap.
+$\hat \beta_1$ indicates how body mass is **expected** to change from Adelie to Chinstrap, on **average**.
 :::
 
 ::: fragment
-$\hat \beta_2$ indicates how body mass changes from Adelie to Gentoo.
+$\hat \beta_2$ indicates how body mass is **expected** to change from Adelie to Gentoo, on **average**.
 :::
 
 ::: fragment
-$\hat \beta_0$ represents the baseline level, in this case the body mass of Adelie.
+$\hat \beta_0$ represents the baseline level, in this case the **expected** body mass of Adelie.
 :::
 
 ## GLM: Heart Disease
