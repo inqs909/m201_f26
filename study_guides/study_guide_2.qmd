@@ -1,0 +1,413 @@
+---
+title: "Exam 2 Study Guide"
+subtitle: "Regression and Sampling Distributions"
+format:
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: true
+    smooth-scroll: true
+    embed-resources: true
+    theme: cosmo
+date: last-modified
+---
+
+
+Use this study guide as a highlight of main topics to study for the exam. However, you will be required to no more details than provided here. The questions are examples, and the exam may contain other types of questions not listed in the guide. The exam will cover topics from Week 7, 8, 9, 10, 11: Linear Regression, Logistic Regression, and Sampling Distributions. 
+
+
+## Foundations: what a model represents
+
+### Major definitions and notation
+
+| Term | Definition |
+|:--|:--|
+| **Outcome / response, $Y$** | The variable being explained or predicted, such as body mass or disease status. |
+| **Predictor / explanatory variable / covariate, $X$** | A variable used to describe differences in/predict the outcome. |
+| **Data generating process (DGP)** | The underlying mechanism that produces the observed data, including systematic relationships and randomness. A statistical model is an approximation to aspects of this process. |
+| **Parameter, $\beta_j$** | An unknown feature of the population model, such as a population slope. It is fixed for the specified population model. |
+| **Statistic / estimate, $\hat\beta_j$** | A value calculated from a sample to estimate a parameter. It varies across repeated samples. A hat denotes an estimate. |
+| **Fitted value / prediction, $\hat Y_i$** | The value supplied by the estimated model for observation $i$. In linear regression, it estimates the conditional mean outcome. |
+| **Error, $\varepsilon_i$** | The unobserved difference between an outcome and its true modeled conditional mean. |
+| **Association** | A relationship between variables. Association by itself does not establish that changing one variable causes the other to change. |
+
+The subscript $i$ identifies an observation. In $X_{ij}$, $i$ identifies the observation and $j$ identifies the predictor.
+
+### Population model versus fitted model
+
+For simple linear regression, the proposed population model is
+
+$$
+Y_i=\beta_0+\beta_1X_i+\varepsilon_i.
+$$
+
+The fitted model is
+
+$$
+\hat Y_i=\hat\beta_0+\hat\beta_1X_i.
+$$
+
+The fitted equation provides an estimated mean. Individual outcomes can fall above or below it because the model does not explain every source of variation. We do not add an unknown error term when calculating a fitted mean.
+
+## Simple linear regression
+
+### Major definitions
+
+**Simple linear regression** models the mean of a numerical outcome using one predictor. An **intercept** is the expected outcome value when the predictor equals zero. A **slope** is the change in the expected outcome value associated with a one-unit increase in the predictor.
+
+$$
+\hat Y=\hat\beta_0+\hat\beta_1X.
+$$
+
+| Quantity | Interpretation |
+|:--|:--|
+| $\hat\beta_0$ | Estimated expected outcome value when $X=0$; measured in outcome units |
+| $\hat\beta_1$ | Estimated change in expected outcome value for a one-unit increase in $X$; measured in outcome units per predictor unit |
+
+**Interpretation template:** “As the [predictor] increase by 1 [predictor unit], the expected [outcome] [increase/decrease] by an average [$\hat\beta_1$] [outcome units].”
+
+### Worked example: penguin body mass
+
+$$
+\widehat{\text{body mass}}=-5872.09+50.15(\text{flipper length}),
+$$
+
+with body mass in grams and flipper length in millimeters.
+
+**Slope:** As flipper length increases by 1 millimeters, the *expected* body mass increases by an *average* of **50.15** grams.
+
+**Intercept:** When flipper length is 0 millimeters, the expected body mass is $-5872.09$ g. This has no useful biological interpretation because 0-mm flippers are outside the relevant observed range, and negative body mass is impossible. An intercept can still be needed to position the fitted line even when its real-world interpretation is not useful.
+
+**Prediction:** at a flipper length of 200 mm,
+
+$$
+\hat Y=-5872.09+50.15(200)=4157.91\text{ g}.
+$$
+
+The expected body mass of penguins with a 200-mm flipper is 4,157.91 g.
+
+
+### Interpolation and extrapolation
+
+**Interpolation** predicts at predictor values within the range represented by the data. **Extrapolation** predicts beyond that range. A relationship observed over one range may not continue outside it.
+
+For example, **suppose** a study observes flipper lengths from 175 to 230 mm. Predicting at 200 mm is interpolation; predicting at 260 mm is extrapolation. These bounds are illustrative, not a reported range from the lectures.
+
+## Simple logistic regression
+
+### Major definitions: probability, odds, and log odds
+
+**Logistic regression** models the probability of a specified event for a binary outcome. A **binary outcome** has two possible values, coded here as $Y=1$ for the event and $Y=0$ for its alternative. In the lectures, the event is **having heart disease**.
+
+Let $p=P(Y=1\mid X)$.
+
+| Quantity | Definition | Example when $p=0.80$ |
+|:--|:--|:--|
+| **Probability** | Chance of the event, from 0 to 1 | 0.80, or 80% |
+| **Odds** | Event probability divided by non-event probability: $p/(1-p)$ | $0.80/0.20=4$, or 4 to 1 |
+| **Log odds / logit** | Natural logarithm of the odds: $\log[p/(1-p)]$ | $\log(4)\approx1.386$ |
+| **Linear predictor, $\eta$** | The coefficient-weighted sum, such as $\beta_0+\beta_1X$ | A log-odds value, not a probability |
+| **Odds ratio (OR)** | Odds under one condition divided by odds under the comparison condition | OR = 2 means twice the odds |
+
+The lecture notation $lo(\text{disease})$ means the log odds of having heart disease. This guide uses the equivalent logit notation.
+
+### Three equivalent forms of the model
+
+
+The logistic regression model:
+
+$$
+\log\left(\frac{p}{1-p}\right)=lo(p)=\beta_0+\beta_1X,
+$$
+
+with its estimated form:
+$$
+lo(\hat p)=\hat\beta_0+\hat\beta_1X
+$$
+
+which $\hat\beta_0$ and $\hat\beta_1$ are estimates for $\beta_0$ and $\beta_1$, respectively. 
+
+### Interpreting coefficients
+
+| Quantity | Interpretation |
+|:--|:--|
+| $\hat\beta_0$ | Expected log odds of the event when $X=0$ |
+| $\hat\beta_1$ | Change in the expected log odds for a one-unit increase in $X$ |
+| $e^{\hat\beta_1}$ | Factor multiplying the expected odds for a one-unit increase in $X$ |
+
+**Interpretation template:** “As the [predictor] increases by 1 [predictor unit], the expected odds of [event] [increase/decreases] by an average factor of [$OR = e^{\hat\beta_1}$].”
+
+
+
+### Worked example: age and heart disease
+
+Using the rounded lecture equation,
+
+$$
+lo(\text{yes heart disease})=-3.0512+0.0529(\text{age}).
+$$
+
+
+As age increases by 1 year, the expected odds of having heart disease increase by an average factor of 1.054.
+
+## Group models: categorical predictors
+
+### Major definitions and coding
+
+| Term | Definition |
+|:--|:--|
+| **Categorical predictor** | A predictor describing categorical groups, such as species or a stress-test category. |
+| **Reference category / baseline** | The group against which the displayed categorical coefficients are compared. |
+| **Dummy / indicator variable** | A variable equal to 1 for belonging to a specified category and 0 otherwise. |
+| **Group model** | A model in which categorical predictors describe differences among group means or group event probabilities. |
+
+For three penguin species with **Adelie as the reference**, define $D_C$ for Chinstrap and $D_G$ for Gentoo:
+
+| Species | $D_C$ | $D_G$ |
+|:--|--:|--:|
+| Adelie (reference) | 0 | 0 |
+| Chinstrap | 1 | 0 |
+| Gentoo | 0 | 1 |
+
+The pair $(1,1)$ is invalid for a single penguin's species. With an intercept, including all $C$ indicators would be redundant because their sum is always 1.
+
+### Linear group model: differences in mean body mass
+
+The lecture's rounded model is
+
+$$
+\widehat{\text{body mass}}=3706+26.92D_C+1386.27D_G.
+$$
+
+| Model component | Interpretation |
+|:--|:--|
+| Intercept = 3,706 | Expected body mass of Adelie penguins is 3,706 g. |
+| Chinstrap coefficient = 26.92 | The expected body mass is on average 26.92 g higher for Chinstrap than Adelie. |
+| Gentoo coefficient = 1,386.27 | The expected body mass is on average 1,386.27 g higher for Gentoo than Adelie. |
+
+**The coefficients are differences from the reference, not the other groups' means.** Insert each group's indicator values:
+
+| Species | Fitted mean body mass |
+|:--|--:|
+| Adelie | 3,706.00 g |
+| Chinstrap | $3706+26.92=3732.92$ g |
+| Gentoo | $3706+1386.27=5092.27$ g |
+
+
+
+
+### Logistic group model: ratios of odds
+
+For the heart-disease example, let $D_F$ indicate a fixed defect and $D_R$ indicate a reversible defect. The reference is **normal stress-test results**, and the event remains **having heart disease**.
+
+$$
+lo(p)=-1.233+1.926D_F+2.415D_R.
+$$
+
+
+The odds of having heart disease is **expected** to be 6.86 times higher, on **average**, for a patient who has a fixed defect than a patient who is normal.
+
+
+The odds of having heart disease is **expected** to be 11.19 times higher, on **average** for a patient who has a reversible defect than a patient who is normal.
+
+
+## Multivariable regression
+
+### Major definitions
+
+**Multivariable regression** models one outcome using multiple predictors. An **adjusted coefficient** describes an association conditional on the other included predictors. 
+
+“**Holding other predictors constant**” means comparing observations with the same values of those other predictors. It describes a model-based comparison; it does not mean the study experimentally controlled them.
+
+### Multivariable linear regression
+
+$$
+\hat Y=\hat\beta_0+\hat\beta_1X_1+\cdots+\hat\beta_pX_p.
+$$
+
+For a numerical predictor variable:
+
+As X increases by 1 unit, the odds of observing the first category ($Y = 1$) is **expected** to increase by a **average** factor of $e^{\hat\beta_j}$, keeping all the other predictor variables constant.
+
+For a categorical predictor variable (first dummy variable):
+
+The odds of observing the first category ($Y = 1$) in the indicated category ($D=1$) is **expected** to on **average** $e^{\hat\beta_j}$ times higher/lower compared to the reference category ($D=0$), keeping all the other predictor variables constant.
+
+
+### Worked example: species and flipper length
+
+Using Adelie as the reference, Lecture 8 gives
+
+$$
+\begin{aligned}
+\widehat{\text{body mass}}={}&-4013.18-205.38D_C\\
+&+284.52D_G+40.61(\text{flipper length}).
+\end{aligned}
+$$
+
+As flipper length increased by 1 unit, body mass is **expected** to increases by an **average** of 40.61, keeping penguin species constant.
+
+
+On **average**, the body mass of a Chinstrap species is **expected** to be 205.6 grams lower than an Adelie species, keeping flipper length constant.
+
+
+On **average**, the body mass of a Gentoo species is **expected** to be 284.5 grams higher than an Adelie species, keeping flipper length constant.
+
+**Prediction for a Gentoo penguin with 190-mm flippers:**
+
+$$
+\hat Y=-4013.18-205.38(0)+284.52(1)+40.61(190)=3987.24\text{ g}.
+$$
+
+The model gives the following fitted means at 190 mm:
+
+| Species | Fitted mean body mass |
+|:--|--:|
+| Adelie | 3,702.72 g |
+| Chinstrap | 3,497.34 g |
+| Gentoo | 3,987.24 g |
+
+These are equation-based calculations; assess whether 190 mm is adequately represented for each species before using them substantively.
+
+#### Why coefficients change after adjustment
+
+The species-only model compares groups without accounting for flipper length. The multivariable model compares groups **at the same flipper length**. Chinstrap's coefficient changes from +26.92 g to −205.38 g because these are different comparisons.
+
+Predictors can share information about the outcome. Adding a predictor can change another predictor's magnitude or sign. The change alone does not prove causation or establish that all relevant differences have been accounted for.
+
+### Multivariable logistic regression
+
+$$
+lo(p)=\beta_0+\beta_1X_1+\cdots+\beta_pX_p.
+$$
+
+Exponentiating $\hat\beta_j$ gives an **adjusted odds ratio**, holding the other included predictors constant.
+
+#### Worked example: stress-test category and maximum heart rate
+
+Given the estimated model:
+
+$$
+\begin{aligned}
+lo(\text{having heart disease})={}&4.70+1.38D_F+2.29D_R\\
+&-0.04(\text{maximum heart rate}).
+\end{aligned}
+$$
+
+The coefficients are interpreted as ($e^{\beta_j}$):
+
+As maximum heart rate achieved increases by 1 unit, the **expected** odds of having heart disease decresease by a factor of 0.951, on **average**, maintaining thallium stress test results constant.
+
+The **expectd** odds of having heart disease is 3.97 times higher, on **average**, in patients with fixed defects thallium stress results than patients with normal thallium stress results, maintaining maximum heart rate achieved constant. 
+
+The **expected** odds of having heart disease is 9.865 times higher, on **average**, in patients with reversible defects thallium stress results than patients with normal thallium stress results, keeping maximum heart rate achieved constant. 
+
+### Model building and selection
+
+| Term | Definition |
+|:--|:--|
+| **Full model** | A model containing all predictors being considered for a particular analysis. |
+| **Forward selection** | Start with a null model and add predictors according to a chosen criterion. |
+| **Backward selection** | Start with the full candidate model and remove predictors according to a chosen criterion. |
+| **Hybrid / stepwise selection** | Combine adding and removing predictors. |
+| **Overfitting** | Capturing sample-specific noise so that a model's performance on new data is worse than its training performance suggests. |
+
+As emphasized in Lecture 8, model choice should be informed by the scientific question, subject knowledge, prior research, and expert input. A smaller training SSE alone does not establish that a larger model is the best choice. Automated selection can also make results less stable across samples.
+
+## Sampling distributions and uncertainty
+
+### Major definitions
+
+| Term | Definition |
+|:--|:--|
+| **Sampling variability / randomness effect** | Changes in calculated statistics when new random samples are drawn from the same population or DGP. |
+| **Sampling distribution** | Distribution of a statistic over repeated samples collected in the same way at a fixed sample size. |
+| **Standard deviation (SD)** | Spread of individual values in a distribution. A sample SD commonly summarizes variation among observations. |
+| **Standard error (SE)** | Standard deviation of a statistic's sampling distribution; in practice, usually estimated from the sample. |
+| **Central Limit Theorem (CLT)** | Under suitable conditions, standardized sample sums or means become approximately normally distributed as sample size increases. |
+
+### Standard error and sample size
+
+For independent observations with common population SD $\sigma$,
+
+$$
+\mathrm{SE}(\bar X)=\frac{\sigma}{\sqrt n}.
+$$
+
+If $\sigma$ is unknown, estimate this SE using $s/\sqrt n$. For the same population, multiplying sample size by four divides the SE of the mean by two. More data improve precision; they do not guarantee removal of bias from poor sampling or a misspecified model.
+
+For regression coefficients, sample size matters, but SE also depends on outcome noise, predictor spread, and relationships among predictors. Do not assume every regression SE is simply the outcome SD divided by $\sqrt n$.
+
+### The Central Limit Theorem
+
+For independent, identically distributed observations with finite mean $\mu$ and finite, nonzero variance $\sigma^2$,
+
+$$
+\frac{\bar X-\mu}{\sigma/\sqrt n}
+\quad\text{is approximately }N(0,1)\text{ for sufficiently large }n.
+$$
+
+Equivalently, for large $n$,
+
+$$
+\bar X\text{ is approximately }N\!\left(\mu,\frac{\sigma^2}{n}\right).
+$$
+
+**Interpretation:** sample means from many sufficiently large samples form an approximately bell-shaped distribution, centered at the population mean and with SD $\sigma/\sqrt n$.
+
+The CLT does not make the individual observations normally distributed. The often-used guideline $n\ge30$ is not a guarantee: adequacy depends on the DGP, including skewness and tail behavior, and on the dependence structure.
+
+If the individual observations are independent and **normally distributed**, the sample mean is exactly normal for any sample size; no large-sample approximation is needed.
+
+### Common sampling distributions
+
+The following exact results assume independent observations from $N(\mu,\sigma^2)$. Here the conventional sample mean and sample variance are
+
+$$
+\bar X=\frac{1}{n}\sum_{i=1}^{n}X_i,
+\qquad
+s^2=\frac{1}{n-1}\sum_{i=1}^{n}(X_i-\bar X)^2.
+$$
+
+| Quantity | Distribution | What to recognize |
+|:--|:--|:--|
+| Sample mean | $\bar X\sim N(\mu,\sigma^2/n)$ | Spread of sample means is smaller than spread of individual observations. |
+| Standardized mean, known $\sigma$ | $Z=(\bar X-\mu)/(\sigma/\sqrt n)\sim N(0,1)$ | Measures distance from the true mean in SE units. |
+| Standardized mean, estimated $\sigma$ | $T=(\bar X-\mu)/(s/\sqrt n)\sim t_{n-1}$ | Uses sample SD and has heavier tails to account for estimating $\sigma$. |
+| Scaled sample variance | $(n-1)s^2/\sigma^2\sim\chi^2_{n-1}$ | Describes how sample variances vary under normal sampling. |
+
+The **standard normal distribution** has mean zero and SD one. A **t distribution** is symmetric with heavier tails than the standard normal for finite df; it approaches the standard normal as df increases. A **chi-squared distribution** is nonnegative and generally right-skewed, with shape determined by df.
+
+### Sampling distributions for regression coefficients
+
+For an ordinary linear regression with full-rank predictors and independent, normally distributed, constant-variance errors,
+
+$$
+T_j=\frac{\hat\beta_j-\beta_j}{\widehat{\mathrm{SE}}(\hat\beta_j)}
+\sim t_{n-k},
+$$
+
+where $k$ is the **total number of estimated regression coefficients, including the intercept and all dummy-variable coefficients**. This corresponds to the lecture's $p'$ notation.
+
+For example, species with three categories contributes two dummy coefficients. With an intercept and one flipper-length coefficient, $k=4$. If $n=100$ complete observations, residual df is $100-4=96$.
+
+For logistic regression, under suitable large-sample conditions,
+
+$$
+Z_j=\frac{\hat\beta_j-\beta_j}{\widehat{\mathrm{SE}}(\hat\beta_j)}
+\quad\text{is approximately }N(0,1).
+$$
+
+## Reading scientific notation
+
+**Scientific notation** writes a nonzero number as $a\times10^m$, conventionally with $1\le|a|<10$ and integer exponent $m$. Model output often displays this as `aem`.
+
+| Display | Equivalent value |
+|:--|:--|
+| `3e+06` | $3\times10^6=3{,}000{,}000$ |
+| `4.5e-04` | $4.5\times10^{-4}=0.00045$ |
+| `-2.05e+02` | $-2.05\times10^2=-205$ |
+| `9.1e-04` | $9.1\times10^{-4}=0.00091$ |
+
+The `e` in a printed number such as `4.5e-04` is an exponent marker for a power of 10. It differs from the mathematical constant $e$ used to convert a logistic coefficient into an odds ratio. A negative exponent also does not make a number negative: `4.5e-04` is positive.
+

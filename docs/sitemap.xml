@@ -1,51 +1,67 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>www.inqs.info/m201_f26/study_guides/study_guide_1.html</loc>
-    <lastmod>2026-10-01T17:58:25.225Z</lastmod>
+    <loc>www.inqs.info/m201_f26/study_guides/study_guide_2.html</loc>
+    <lastmod>2026-11-01T05:58:41.791Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/rcode/logistic.html</loc>
-    <lastmod>2026-10-22T20:54:50.087Z</lastmod>
+    <loc>www.inqs.info/m201_f26/rcode/regression.html</loc>
+    <lastmod>2026-10-22T20:59:03.119Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/rcode.html</loc>
+    <loc>www.inqs.info/m201_f26/rcode/num_stats.html</loc>
     <lastmod>2026-08-15T17:40:45.000Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/lectures/9.html</loc>
+    <loc>www.inqs.info/m201_f26/rcode/cat_stats.html</loc>
+    <lastmod>2026-08-15T17:40:45.000Z</lastmod>
+  </url>
+  <url>
+    <loc>www.inqs.info/m201_f26/lectures/8.html</loc>
+    <lastmod>2026-10-27T03:20:12.906Z</lastmod>
+  </url>
+  <url>
+    <loc>www.inqs.info/m201_f26/lectures/6.html</loc>
+    <lastmod>2026-10-27T03:28:30.447Z</lastmod>
+  </url>
+  <url>
+    <loc>www.inqs.info/m201_f26/lectures/4.html</loc>
+    <lastmod>2026-09-21T20:01:35.461Z</lastmod>
+  </url>
+  <url>
+    <loc>www.inqs.info/m201_f26/lectures/2a.html</loc>
+    <lastmod>2026-08-24T14:40:01.118Z</lastmod>
+  </url>
+  <url>
+    <loc>www.inqs.info/m201_f26/lectures/1a.html</loc>
+    <lastmod>2026-09-24T22:30:26.226Z</lastmod>
+  </url>
+  <url>
+    <loc>www.inqs.info/m201_f26/lectures/12.html</loc>
+    <lastmod>2026-08-24T14:42:59.351Z</lastmod>
+  </url>
+  <url>
+    <loc>www.inqs.info/m201_f26/lectures/10.html</loc>
     <lastmod>2026-08-24T14:41:56.293Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/lectures/7.html</loc>
-    <lastmod>2026-10-27T03:30:04.449Z</lastmod>
+    <loc>www.inqs.info/m201_f26/lectures.html</loc>
+    <lastmod>2026-08-24T16:46:10.789Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/lectures/5.html</loc>
-    <lastmod>2026-10-27T03:23:15.935Z</lastmod>
+    <loc>www.inqs.info/m201_f26/ec/ec_3.html</loc>
+    <lastmod>2026-08-18T18:50:53.382Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/lectures/3.html</loc>
-    <lastmod>2026-08-24T14:40:46.232Z</lastmod>
+    <loc>www.inqs.info/m201_f26/ec/ec_1.html</loc>
+    <lastmod>2026-08-18T18:34:03.918Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/lectures/2.html</loc>
-    <lastmod>2026-08-24T14:40:29.341Z</lastmod>
+    <loc>www.inqs.info/m201_f26/CW/cw_1.html</loc>
+    <lastmod>2026-09-01T15:43:55.833Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/lectures/15b.html</loc>
-    <lastmod>2026-08-24T14:43:07.936Z</lastmod>
-  </url>
-  <url>
-    <loc>www.inqs.info/m201_f26/lectures/11.html</loc>
-    <lastmod>2026-08-24T14:41:56.293Z</lastmod>
-  </url>
-  <url>
-    <loc>www.inqs.info/m201_f26/lectures/1.html</loc>
-    <lastmod>2026-08-24T14:46:46.084Z</lastmod>
-  </url>
-  <url>
-    <loc>www.inqs.info/m201_f26/index.html</loc>
+    <loc>www.inqs.info/m201_f26/ec.html</loc>
     <lastmod>2026-08-15T17:40:45.000Z</lastmod>
   </url>
   <url>
@@ -53,63 +69,51 @@
     <lastmod>2026-08-18T18:37:32.998Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/ec.html</loc>
+    <loc>www.inqs.info/m201_f26/index.html</loc>
     <lastmod>2026-08-15T17:40:45.000Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/CW/cw_1.html</loc>
-    <lastmod>2026-09-01T15:43:55.833Z</lastmod>
+    <loc>www.inqs.info/m201_f26/lectures/1.html</loc>
+    <lastmod>2026-08-24T14:46:46.084Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/ec/ec_1.html</loc>
-    <lastmod>2026-08-18T18:34:03.918Z</lastmod>
-  </url>
-  <url>
-    <loc>www.inqs.info/m201_f26/ec/ec_3.html</loc>
-    <lastmod>2026-08-18T18:50:53.382Z</lastmod>
-  </url>
-  <url>
-    <loc>www.inqs.info/m201_f26/lectures.html</loc>
-    <lastmod>2026-08-24T16:46:10.789Z</lastmod>
-  </url>
-  <url>
-    <loc>www.inqs.info/m201_f26/lectures/10.html</loc>
+    <loc>www.inqs.info/m201_f26/lectures/11.html</loc>
     <lastmod>2026-08-24T14:41:56.293Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/lectures/12.html</loc>
-    <lastmod>2026-08-24T14:42:59.351Z</lastmod>
+    <loc>www.inqs.info/m201_f26/lectures/15b.html</loc>
+    <lastmod>2026-08-24T14:43:07.936Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/lectures/1a.html</loc>
-    <lastmod>2026-09-24T22:30:26.226Z</lastmod>
+    <loc>www.inqs.info/m201_f26/lectures/2.html</loc>
+    <lastmod>2026-08-24T14:40:29.341Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/lectures/2a.html</loc>
-    <lastmod>2026-08-24T14:40:01.118Z</lastmod>
+    <loc>www.inqs.info/m201_f26/lectures/3.html</loc>
+    <lastmod>2026-08-24T14:40:46.232Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/lectures/4.html</loc>
-    <lastmod>2026-09-21T20:01:35.461Z</lastmod>
+    <loc>www.inqs.info/m201_f26/lectures/5.html</loc>
+    <lastmod>2026-10-27T03:23:15.935Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/lectures/6.html</loc>
-    <lastmod>2026-10-27T03:28:30.447Z</lastmod>
+    <loc>www.inqs.info/m201_f26/lectures/7.html</loc>
+    <lastmod>2026-10-27T03:30:04.449Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/lectures/8.html</loc>
-    <lastmod>2026-10-27T03:20:12.906Z</lastmod>
+    <loc>www.inqs.info/m201_f26/lectures/9.html</loc>
+    <lastmod>2026-08-24T14:41:56.293Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/rcode/cat_stats.html</loc>
+    <loc>www.inqs.info/m201_f26/rcode.html</loc>
     <lastmod>2026-08-15T17:40:45.000Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/rcode/num_stats.html</loc>
-    <lastmod>2026-08-15T17:40:45.000Z</lastmod>
+    <loc>www.inqs.info/m201_f26/rcode/logistic.html</loc>
+    <lastmod>2026-10-22T20:54:50.087Z</lastmod>
   </url>
   <url>
-    <loc>www.inqs.info/m201_f26/rcode/regression.html</loc>
-    <lastmod>2026-10-22T20:59:03.119Z</lastmod>
+    <loc>www.inqs.info/m201_f26/study_guides/study_guide_1.html</loc>
+    <lastmod>2026-10-01T17:58:25.225Z</lastmod>
   </url>
 </urlset>
