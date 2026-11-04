@@ -12,6 +12,34 @@ format:
 date: last-modified
 ---
 
+```{r}
+#| include: false
+
+library(rcistats)
+library(tidyverse)
+library(openintro)
+library(GLMsData)
+library(broom)
+
+
+url <- "https://archive.ics.uci.edu/ml/machine-learning-databases/haberman/haberman.data"
+col_names <- c("age", "year_of_operation", "positive_axillary_nodes", "survival_status")
+haberman <- readr::read_csv(url, col_names = col_names)
+
+haberman$survival_status <- as.factor(ifelse(haberman$survival_status == 1, "died", "alive"))
+haberman$elderly <- ifelse(haberman$age > mean(haberman$age), "Young", "Elderly")
+
+col_names <- c("vendor", "model", "MYCT", "MMIN", "MMAX", "CACH", "CHMIN", "CHMAX", "PRP", "ERP")
+url <- "https://archive.ics.uci.edu/ml/machine-learning-databases/cpu-performance/machine.data"
+cpu <- readr::read_csv(url, col_names = col_names)
+cpu$low_memory <- ifelse(cpu$MMIN > mean(cpu$MMIN), "High Memory", "Low Memory")
+
+
+url <- "https://archive.ics.uci.edu/ml/machine-learning-databases/forest-fires/forestfires.csv"
+fires <- readr::read_csv(url)
+
+```
+
 
 Use this study guide as a highlight of main topics to study for the exam. However, you will be required to no more details than provided here. The questions are examples, and the exam may contain other types of questions not listed in the guide. The exam will cover topics from Week 7, 8, 9, 10, 11: Linear Regression, Logistic Regression, and Sampling Distributions. 
 
@@ -149,6 +177,15 @@ $$
 
 
 As age increases by 1 year, the expected odds of having heart disease increase by an average factor of 1.054.
+
+
+
+::: {.callout-important}
+
+**ALWAYS INTERPRET THE ODDS RATIO!!!**
+
+:::
+
 
 ## Group models: categorical predictors
 
@@ -411,3 +448,163 @@ $$
 
 The `e` in a printed number such as `4.5e-04` is an exponent marker for a power of 10. It differs from the mathematical constant $e$ used to convert a logistic coefficient into an odds ratio. A negative exponent also does not make a number negative: `4.5e-04` is positive.
 
+## Example Questions
+
+### Problem 1
+
+A logistic regression model was used to model the outcome `survival_status` (died vs alive) with the predictors `positive_axillary_nodes` (number of positive axillary nodes) and `elderly` (Categorical). The `model_info` and `model` are shown below:
+
+```{r}
+appa <- glm(survival_status ~ positive_axillary_nodes + elderly, data = haberman, family = binomial)
+model_info(appa)
+appa
+```
+
+The table below shows the estimate and odds ratio:
+
+
+```{r}
+#| echo: false
+tidy(appa) |> 
+  select(term, estimate) |>
+  mutate(odds_ratio = exp(estimate)) 
+
+```
+
+#### Questions
+
+1. Write the equation of the model.
+2. Interpret the coefficient for `positive_axillary_nodes`
+3. Interpret the coefficient for `elderly`
+
+
+### Problem 2
+
+A Linear Regression Model was used to model the outcome `PRP` (cpu performance) and the predictor `MYCT` (machine cycle time, number) and `low_memory` (if a small amount of memory is used, categorical). The R results are provided here:
+
+
+```{r}
+momo <- lm(PRP ~ MYCT + low_memory, data = cpu)
+model_info(momo)
+momo
+```
+
+Answer the following questions:
+
+1. Write the equation for the line.
+2. Intepret the slope for `MYCT`.
+3. Interpret the slope for `low_memory`.
+
+### Problem 3
+
+What is the central limit theorem?
+
+### Problem 4
+
+What are sampling distributions?
+
+### Problem 5
+
+Convert each number to the requested form.
+
+a. Write $3.72 \times 10^{5}$ in standard decimal notation.
+b. Write $6.08 \times 10^{-4}$ in standard decimal notation.
+c. Write $845{,}000{,}000$ in scientific notation.
+d. Write $0.0000925$ in scientific notation.
+
+### Problem 6
+
+
+A researcher fits a linear regression model to predict a movie's worldwide box office revenue (in **millions of dollars**) using:
+
+- **Production budget:** measured in millions of dollars.
+- **Genre:** Action, Comedy, Drama, or Horror.
+
+The model uses **Action as the reference category**, with three dummy variables:
+
+- \(D_{\text{Comedy}} = 1\) for a Comedy movie and \(0\) otherwise.
+- \(D_{\text{Drama}} = 1\) for a Drama movie and \(0\) otherwise.
+- \(D_{\text{Horror}} = 1\) for a Horror movie and \(0\) otherwise.
+
+The fitted regression model is:
+
+$$
+\widehat{\text{Revenue}}
+= 40 + 10(\text{Budget})
+- 15D_{\text{Comedy}}
++ 30D_{\text{Drama}}
+- 20D_{\text{Horror}}.
+$$
+
+A studio plans to release a **Comedy** movie with a production budget of **$3 million** (Budget = 3). What would be the predicted value for the movie? What would the predicted revenue be for an **Action** movie with the same budget? 
+
+### Problem 7
+
+A biologist fits a linear regression model to predict an adult island fox's **body mass (in kilograms)** using the island where it lives: **Santa Cruz, Santa Rosa, or San Miguel**.
+
+The model uses **Santa Cruz as the reference category**, with two dummy variables:
+
+- \(D_{\text{Santa Rosa}} = 1\) for a fox from Santa Rosa and \(0\) otherwise.
+- \(D_{\text{San Miguel}} = 1\) for a fox from San Miguel and \(0\) otherwise.
+
+The hypothetical fitted regression model is:
+
+$$
+\widehat{\text{Body Mass}}
+= 4 + 3 D_{\text{Santa Rosa}} - 2 D_{\text{San Miguel}}.
+$$
+
+What is the average mass for each type of fox?
+
+### Problem 8
+
+The `fires` data set contains information on the area burned from forest fires based on weather and environmental factors. The linear regression model fits `area` (outcome; area burned) with the predictor `wind` (wind speed; numerical):
+
+```{r}
+naga <- lm(area ~ wind, data = fires)
+model_info(naga)
+naga
+```
+
+
+1. Write the equation for the line.
+2. Intepret the slope for `wind`.
+
+### Problem 9
+
+The `fires` data set contains information on the area burned from forest fires based on weather and environmental factors. The linear regression model fits `area` (outcome; area burned) with the predictor `wind` (wind speed; numerical):
+
+```{r}
+naga <- lm(area ~ wind, data = fires)
+model_info(naga)
+naga
+```
+
+
+1. Write the equation for the line.
+2. Intepret the slope for `wind`.
+
+
+### Problem 9
+
+In 2004, the state of North Carolina released a large data set (`ncbrith`) containing information on births recorded in this state. Researchers fit a model between smoking habit (`habit`; categorical predictor) and premature status (`premie`; outcome, binary), the results for the glm are provided below:
+```{r}
+pabu <- glm(premie ~ habit, data = ncbirths, family = binomial)
+model_info(pabu)
+pabu
+```
+
+
+The table below shows the estimate and odds ratio:
+
+
+```{r}
+#| echo: false
+tidy(pabu) |> 
+  select(term, estimate) |>
+  mutate(odds_ratio = exp(estimate)) 
+
+```
+
+1. Write the equation for the line.
+2. Intepret the slope for `habit`.
