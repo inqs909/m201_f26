@@ -522,9 +522,9 @@ A researcher fits a linear regression model to predict a movie's worldwide box o
 
 The model uses **Action as the reference category**, with three dummy variables:
 
-- \(D_{\text{Comedy}} = 1\) for a Comedy movie and \(0\) otherwise.
-- \(D_{\text{Drama}} = 1\) for a Drama movie and \(0\) otherwise.
-- \(D_{\text{Horror}} = 1\) for a Horror movie and \(0\) otherwise.
+- $D_{\text{Comedy}} = 1$ for a Comedy movie and $0$ otherwise.
+- $D_{\text{Drama}} = 1$ for a Drama movie and $0$ otherwise.
+- $D_{\text{Horror}} = 1$ for a Horror movie and $0$ otherwise.
 
 The fitted regression model is:
 
@@ -544,8 +544,8 @@ A biologist fits a linear regression model to predict an adult island fox's **bo
 
 The model uses **Santa Cruz as the reference category**, with two dummy variables:
 
-- \(D_{\text{Santa Rosa}} = 1\) for a fox from Santa Rosa and \(0\) otherwise.
-- \(D_{\text{San Miguel}} = 1\) for a fox from San Miguel and \(0\) otherwise.
+- $D_{\text{Santa Rosa}} = 1$ for a fox from Santa Rosa and $0$ otherwise.
+- $D_{\text{San Miguel}} = 1$ for a fox from San Miguel and $0$ otherwise.
 
 The hypothetical fitted regression model is:
 
@@ -570,22 +570,8 @@ naga
 1. Write the equation for the line.
 2. Intepret the slope for `wind`.
 
-### Problem 9
 
-The `fires` data set contains information on the area burned from forest fires based on weather and environmental factors. The linear regression model fits `area` (outcome; area burned) with the predictor `wind` (wind speed; numerical):
-
-```{r}
-naga <- lm(area ~ wind, data = fires)
-model_info(naga)
-naga
-```
-
-
-1. Write the equation for the line.
-2. Intepret the slope for `wind`.
-
-
-### Problem 9
+### Problem 10
 
 In 2004, the state of North Carolina released a large data set (`ncbrith`) containing information on births recorded in this state. Researchers fit a model between smoking habit (`habit`; categorical predictor) and premature status (`premie`; outcome, binary), the results for the glm are provided below:
 ```{r}
