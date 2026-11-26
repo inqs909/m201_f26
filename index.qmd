@@ -1,5 +1,9 @@
 ---
 title: "Welcome to Elementary Statistics!"
+listing:
+  contents: posts
+  sort: "order asc"
+  fields: [title]
 ---
 
 ::: {.callout-note collapse="true" icon="false"}

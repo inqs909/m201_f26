@@ -1,0 +1,662 @@
+---
+title: "Data Generating Processes"
+subtitle: "Lecture notes"
+description: "Detailed notes on data, measurement, study design, sampling, probability models, and statistical inference, with annotated R examples."
+lang: en
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-copy: true
+    code-fold: false
+    code-annotations: below
+    embed-resources: true
+    link-external-newwindow: true
+execute:
+  echo: true
+  message: false
+  warning: true
+  error: false
+  cache: false
+knitr:
+  opts_chunk:
+    fig.width: 8
+    fig.height: 4.8
+    dpi: 144
+    comment: "#>"
+editor: source
+date: last-modified
+---
+
+# Learning goals
+
+- Identify an observational unit, variable, value, population, and sample.
+- Distinguish quantitative and qualitative measurements.
+- Explain how a research question determines a study design.
+- Separate random sampling, random assignment, sampling variation, and bias.
+- Describe a data generating process using possible outcomes and their probabilities.
+- Read probability distributions and distinguish probability from density.
+- Interpret the notation $Y \sim F(\theta)$ and $Y = \beta + \varepsilon$.
+
+
+# Data: units, variables, and values
+
+## What does one observation represent?
+
+An **observational unit** is the entity that contains the desired information to be recorded. A unit might be a person, penguin, household, classroom, movie, etc. An **observation** is all the recorded information for one unit at one moment. 
+
+**Data** are the recorded values collected from multiple observational units. Each unit can contribute several values. For example, a penguin can have a recorded species, island, bill length, and body mass.
+
+## Variables versus values
+
+A **variable** is an attribute to be recorded from an observational unit. A **value** is the specific number or category recorded for that variable at one occasion. 
+
+| Term | Penguin example | 
+|---|---|---|
+| Observational unit | One measured penguin |
+| Variable | What is the body mass of a penguin? | 
+| Value | 3,750 grams | 
+| Observation | Multiple values for their respective variables of on individual penguin. |
+
+
+A single value does not describe the full pattern in a variable. A mass of 3,750 grams becomes more informative when compared with masses from other penguins.
+
+## Tabular data
+
+Tabular data, also known as rectangular data, is the most common way to organize multiple observational units with multiple variables. In a tabular data set, columns represent **variables** and rows represent **observations** of a unit. Each cell stores one value. 
+
+Here is a small excerpt from the Palmer Penguins data used in the code below. Mass is measured in grams and bill length in millimeters.
+
+| species | island | bill_length_mm | body_mass_g |
+|---|---|---:|---:|
+| Adelie | Torgersen | 39.1 | 3750 |
+| Adelie | Torgersen | 39.5 | 3800 |
+| Adelie | Torgersen | 40.3 | 3250 |
+| Adelie | Torgersen | NA | NA |
+
+`NA` is R's marker for a missing value. It does not mean zero. An unrecorded mass and a mass of zero have very different meanings.
+
+### R setup
+
+The examples use **ggplot2** for figures and **palmerpenguins** for the penguin data. They use base R for data manipulation and simulation. The original slides load several broader packages; those additional packages are not needed here.
+
+Run the following installation command once if these packages are missing. This cell is displayed but does not run when rendering the notes.
+
+```{r}
+#| label: install-packages
+#| eval: false
+install.packages(c("ggplot2", "palmerpenguins")) # <1>
+```
+
+1. `c()` combines the two package names into a character vector. `install.packages()` downloads and installs them from your configured CRAN repository. Installation normally happens once per R library, rather than each time you open a document.
+
+Load the packages each time a new R session begins.
+
+```{r}
+#| label: setup
+library(ggplot2) # <1>
+library(palmerpenguins) # <2>
+```
+
+1. `library(ggplot2)` attaches the plotting package, making functions such as `ggplot()`, `geom_line()`, and `labs()` available by name.
+2. `library(palmerpenguins)` attaches the package containing `penguins`. Loading a package makes its contents available in this R session; it does not reinstall the package.
+
+Inspect a few variables and summarize mass.
+
+```{r}
+#| label: inspect-penguins
+penguin_excerpt <- penguins[ # <1>
+  1:4,
+  c("species", "island", "bill_length_mm", "body_mass_g")
+]
+penguin_excerpt # <2>
+mean(penguins$body_mass_g, na.rm = TRUE) # <3>
+sum(is.na(penguins$body_mass_g)) # <4>
+```
+
+1. Square brackets select rows and columns: the expression before the comma chooses rows 1 through 4, and the character vector after the comma chooses four named variables. `<-` saves the resulting table as `penguin_excerpt`.
+2. Typing an object's name prints it. Each row in this excerpt describes one penguin; columns contain different attributes of that penguin.
+3. `$` extracts the `body_mass_g` column. `mean()` calculates its arithmetic average, and `na.rm = TRUE` excludes missing masses from that calculation. This describes the recorded, nonmissing masses; it does not establish that the sample represents all penguins.
+4. `is.na()` returns `TRUE` for each missing mass. `sum()` counts these `TRUE` values because R treats `TRUE` as 1 and `FALSE` as 0 in arithmetic. Reporting missingness helps us understand which observations enter a summary.
+
+# Measurement
+
+**Measurement** is the process of representing an attribute using a number or a category. A useful measurement definition specifies what is measured, how it is recorded, the measurement unit, and the conditions under which it is collected.
+
+For example, “temperature” is incomplete. “Body temperature in degrees Celsius, measured using the same instrument and procedure at 8 a.m.” is a more precise definition. Different measurement procedures can produce different values for the same underlying attribute.
+
+## Quantitative measurements
+
+A **quantitative variable** records an amount for which numerical differences have a meaningful interpretation.
+
+| Type | Description | Example |
+|---|---|---|
+| Discrete | Takes separated possible values, often counts | Number of eggs in a nest: 0, 1, 2, … |
+| Continuous | Modeled as varying over an interval | Body mass or bill length |
+
+An instrument may round a continuous attribute. A mass recorded as 3,750 grams is still generally treated as a continuous measurement, even if the scale reports only multiples of 25 grams.
+
+## Qualitative measurements
+
+A **qualitative variable**, also called a **categorical variable**, records membership in a group.
+
+| Type | Description | Example |
+|---|---|---|
+| Nominal | Categories have no natural order | Penguin species |
+| Ordinal | Categories have an order, but numerical gaps are not defined | Satisfaction: dissatisfied, neutral, satisfied |
+
+Numerical labels do not automatically create a quantitative variable. If 1 means Adelie, 2 means Chinstrap, and 3 means Gentoo, the numbers are category labels. A species code of 3 is not three times a species code of 1.
+
+## Operational definitions and measurement error
+
+An **operational definition** states the rule used to turn an idea into a recorded value. Consider the question “Are people happy?” Researchers might record a yes/no response, a five-category rating, or a score from several questions. Those choices produce different variables and potentially different answers.
+
+**Measurement error** is the difference between a recorded measurement and the quantity it is intended to measure. Some measurement error fluctuates across readings. Other error is systematic: a scale that consistently reads 100 grams too high shifts every mass upward.
+
+::: {.callout-tip title="Pause and discuss"}
+A researcher records student ID numbers and the number of classes each student takes. Which variable is quantitative? Explain why the fact that both are stored as numbers is insufficient.
+:::
+
+# Research questions and study design
+
+A **research question** identifies what we want to learn. A **study design** specifies how we will collect and analyze data to address that question. Good design connects the target population, sampling procedure, measurement rules, and analysis before data collection begins.
+
+## Turning a broad question into a study
+
+The question “Are people happy?” leaves several decisions open. A more specific question is:
+
+> What proportion of currently enrolled Math 201 students would report being satisfied or very satisfied with their college experience during the current term?
+
+This wording specifies a population, an outcome, and a time period. A study still needs a sampling frame, a selection method, a survey question, and a plan for handling nonresponse.
+
+| Design component | Example decision |
+|---|---|
+| Target population | All currently enrolled Math 201 students |
+| Sampling frame | A current enrollment roster |
+| Observational unit | One student |
+| Measurement | A five-category satisfaction response |
+| Quantity of interest | Proportion selecting satisfied or very satisfied |
+| Sampling plan | Randomly select students from the roster |
+| Potential limitation | Selected students who do not respond may differ from respondents |
+
+The **target population** is the group about which we want to draw conclusions. The **sampling frame** is the list or mechanism used to identify units for selection. A frame can omit members of the target population or include ineligible units.
+
+## Observational studies and experiments
+
+In an **observational study**, researchers record variables without assigning the exposure or treatment of interest. For example, they might record penguin species and body mass. An association between the two variables does not, by itself, show that one causes the other.
+
+In an **experiment**, researchers assign treatments and observe outcomes. **Random assignment** uses a chance mechanism to allocate experimental units to treatments. It helps separate treatment effects from preexisting differences among the groups.
+
+| Procedure | What is randomized? | Main purpose |
+|---|---|---|
+| Random sampling | Which population units enter the sample | Support inference to the target population |
+| Random assignment | Which treatment a selected experimental unit receives | Support causal comparisons between treatments |
+
+A study can have random sampling, random assignment, both, or neither. Random assignment does not automatically make a convenience sample representative of a wider population.
+
+# Sampling, independence, and variation
+
+**Sampling** is the process of selecting a subset of units from a population. A **sample** is the selected subset, or, depending on context, the observations obtained from it. The sample size $n$ is the number of sampled units or observations relevant to the analysis; the unit should always be stated.
+
+## Representative samples and sample size
+
+A sample is **representative** when it reflects the population characteristics relevant to the research question. For a satisfaction survey, relevant characteristics might include attendance patterns or enrollment status.
+
+A larger sample usually reduces random uncertainty when the sampling design is appropriate. Increasing sample size does not remove systematic problems. Surveying thousands of volunteers can still misrepresent students who are unlikely to volunteer.
+
+## What does random sampling mean?
+
+In a **simple random sample without replacement** of size $n$, every subset of $n$ distinct population units has the same probability of selection. Consequently, each unit has the same inclusion probability $n/N$, where $N$ is the population size.
+
+Probability sampling more broadly uses known, positive selection probabilities. Those probabilities do not always have to be equal; some designs deliberately sample certain groups more heavily and then use appropriate weights in the analysis.
+
+::: {.callout-important title="Random selection does not guarantee a balanced sample"}
+A random sample can differ from its population by chance. Randomization gives a principled way to describe uncertainty across repeated samples. Coverage problems, nonresponse, and measurement problems can still introduce bias after a random selection procedure.
+:::
+
+## Independence needs its own justification
+
+Two events or variables are **independent** when learning about one does not change the probability distribution of the other. Sampling independently and observing independent outcomes are related but different issues.
+
+When sampling **without replacement**, selection events are dependent: selecting one unit changes which units remain available. If a population contains two people and we select one, the identity of the remaining person is determined. When the sample is a small fraction of a large population, independence can sometimes serve as a useful approximation.
+
+Outcomes can also be related because units share an environment. Penguin masses within the same colony, students within a classroom, or repeated measurements on a person may be correlated. Calling a sample random does not eliminate these relationships.
+
+## Sampling variation versus bias
+
+**Sampling variation** is the sample-to-sample fluctuation caused by random selection. **Bias** is a systematic tendency for a procedure to miss its target in a particular direction, averaged over repeated uses of the procedure.
+
+If a sample's satisfaction proportion is larger than the population proportion, that one discrepancy does not establish that the sampling method is biased. To evaluate bias, we examine the procedure and its behavior over repeated samples.
+
+A **statistic** is a numerical summary computed from sample data. A **parameter** is a numerical feature of a population or statistical model. A sample proportion, written $\hat p$, can estimate a population proportion, written $p$.
+
+## Worked simulation: random sampling from a finite population
+
+The following population is fictional. Exactly 60% of its 1,000 members have the value 1, which represents a “satisfied” response. The remaining members have the value 0. Because this population is constructed, its true proportion is known.
+
+```{r}
+#| label: finite-population-sample
+set.seed(201) # <1>
+population <- c(rep(1, 600), rep(0, 400)) # <2>
+population_proportion <- mean(population) # <3>
+sampled_ids <- sample(seq_along(population), size = 50, replace = FALSE) # <4>
+responses <- population[sampled_ids] # <5>
+sample_proportion <- mean(responses) # <6>
+c(population = population_proportion, sample = sample_proportion) # <7>
+```
+
+1. `set.seed(201)` fixes the starting state of R's pseudorandom number generator so that the following random operations can be reproduced in the same software environment. It does not make a real sampling procedure unbiased.
+2. `rep(1, 600)` creates 600 ones; `rep(0, 400)` creates 400 zeros. `c()` joins the two vectors. Each vector position represents one distinct member of this fictional population.
+3. For a variable coded 0 and 1, its mean equals the proportion of ones. This population proportion is exactly $600/1000 = 0.60$.
+4. `seq_along(population)` creates the unit IDs 1 through 1,000. `sample()` selects 50 distinct IDs uniformly because `replace = FALSE`. No unit can be selected twice in this sample.
+5. Square brackets retrieve the responses at the selected IDs. Sampling IDs makes the selected units explicit even when many people have the same response value.
+6. `mean(responses)` computes the fraction of sampled units whose response is 1. It estimates the population proportion and can differ from 0.60 because of sampling variation.
+7. `c()` prints the population and sample proportions together with informative names. The population value is known here only because this is a simulation.
+
+A difference between these two printed numbers is expected. Our next question is how much a statistic would vary if we repeatedly used the same sampling procedure.
+
+```{r}
+#| label: repeated-samples
+#| fig-cap: "Sample proportions from repeated simple random samples of 50 members of the fictional population."
+#| fig-alt: "Histogram of 2000 sample proportions from a population with proportion 0.60. Sample proportions vary on both sides of the dashed line at 0.60, illustrating sampling variation around a fixed population value."
+set.seed(202) # <1>
+sample_props <- replicate(2000, { # <2>
+  ids <- sample(seq_along(population), size = 50, replace = FALSE) # <3>
+  mean(population[ids]) # <4>
+})
+sampling_results <- data.frame(proportion = sample_props) # <5>
+ggplot(sampling_results, aes(x = proportion)) + # <6>
+  geom_histogram(binwidth = 0.04, boundary = 0) + # <7>
+  geom_vline(xintercept = population_proportion, linetype = "dashed") + # <8>
+  labs(x = "Sample proportion satisfied", y = "Number of samples", # <9>
+       title = "Different samples, different estimates")
+```
+
+1. A new seed makes this entire repeated-sampling example reproducible without relying on which random operations were run earlier.
+2. `replicate(2000, { ... })` evaluates the expressions inside braces 2,000 times. Each repetition produces one statistic, rather than one person's response.
+3. On each repetition, select a fresh sample of 50 distinct IDs. A unit may appear in several different samples, but it appears at most once within a particular sample.
+4. Calculate and return the proportion of ones for that sample. `replicate()` collects these 2,000 proportions into `sample_props`.
+5. `data.frame()` puts the simulation results into a table with one row per simulated sample and a column named `proportion`.
+6. `ggplot()` starts a figure using that table. `aes(x = proportion)` maps the simulated sample proportions to horizontal positions. The `+` operator adds plotting layers.
+7. `geom_histogram()` groups the proportions into bins of width 0.04 and counts how many simulated samples fall in each bin. `boundary = 0` fixes the alignment of the bin boundaries.
+8. The dashed vertical line marks the fixed population proportion. The statistic changes across samples; this population parameter stays at 0.60.
+9. `labs()` supplies axis labels and a title. The cell's `fig-cap` gives a visible caption, while `fig-alt` supplies a separate description for readers using assistive technology.
+
+**Interpretation.** This histogram approximates the **sampling distribution** of the sample proportion under this design. It describes variation in a statistic, not variation in individual people's responses. With larger samples from the same population, the sampling distribution would usually become narrower.
+
+# The data generating process
+
+A **data generating process**, abbreviated **DGP**, is the mechanism that produces the observations. It can include biological variation, environmental conditions, selection into a study, and the measurement process.
+
+A probability model summarizes selected aspects of that mechanism. In a classroom simulation, we specify the model and generate values from it. In a real study, we observe values and use them to learn about an incompletely known mechanism.
+
+## Seeing the pattern across observations
+
+The slides use the idea of seeing a forest rather than focusing only on individual trees. Statistically, this means looking for a distribution's overall pattern: what values are common, what values are unusual, where the distribution is centered, and how much variation it contains.
+
+Individual observations still matter. An unusual value might be a genuine feature of the process or a recording error. We interpret individual observations in the context of the larger pattern and the study design.
+
+## Possible outcomes and probability
+
+For a **discrete** outcome, a probability model assigns a probability to each possible value:
+
+$$
+0 \le P(Y=y) \le 1,
+\qquad
+\sum_{y \in \mathcal{Y}} P(Y=y) = 1.
+$$
+
+Here $\mathcal{Y}$ is the set of possible outcomes. For a fair coin, the set is $\{0,1\}$ when tails is coded as 0 and heads as 1. For a fair six-sided die, it is $\{1,2,3,4,5,6\}$.
+
+A **continuous** outcome is described using a density function $f(y)$. Probabilities correspond to areas:
+
+$$
+f(y) \ge 0,
+\qquad
+\int_{-\infty}^{\infty} f(y)\,dy = 1,
+\qquad
+P(a \le Y \le b) = \int_a^b f(y)\,dy.
+$$
+
+::: {.callout-important title="Density height is not probability"}
+A density can exceed 1. Its total area, rather than its height, must equal 1. Under a continuous model, the probability of any one exact value is zero; intervals can have positive probability. Recorded, rounded measurements may still repeat.
+:::
+
+## Example: a fair coin
+
+Let $Y=1$ indicate heads and $Y=0$ indicate tails. A fair-coin model specifies
+
+$$
+Y \sim \operatorname{Bernoulli}(p=0.5),
+\qquad P(Y=1)=0.5,\quad P(Y=0)=0.5.
+$$
+
+Fairness specifies each flip's probabilities. **Independence** is an additional assumption about how different flips relate to one another. If the flips are independent, the preceding result does not change the next flip's probability of heads.
+
+## Example: a fair die
+
+A fair die assigns probability $1/6$ to each face. It need not produce equal counts in a short sequence. Equal probabilities describe the mechanism; equal observed frequencies are not guaranteed.
+
+```{r}
+#| label: simulate-coin-die
+set.seed(203) # <1>
+coin_flips <- rbinom(n = 20, size = 1, prob = 0.5) # <2>
+die_rolls <- sample(1:6, size = 20, replace = TRUE) # <3>
+mean(coin_flips) # <4>
+table(factor(die_rolls, levels = 1:6)) # <5>
+```
+
+1. Fix the generator's starting state for these two simulation examples.
+2. `rbinom()` generates random binomial counts. With `size = 1`, each of the `n = 20` generated values is a Bernoulli outcome: 1 with probability 0.5 and 0 otherwise. The simulation treats these outcomes as independent.
+3. `1:6` lists the possible faces. `sample()` draws 20 times with replacement, so each face remains available on every roll. With no probability vector supplied, each face has the same probability.
+4. Because the coin outcomes are zeros and ones, their mean is the observed proportion of heads. Twenty flips need not yield a proportion of exactly 0.5.
+5. `factor(..., levels = 1:6)` declares all six possible categories. `table()` counts each face and includes a zero if a face never appeared. Without the explicit levels, unobserved faces could be absent from the table.
+
+## Example: counting successes across 20 trials
+
+Suppose we observe 20 independent trials, each with success probability 0.20. Let $Y$ be the number of successes. Then
+
+$$
+Y \sim \operatorname{Binomial}(m=20,p=0.20).
+$$
+
+We use $m$ for trials within one count to distinguish it from the number of counts simulated below. Possible values are the integers 0 through 20. The expected count is $mp=4$, but an individual count can differ from 4.
+
+The slides simulate 200,000 such counts. We retain that example and compare its relative frequencies with the exact probability model.
+
+```{r}
+#| label: fig-binomial
+#| fig-cap: "Exact binomial probabilities and relative frequencies from 200,000 simulated counts."
+#| fig-alt: "Two bar-chart panels show binomial counts from 0 to 20 for 20 trials with success probability 0.20. Both peak at 4 successes and have a longer right tail. Simulated relative frequencies closely resemble the exact probabilities."
+set.seed(204) # <1>
+simulated_counts <- rbinom(n = 200000, size = 20, prob = 0.20) # <2>
+possible_counts <- 0:20 # <3>
+exact_probs <- dbinom(possible_counts, size = 20, prob = 0.20) # <4>
+relative_freqs <- as.numeric(table(factor(simulated_counts, levels = 0:20))) / # <5>
+  length(simulated_counts)
+comparison <- data.frame( # <6>
+  count = rep(possible_counts, times = 2),
+  height = c(exact_probs, relative_freqs),
+  source = rep(c("Exact model", "Simulated counts"), each = 21)
+)
+ggplot(comparison, aes(x = count, y = height)) + # <7>
+  geom_col() + # <8>
+  facet_wrap(~ source, nrow = 1) + # <9>
+  scale_x_continuous(breaks = seq(0, 20, by = 4)) + # <10>
+  labs(x = "Successes in 20 trials", y = "Probability / relative frequency",
+       title = "The model and its simulated outcomes") # <11>
+```
+
+1. Set a seed for this simulation.
+2. Generate 200,000 independent binomial counts. Each generated value summarizes its own set of 20 trials. `n = 200000` is the number of simulated counts; `size = 20` is the number of trials within each count.
+3. List all possible counts, including rare values that might never occur in a particular simulation.
+4. `dbinom()` calculates the exact probability of each listed count under the specified model. Unlike `rbinom()`, it does not generate random data.
+5. Count how often each possible value occurred, convert the counts to a numeric vector, and divide by the number of simulations. This produces relative frequencies whose sum is 1. Using a factor retains categories with zero observations.
+6. Stack the two sets of heights in a table. The first 21 rows describe the exact model; the next 21 describe the simulation. `rep(..., times = 2)` repeats the whole count sequence; `rep(..., each = 21)` repeats each panel label for its 21 rows.
+7. Map each possible success count to the horizontal axis and its probability or relative frequency to the vertical axis.
+8. `geom_col()` draws bars using the supplied heights. In contrast, `geom_bar()` normally counts rows automatically.
+9. `facet_wrap(~ source)` creates one panel per source. Both panels use the same axes, making their heights directly comparable.
+10. Place labeled horizontal ticks every four successes to keep the full 0–20 support readable.
+11. Label the axes and figure. Probabilities belong to the exact model; relative frequencies are calculated from the simulated outcomes.
+
+**Interpretation.** The two panels should look very similar because the simulation contains many counts. They need not match exactly. This figure shows a distribution of individual binomial counts, whereas the earlier sampling histogram showed a distribution of sample proportions.
+
+# Continuous DGPs: a beta distribution
+
+## A model for values between 0 and 1
+
+The slides use a beta distribution to illustrate a continuous DGP:
+
+$$
+Y \sim \operatorname{Beta}(\alpha=2,\gamma=5).
+$$
+
+The two shape parameters control the density's form. We use $\gamma$ for the second shape parameter here to avoid confusing it with the $\beta$ in our later additive model. In R, these parameters are named `shape1` and `shape2`.
+
+This distribution has support between 0 and 1, a peak at 0.20, and a longer tail toward 1. Its mean is
+
+$$
+E(Y)=\frac{\alpha}{\alpha+\gamma}=\frac{2}{7}\approx 0.286.
+$$
+
+The mean is not the most likely location: right skew pulls the mean above the density's peak. A beta model might be considered for an underlying continuously varying proportion. A fraction constructed from a small fixed number of successes is discrete and requires a different justification.
+
+```{r}
+#| label: fig-beta-density
+#| fig-cap: "The theoretical density of a Beta(2, 5) model."
+#| fig-alt: "A smooth density curve on the interval 0 to 1 rises from zero to a peak near 0.20 and then declines toward zero at 1. The curve is right-skewed. Its peak is above 1 because the vertical axis measures density, not probability."
+grid <- seq(0, 1, length.out = 1000) # <1>
+beta_density <- dbeta(grid, shape1 = 2, shape2 = 5) # <2>
+density_data <- data.frame(value = grid, density = beta_density) # <3>
+ggplot(density_data, aes(x = value, y = density)) + # <4>
+  geom_line() + # <5>
+  labs(x = "Possible value", y = "Density",
+       title = "A right-skewed continuous DGP") # <6>
+```
+
+1. `seq()` creates 1,000 evenly spaced positions from 0 to 1. These are evaluation points for drawing the curve, not a random sample.
+2. `dbeta()` evaluates the specified beta density at those positions. Each result is a density height. It is not the probability of observing that exact value.
+3. Combine the horizontal positions and density heights into a two-column table.
+4. Map the possible values and their density heights to the axes.
+5. `geom_line()` connects the evaluated heights to display a smooth approximation to the mathematical density curve. No observations were simulated in this cell.
+6. Label the vertical axis “Density” to distinguish it from a discrete probability or an observed count. The figure's caption identifies the model and its shape parameters.
+
+To calculate an interval probability, use the cumulative distribution function. For example,
+
+$$
+P(0.2 \le Y \le 0.5)=F(0.5)-F(0.2)=0.545985.
+$$
+
+```{r}
+#| label: beta-interval-probability
+pbeta(0.5, shape1 = 2, shape2 = 5) - # <1>
+  pbeta(0.2, shape1 = 2, shape2 = 5) # <2>
+```
+
+1. `pbeta(0.5, ...)` calculates $P(Y\le 0.5)$, the area under the density to the left of 0.5. The trailing minus sign continues the expression onto the next line.
+2. Subtract the area to the left of 0.2. The remaining area is the probability that a generated value lies between 0.2 and 0.5. Endpoint inclusion does not affect this continuous-model probability.
+
+## From a known DGP to a sample
+
+A theoretical density describes a model. A sample is a finite collection of values generated by, or observed from, a process. The sample's empirical shape will not reproduce the theoretical density exactly.
+
+```{r}
+#| label: fig-beta-samples
+#| fig-height: 4.5
+#| fig-cap: "Two independent samples of size 100 from the same Beta(2, 5) model. The dashed curve is the known theoretical density."
+#| fig-alt: "Side-by-side density-scaled histograms of two independent samples of 100 beta values. Both concentrate toward the lower end of 0 to 1 but differ in their bar heights. The same dashed theoretical density is overlaid on both panels."
+set.seed(205) # <1>
+sample_data <- data.frame( # <2>
+  value = rbeta(n = 200, shape1 = 2, shape2 = 5),
+  sample = rep(c("Sample A: n = 100", "Sample B: n = 100"), each = 100)
+)
+ggplot(sample_data, aes(x = value)) + # <3>
+  geom_histogram(aes(y = after_stat(density)), # <4>
+                 binwidth = 0.1, boundary = 0) +
+  geom_line(data = density_data, aes(x = value, y = density), # <5>
+            inherit.aes = FALSE, linetype = "dashed", linewidth = 1) +
+  facet_wrap(~ sample, nrow = 1) + # <6>
+  scale_x_continuous(limits = c(0, 1)) + # <7>
+  labs(x = "Observed value", y = "Density",
+       title = "One DGP can produce different samples") # <8>
+```
+
+1. Set a seed so that both sample histograms can be reproduced.
+2. `rbeta()` generates 200 independent observations from the beta model. The labels divide them into two independent samples of 100. Unlike `dbeta()`, `rbeta()` returns random outcomes rather than density heights.
+3. Begin a plot of the simulated observations. The horizontal aesthetic identifies the variable whose distribution we want to summarize.
+4. Construct a histogram using bins of width 0.1. `after_stat(density)` rescales bar heights so that their total area is 1 in each panel. This allows a density curve to be overlaid on a comparable vertical scale. The older `..density..` notation in the slides is replaced here by `after_stat(density)`.
+5. Overlay the previously calculated theoretical density. `data = density_data` gives this layer its own table, and `inherit.aes = FALSE` makes its aesthetic mappings explicit. A dashed line distinguishes the model from the sample histogram without relying on color.
+6. Create a separate panel for each sample. Since the theoretical-density table has no `sample` column, ggplot2 repeats the same model curve in both panels.
+7. Display the full 0–1 support in each panel rather than only the observed range.
+8. Supply descriptive axis labels and a title. Each histogram summarizes observed data; the dashed curve describes the common generating model.
+
+**Interpretation.** The two histograms differ because the observations differ. Both can still be consistent with the same DGP. The dashed curve is known here because we chose the model before simulating the data. In a real application, we would generally estimate a distribution or its parameters from the sample.
+
+A histogram's appearance also depends on its bin width. A smooth density estimate, such as the one shown in the slides, depends on a smoothing bandwidth. Neither display recovers an unknown population distribution perfectly.
+
+## A short guide to R's distribution functions
+
+| Prefix | What it does | Example from these notes |
+|---|---|---|
+| `d` | Evaluates a probability mass function or a density | `dbinom()` gives probabilities; `dbeta()` gives densities |
+| `p` | Evaluates a cumulative distribution function | `pbeta()` gives the probability at or below a cutoff |
+| `q` | Finds a quantile for a cumulative probability | `qbeta()` finds a cutoff corresponding to a specified cumulative probability |
+| `r` | Generates random observations | `rbinom()` and `rbeta()` simulate data |
+
+The prefix `d` does not always mean a density height: for a discrete distribution such as the binomial, it returns an actual probability mass.
+
+# Statistical models
+
+## General notation: $Y \sim F(\theta)$
+
+A **statistical model** is a mathematical description of selected features of a DGP. The notation
+
+$$
+Y \sim F(\theta)
+$$
+
+means that the random variable $Y$ follows a distribution from family $F$ with parameter or parameter vector $\theta$.
+
+| Symbol | Meaning | Example |
+|---|---|---|
+| $Y$ | Random quantity before it is observed | Success count in 20 trials |
+| $F$ | A probability distribution family | Binomial |
+| $\theta$ | Parameter or collection of parameters | Trial count 20 and success probability 0.20 |
+| $y$ | A realized, observed value of $Y$ | A count of 3 successes |
+
+The symbol $\sim$ means “is distributed as.” It is not an equality sign. A parameter describes the model, while an observation is one value generated under the model.
+
+For a sample, we often write
+
+$$
+Y_1,\ldots,Y_n \overset{\mathrm{iid}}{\sim} F(\theta).
+$$
+
+The abbreviation **iid** means *independent and identically distributed*. Independence concerns relationships among observations; identical distribution means each has the same distribution and parameter values. Both are assumptions that need justification from the study setting.
+
+## Additive notation: $Y = \beta + \varepsilon$
+
+The slides also express an outcome as
+
+$$
+Y = \beta + \varepsilon.
+$$
+
+Here $\beta$ is a fixed baseline or mean under the model, and $\varepsilon$ represents the deviation of an individual outcome from that baseline. To interpret $\beta$ as $E(Y)$, we assume that $E(\varepsilon)=0$ and that the expectation exists. Then
+
+$$
+E(Y)=\beta,
+\qquad
+\operatorname{Var}(Y)=\operatorname{Var}(\varepsilon).
+$$
+
+This equation alone does not specify a complete probability model. We must also describe the distribution of $\varepsilon$ and, for multiple observations, the relationships among their errors.
+
+A possible model for a hypothetical measurement is
+
+$$
+\varepsilon \sim \operatorname{Normal}(0,\sigma^2),
+\qquad
+Y=\beta+\varepsilon,
+\qquad
+Y \sim \operatorname{Normal}(\beta,\sigma^2).
+$$
+
+The normal model is a modeling choice. The presence of an additive error term does not automatically imply normality.
+
+## Worked example: a hypothetical temperature measurement
+
+Suppose an illustrative temperature model uses $\beta=37.0$ degrees Celsius and $\sigma=0.3$ degrees Celsius. These values are chosen for a classroom example; they are not a medical reference range.
+
+If one outcome is $y=37.2$, its deviation from the assumed baseline is
+
+$$
+\varepsilon=y-\beta=37.2-37.0=0.2.
+$$
+
+An outcome below 37.0 would have a negative deviation. “Error” in this model means unexplained variation; it does not necessarily mean that someone made a mistake.
+
+```{r}
+#| label: fig-additive-model
+#| fig-cap: "Simulated measurements from an additive model with baseline 37.0 and normally distributed errors with standard deviation 0.3."
+#| fig-alt: "Histogram of 500 simulated temperature measurements forms an approximately symmetric mound around a dashed vertical line at 37.0 degrees Celsius. Individual values lie above and below the fixed baseline because their simulated errors can be positive or negative."
+set.seed(206) # <1>
+beta <- 37.0 # <2>
+sigma <- 0.3 # <3>
+errors <- rnorm(n = 500, mean = 0, sd = sigma) # <4>
+temperatures <- beta + errors # <5>
+temperature_data <- data.frame(temperature = temperatures) # <6>
+ggplot(temperature_data, aes(x = temperature)) + # <7>
+  geom_histogram(binwidth = 0.15, boundary = beta) + # <8>
+  geom_vline(xintercept = beta, linetype = "dashed") + # <9>
+  labs(x = "Simulated temperature (degrees Celsius)", y = "Count",
+       title = "Baseline plus unexplained variation") # <10>
+```
+
+1. Set a seed for reproducible simulated measurements.
+2. Store the model's baseline in `beta`. This parameter is fixed across all 500 simulated outcomes.
+3. Store the error standard deviation in `sigma`. A larger value would produce a wider distribution of outcomes around the same baseline.
+4. `rnorm()` generates 500 normal errors centered at zero. The argument `sd` takes the standard deviation $\sigma$, not the variance $\sigma^2$. A finite set of simulated errors need not have a sample mean of exactly zero.
+5. Add the same baseline to every error. R applies this addition to all vector elements, directly implementing $Y=\beta+\varepsilon$.
+6. Store the outcomes in a table for plotting.
+7. Map simulated temperature to the horizontal axis.
+8. Count observations in bins of width 0.15 degrees Celsius. `boundary = beta` aligns a bin boundary with the baseline; it does not change the generated values.
+9. Mark the known generating baseline using a dashed line. It is a population-model value, not necessarily the mean of this particular simulated sample.
+10. Label the figure in measurement units so the magnitude and spread can be interpreted.
+
+## Explained and unexplained variation
+
+In the intercept-only model $Y=\beta+\varepsilon$, the explained part is the same baseline for every observation. The unexplained part captures deviations from that baseline.
+
+In a model with predictors, the expected value can vary with observed information. For example,
+
+$$
+Y_i=\beta_0+\beta_1X_i+\varepsilon_i,
+\qquad
+E(\varepsilon_i\mid X_i)=0.
+$$
+
+Then $\beta_0+\beta_1X_i$ is the model's conditional mean for a unit with predictor value $X_i$. The error term includes variation left over after accounting for that mean.
+
+Possible sources of unexplained variation include biological differences, environmental conditions, measurement error, and omitted predictors. These sources are not automatically distinguishable from the outcome alone. The meaning of “unexplained” depends on what information the model uses.
+
+An **error** is a deviation from the true model mean. A **residual** is an observed value minus a fitted mean estimated from data. We can calculate residuals after fitting a model; the true errors are generally unobserved.
+
+# Simulation and statistical inference
+
+**Simulation** starts with a specified model and produces possible data. **Statistical inference** uses observed data, a study design, and assumptions to learn about population or model features.
+
+| Direction | What we start with | What we ask |
+|---|---|---|
+| Model to data | A distribution and its parameters | What observations could this process produce? |
+| Data to model | Observations and a justified study design | Which parameter values or model features are supported by the data? |
+
+In the beta example, simulation uses the known shape parameters 2 and 5 to produce observations. Inference would begin with observed values and ask which beta parameters, if any, adequately describe their distribution.
+
+A sample can help us estimate a population feature and quantify uncertainty. It rarely identifies every aspect of a DGP. Different mechanisms can produce similar observed distributions, and a visually plausible fit does not prove that a mechanism is correct.
+
+::: {.callout-tip title="A routine for interpreting a new data set"}
+State the research question and population. Identify what one row represents. Check how each variable was measured. Examine the sampling procedure and possible dependence. Summarize distributions and missing values. Choose a model whose assumptions fit the setting, then interpret its estimates together with uncertainty and limitations.
+:::
+
+
+# Glossary
+
+| Term | Working definition |
+|---|---|
+| Observational unit | Entity about which measurements are recorded |
+| Variable | Attribute whose value can differ across units or occasions |
+| Value | Particular recorded number or category |
+| Population | Collection of units or outcomes about which we want to learn |
+| Sample | Subset selected or observed for a study |
+| Parameter | Numerical feature of a population or model |
+| Statistic | Numerical summary computed from a sample |
+| Sampling variation | Random fluctuation in statistics across repeated samples |
+| Bias | Systematic departure of a procedure from its target |
+| Independence | Knowing one event or variable does not change the distribution of another |
+| Distribution | Description of possible values and their probabilities or densities |
+| DGP | Mechanism producing the observed data |
+| Statistical model | Mathematical representation of selected aspects of a DGP |
+| Inference | Learning about population or model features from observations and assumptions |
+
